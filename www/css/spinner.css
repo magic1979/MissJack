@@ -13,12 +13,12 @@
    -moz-animation: rotation .8s infinite linear;
    -o-animation: rotation .8s infinite linear;
    animation: rotation .8s infinite linear;
-   border-left:6px solid rgba(192,192,192,.15);
-   border-right:6px solid rgba(192,192,192,.15);
-   border-bottom:6px solid rgba(192,192,192,.15);
-   border-top:6px solid rgba(192,192,192,.8);
+   border-left:6px solid rgba(255,091,0,.15);
+   border-right:6px solid rgba(255,091,0,.15);
+   border-bottom:6px solid rgba(255,091,0,.15);
+   border-top:6px solid rgba(255,091,0,.8);
    border-radius:100%;
-    z-index: 9999;
+   z-index: 9999;
 }
 
 @-webkit-keyframes rotation {

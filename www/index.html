@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -19,417 +21,619 @@
 -->
 <html>
     <head>
-        <title>Poker Answer</title>
-        
-        <meta property="og:locale" content="en_US" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-                
-                <link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />
-                <link rel="stylesheet" href="themes/ThemeAnswer.css" />
-                <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-                <link rel="stylesheet" href="css/spinner.css" />
-                
-                <meta name="apple-mobile-web-app-capable" content="yes">
-                <meta name="apple-mobile-web-app-status-bar-style" content="black">
-                            
-                 <script src="jquery-1.10.2.min.js"></script>
-                 <script src="js/jquery.mobile-1.4.2.min.js"></script>
-                 
-                  <script type="text/javascript" src="js/iscroll.js"></script>
-                  
-                  <script type="text/javascript">
-                      
-                      var myScroll,
-                      pullDownEl, pullDownOffset,
-                      generatedCount = 0;
-                      
-                      function pullDownAction () {
-                            app.initialize();
-                                     
-                            myScroll.refresh();		// Remember to refresh when contents are loaded (ie: on ajax completion)
-                      }
-                  
-                  
-                  function loaded() {
-                      pullDownEl = document.getElementById('pullDown');
-                      pullDownOffset = pullDownEl.offsetHeight;
+		<meta property="og:locale" content="en_US" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
-                      
-                      myScroll = new iScroll('wrapper', {
-                                             useTransition: true,
-                                             topOffset: pullDownOffset,
-                                             onRefresh: function () {
-                                             if (pullDownEl.className.match('loading')) {
-                                             pullDownEl.className = '';
-                                             pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
-                                             }                                              },
-                                             onScrollMove: function () {
-                                             if (this.y > 5 && !pullDownEl.className.match('flip')) {
-                                             pullDownEl.className = 'flip';
-                                             pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Release to refresh...';
-                                             this.minScrollY = 0;
-                                             } else if (this.y < 5 && pullDownEl.className.match('flip')) {
-                                             pullDownEl.className = '';
-                                             pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
-                                             this.minScrollY = -pullDownOffset;
-                                             }                                              },
-                                             onScrollEnd: function () {
-                                             if (pullDownEl.className.match('flip')) {
-                                             pullDownEl.className = 'loading';
-                                             pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Loading...';
-                                             pullDownAction();	// Execute custom function (ajax call?)
-                                             }                                              }
-                                             });
-                                             
-                                             setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
-                  }
-                  
-                  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-                  
-                  document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-         </script>
-                  
-                  <style type="text/css" media="all">
-                      body,ul,li {
-                          padding:0;
-                          margin:0;
-                          border:0;
-                      }
-                  
-                  body {
-                      font-size:12px;
-                      -webkit-user-select:none;
-                      -webkit-text-size-adjust:none;
-                      font-family:helvetica;
-                  }
-                  
-                  #header {
-                      position:absolute; z-index:2;
-                      top:0; left:0;
-                      width:100%;
-                      height:45px;
-                      line-height:45px;
-                      background-color:#000000;
-                      
-                      padding:0;
-                      color:#eee;
-                      font-size:20px;
-                      text-align:center;
-                  }
-                  
-                  #header a {
-                      color:#f3f3f3;
-                      text-decoration:none;
-                      font-weight:bold;
-                      text-shadow:0 -1px 0 rgba(0,0,0,0.5);
-                  }
-                  
-                  #footer {
-                      position:absolute; z-index:2;
-                      bottom:0; left:0;
-                      width:100%;
-                      height:48px;
-                      background-color:#222;
-                      background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
-                      background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
-                      background-image:-o-linear-gradient(top, #999, #666 2%, #222);
-                      padding:0;
-                      border-top:1px solid #444;
-                  }
-                  
-                  #wrapper {
-                      position:absolute; z-index:1;
-                      top:45px; bottom:48px; left:-9999px;
-                      width:100%;
-                      overflow:auto;
-                  }
-                  
-                  #scroller {
-                      position:absolute; z-index:1;
-                      /*	-webkit-touch-callout:none;*/
-                      -webkit-tap-highlight-color:rgba(0,0,0,0);
-                      width:100%;
-                      padding:0;
-                  }
-                  
-                  #scroller ul {
-                      list-style:none;
-                      padding:0;
-                      margin:0;
-                      width:100%;
-                      text-align:left;
-                  }
-                  
-                  #scroller li {
-                      font-size:14px;
-                  }
-                  
-                  #myFrame {
-                      position:absolute;
-                      top:0; left:0;
-                  }
-                  
-                  
-                  
-                  /**
-                   *
-                   * Pull down styles
-                   *
-                   */
-                  #pullDown, #pullUp {
-                      background:#fff;
-                      height:40px;
-                      line-height:40px;
-                      padding:5px 10px;
-                      border-bottom:1px solid #ccc;
-                      font-weight:bold;
-                      font-size:12px;
-                      color:#888;
-                  }
-                  #pullDown .pullDownIcon, #pullUp .pullUpIcon  {
-                      display:block; float:left;
-                      width:40px; height:40px;
-                      background:url(pull-icon@2x.png) 0 0 no-repeat;
-                      -webkit-background-size:40px 80px; background-size:40px 80px;
-                      -webkit-transition-property:-webkit-transform;
-                      -webkit-transition-duration:250ms;
-                  }
-                  #pullDown .pullDownIcon {
-                      -webkit-transform:rotate(0deg) translateZ(0);
-                  }
-                  #pullUp .pullUpIcon  {
-                      -webkit-transform:rotate(-180deg) translateZ(0);
-                  }
-                  
-                  #pullDown.flip .pullDownIcon {
-                      -webkit-transform:rotate(-180deg) translateZ(0);
-                  }
-                  
-                  #pullUp.flip .pullUpIcon {
-                      -webkit-transform:rotate(0deg) translateZ(0);
-                  }
-                  
-                  #pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
-                      background-position:0 100%;
-                      -webkit-transform:rotate(0deg) translateZ(0);
-                      -webkit-transition-duration:0ms;
-                      
-                      -webkit-animation-name:loading;
-                      -webkit-animation-duration:2s;
-                      -webkit-animation-iteration-count:infinite;
-                      -webkit-animation-timing-function:linear;
-                  }
-                  
-                  @-webkit-keyframes loading {
-                      from { -webkit-transform:rotate(0deg) translateZ(0); }
-                      to { -webkit-transform:rotate(360deg) translateZ(0); }
-                  }
-                  
-              </style>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" href="font.css">
+			
+		<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />
+		<link rel="stylesheet" href="themes/MisterTod.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="css/spinner.css" />
+		<link rel="stylesheet" href="css/app-reset.css" />
+		<link rel="stylesheet" href="css/app-ios.css" />
+		<link rel="stylesheet" type="text/css" href="css/zocial.css" />
+		
+		<script src="jquery-1.10.2.min.js"></script>
+		<script src="js/jquery.mobile-1.4.2.min.js"></script>
+		<script src="jquery.countdown.js"></script>
+		
+		
+        <title>Mister Tod</title>
+		
+		<style>
+			.div1 {
+				background-color: #FF8000;
+				height: 52px;
+				border: none;
+				
+				vertical-align: middle;
+			}
+			.div2 {
+				background-color: #FFFFFF;
+			}
+		.div3 {
+			background-color: #F0F0F0;
+			border: none;
+			margin:0 auto;
+			height: 10px;
 
-                   <style>
-				     .div1 {
-                           background-color: #707070;
-                           -webkit-filter: blur(8px);
-                       }
-                     .div2 {
-                       background-color: #707070;
-                     }
-                     .div3 {
-                         background: rgb(125,126,125); /* Old browsers */
-                         background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
-                         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
-                         background: -webkit-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
-                         background: -o-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
-                         background: -ms-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
-                         background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
-                         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
-                      }
+		}
+		.div4 {
+			background: rgb(125,126,125); /* Old browsers */
+			background: -moz-linear-gradient(45deg, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(45deg, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(45deg, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(45deg, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
+			background: linear-gradient(45deg, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		}
+		.trBorderCell
+		{
+			height: 30px;
+			width: 320px;
+			background: rgba(0,0,0,.6);
+			
+		}
+		
+		.margine
+		{
+			margin:0 auto;
+		}
+		
+		.arrotondamento
+		{
+			border-radius: 8px;
+			-moz-border-radius: 8px; /* firefox */
+			-webkit-border-radius: 8px; /* safari, chrome */
+		}
+		.custom-btn {
+			width: 280px;
+		}
+		
+		.custom-btn2 {
+			width: 280px;
+		}
+		
+		.custom-btn3 {
+			width: 100px;
+		}
+		
+		.big { height: 80px;}
+		.big .ui-btn-inner { padding-top:25px; }
+		
+		.home {
+			background-color: #FF8000;
+			background-image: url(img/upload.png);
+			background-size: 18px 18px;
+			background-repeat: no-repeat;
+			background-position:center;
+			
+			
+			height:40px;
+			width:40px;
+			border-radius:999em;
+			-moz-border-radius:999em;
+			-webkit-border-radius:999em;
+			-o-border-radius: 999em;
+			
+			-webkit-box-shadow: 0px 0px 0.5px 1px #FFF;
+			-moz-box-shadow: 0px 0px 0.5px 1px #FFF;
+			box-shadow: 0px 0px 0.5px 1px #FFF;
+		}
+		
+		.home:active {
+			background-color: #000000;
+			border-radius:999em;
+			-moz-border-radius:999em;
+			-webkit-border-radius:999em;
+			-o-border-radius: 999em;
+			
+			-webkit-box-shadow: 0px 0px 0.5px 1px #000;
+			-moz-box-shadow: 0px 0px 0.5px 1px #000;
+			box-shadow: 0px 0px 0.5px 1px #000;
+		}
 
-                       .circolare {
-                         width: 77px;
-                         height: 77px;
-                        border-radius:999em;
-                        -moz-border-radius:999em;
-                        -webkit-border-radius:999em;
-                        -o-border-radius: 999em;
-                        
-                         -webkit-box-shadow: 0px 0px 0.5px 1px #000;
-                         -moz-box-shadow: 0px 0px 0.5px 1px #000;
-                          box-shadow: 0px 0px 0.5px 1px #000;
-                         }
-                         #box {
-                         padding:20px;
-                         color:#000;
-                         background-color: white;
-                         opacity:0.5;
-                         }
-						 .conn {
-                            font-size: 9pt;
-                            color:#FFF;
-                            background-color: #9d3434;
-                         }
-                   
-                   .home {
-                       background-color: #9d3434;
-                       background-image: url(images/picched.png);
-                       background-size: 20px 20px;
-                       background-repeat: no-repeat;
-                       background-position:center;
-                       
-                       height:40px;
-                       width:40px;
-                       border-radius:999em;
-                       -moz-border-radius:999em;
-                       -webkit-border-radius:999em;
-                       -o-border-radius: 999em;
-                       
-                       -webkit-box-shadow: 0px 0px 0.5px 1px #FFF;
-                       -moz-box-shadow: 0px 0px 0.5px 1px #FFF;
-                       box-shadow: 0px 0px 0.5px 1px #FFF;
-                   }
-                   
-                   .home:active {
-                       background-color: #000000;
-                       border-radius:999em;
-                       -moz-border-radius:999em;
-                       -webkit-border-radius:999em;
-                       -o-border-radius: 999em;
-                       
-                       -webkit-box-shadow: 0px 0px 0.5px 1px #000;
-                       -moz-box-shadow: 0px 0px 0.5px 1px #000;
-                       box-shadow: 0px 0px 0.5px 1px #000;
-                   }
-                   
-                   .buttonFB:active {
-                       border:1px solid #FFFFFF;
-                   }
-                   .buttonTW:active {
-                       border:1px solid #FFFFFF;
-                   }
-                   
-                   .badge1 {
-                       position:relative;
-                   }
-                   .badge1[data-badge]:after {
-                       content:attr(data-badge);
-                       position:absolute;
-                       top:-10px;
-                       right:-10px;
-                       font-size:.7em;
-                       background:green;
-                       color:white;
-                       width:18px;height:18px;
-                       text-align:center;
-                       line-height:18px;
-                       border-radius:50%;
-                       box-shadow:0 0 1px #333;
-                       border: 1px solid #fff;
-                   }
-                   .badge2 {
-                       
-                   }
-                   .badge2[data-badge]:after {
-                       
-                   }
+.circolare {
+	width: 30px;
+	height: 30px;
+	border-radius:999em;
+	-moz-border-radius:999em;
+	-webkit-border-radius:999em;
+	-o-border-radius: 999em;
+	
+	-webkit-box-shadow: 0px 0px 0.5px 0.5px #000;
+	-moz-box-shadow: 0px 0px 0.5px 0.5px #000;
+	box-shadow: 0px 0px 0.5px 0.5px #000;
+}
+		
+a {text-decoration:none;}
 
-                  </style>
+.styled-select select {
+	background: transparent;
+	width: 268px;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 1;
+	border: 0;
+	border-radius: 0;
+	height: 34px;
+	-webkit-appearance: none;
+}
+		
+		.banner {
+			left:110px;
+			bottom:20px;
+			position: fixed;
+			
+			margin-left: auto ;
+			margin-right: auto ;
+			
+		}
+		
+		hr.style-six {
+			border: 0;
+			height: 0;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		}
+
+
+		</style>
     </head>
-    <body onload="init();">
-        <div data-role="page" class="div2" >
-        
-        	<div data-role="panel" id="mypanel" data-display="overlay" data-theme="b" data-position-fixed="true" class="div2">
-                 <center>
-                        <!--<img src="http://www.pokeranswer.it/IMG/AnswerB.png" width="130px" data-rel="external">-->
-                        <img src="barra.png" width="120px" height="26px">
-                        <br>
-                        <br>
-                        <ul data-role="listview" data-inset="true">
-                            <li id="badde2" class="badge1" data-badge="1"><a href="Strategy.html" rel="external"><img src="img/strategy.png" >
-                                <h2>♠ Strategia</h2>
-                                <p>Articoli-Migliora</p></a>
-                            </li>
-                            <li><a href="classifica.html" rel="external"><img src="img/classifica.png" >
-								<h2>♠ Classifica</h2>
-								<p>Gioca For Fun</p></a>
-							</li>
-                            <li><a href="javascript:send();">♥ Contattaci</a></li>
-                            <li><a href="infofaq.html" rel="external">♣ Info/Faq</a></li>
-                            <li><a href="Privacy.html" rel="external">♦ Privacy</a></li>
-                            <li><a href="Note.html" rel="external">♦ Note Legali</a></li>
-                            <li><a href="Minori.html" rel="external">♦ Minori</a></li>
-                            <li><a href="Responsabile.html" rel="external">♦ Gioco Responsabile</a></li>
-                        </ul>
-                </center>
-				<br>
-                <a href="#" onclick="javascript:compraFB();"> <img src="img/facebook.png" width="80px" data-rel="external" class="buttonFB"></a>
-                 <a href="#" onclick="window.plugins.socialsharing.shareViaTwitter('Scopri la nuova applicazione PokerAnswer, tante funzioni pensate per tutti giocatori.')"> <img src="img/twitter.png" width="80px" data-rel="external" class="buttonTW"></a><br>									<br>
-                 <a href="#my-header" onclick="javascript:chiudipanel();" class="ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left" data-rel="close">Close</a>
-            </div><!-- /panel -->
-            
-            <div data-role="header" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
-                <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
-            </div><!-- /header -->
-            
-            <div class="spinner" id="spinner"></div>
-            
-            <div id="wrapper">
-                <div id="scroller">
-                    <div id="pullDown">
-                        <span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
-                    </div>
-                    
-            <div id="noconn" align="center" style="display:none"></div>
-            
-            <div data-role="content" class="div2">
-                <script type="text/javascript" src="phonegap.js"></script>
-                <script type="text/javascript" src="PushNotification.js"></script>
+    <body>
+		<div id="page" data-role="page" class="div2" >
+			
+			<div data-role="header" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true">
+				<span class="ui-title"> <font class="fontsforweb_fontid_2802" color="#FFFFFF" size="5.5">Mister Tod</font></span>
+			</div><!-- /header -->
+			
+			<div class="spinner" id="spinner"></div>
+			
+			<div id="noconn" align="center" style="display:none"></div>
+			<div data-role="content" class="div2">
+				<div class="div2" id="selezione"></div>
+			</div>
+			
+			<div id="classifica" align="center">
+				<!--<a href="#page2" onclick="javascript:prodotto();" data-transition="slide">
+				<img src='img/big2.jpg' width='330px' height='180px'>
 
-                <script type="text/javascript" src="js/index.js"></script>
-                <script type="text/javascript">
-                    app.initialize();
-            	</script>
-                <div class="div2"><table align="right" width="140px"><tr><td valign="center" align="right"><font  color="white" size="2"><div id="fiches"></div></font></td></tr></table></div>
-            </div>
-            
-            <div id="classifica" align="center"></div>
-            
-            <br>
-        <div>
-            <ul data-role="listview"  data-theme="b" data-inset="true">
-                <li><a href="javascript:cambiap();" rel="external"><img src="img/italia.png" >
-                    <h2><img src="images/finder.png" width="16px">&nbsp;Radar-Sale</h2>
-                    <p>Strutture Sportive Intorno a Te</p></a>
-                </li>
-                <li><a href="FindPlayer.html" rel="external"><img src="img/Full4.png">
-                    <h2><img src="images/avatar.png" width="16px">&nbsp;Cerca Giocatori</h2>
-                    <p>Avatar, Andamanto, R.o.i</p></a>
-                </li>
-                <li><a href="FinderLive.html" rel="external"><img src="img/palinsesti.png" height="70">
-                    <h2><img src="images/live.png" width="16px">&nbsp;Cosa Giocare</h2>
-                    <p>Tornei Live, Tornei On-Line</p></a>
-                </li>
-            </ul>
-        </div>
+				<table height='30px' border='0' width='320px'>
+					<tr>
+						<td align='left' colspan='2'>
+							<font size='3' color='#000000'>Descrizione Breve<font/>
+						</td>
+					</tr>
+					<tr>
+						<td align='left' width='160px'>
+							<font size='2' color='#000000'>Provincia<font/>
+						</td>
+						<td align='right'>
+							<font size='2' color='#000000'><strike>100&euro;</strike></font></font>
+						</td>
+					</tr>
+					<tr>
+						<td align='left' width='160px'>
+							<font size='2' color='#000000'>Non lo so<font/>
+								</td>
+						<td align='right'>
+							<font size='4' color='#FF8000'>66 &euro;</font>
+						</td>
+					</tr>
+				</table></a>-->
+				
+			</div>
 
-          </div>
-     </div>
-            
-        <div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div4">
-            <table><tr><td width="200px">
-            <a href="#mypanel" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-grid">Altro</a>
-            <a href="Token.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check">? Chips</a>&nbsp;&nbsp;</td>
-            <td width="120px" align="center"><a href="javascript:apri();"><img src="images/giocosicuro.png" width="38px"></a>&nbsp;&nbsp;<img src="images/18a.png" width="22px"></td>
-            </tr></table>
-        </div><!-- /footer -->
+			
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table><tr><td width="200px">
+					<a id="btnprofilo" href="#" onclick="#" data-transition="slide" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user">Profilo</a>
+					</td>
+				<td width="120px" align="center"></td>
+				</tr></table>
+			</div><!-- /footer -->
+			
+			<div data-role="panel" id="mypanel" data-display="overlay" data-theme="b" data-position-fixed="true" width="100%" class="div2">
+				<center>
+					<!--<img src="http://www.pokeranswer.it/IMG/AnswerB.png" width="130px" data-rel="external">-->
+					<img src="Tod10.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Mister Tod</font></center>
+						<br><br>
+						<img class="circolare" id="userPic"/>  Ciao<span id='Nome' align="center"></span>
+						<br>
+						<!--<div id='EmailCliente' align="center"></div>-->
+						<br>
+						<ul data-role="listview" data-inset="true">
+							<li><a href="Miei.html" rel="external">I Miei Acquisti</a></li>
+							<li><a href="javascript:compraFB();" rel="external">Facebook</a></li>
+							<li><a href="#page5" onclick="javascript:chie()" data-transition='slide'>Chi &egrave; MisterTod</a></li>
+						</ul>
+						<br>
+						<center>
+						<a href="javascript:logoutFacebook()">Disconnetti</a>
+						</center>
+				<br><br><br>
+				<a href="#my-header" onclick="javascript:chiudipanel();" class="ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left" data-rel="close">Close</a>
+			</div><!-- /panel -->
+			
+			
+		</div><!-- /page -->
+		
+		
+		<div id="page2" data-role="page" class="div2" >
+			<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true">
+				<table id="idheader" height='50'><tr><td></td></tr></table>
+			</div>
+			<div data-role="content"></div>
+			
+			<div id='prodotto' align="center"></div>
+			
+			
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table id="idfooter"><tr><td width="200px">
+					<a href="#mypanel" onclick="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user">Profilo</a>
+				</td>
+				<td width="120px" align="center"></td>
+				</tr></table>
+			</div><!-- /footer2 -->
+		</div><!-- /page2 -->
+		
+		
+		<div id="page3" data-role="page" class="div2" >
+			<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true">
+				<table id="idheader3" height='50'><tr><td></td></tr></table>
+			</div>
+			<div data-role="content"><div id='riepilogo1' align="left"></div></div>
+			
+			<div id='riepilogo' align="center"></div>
+			
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table id="idfooter3"><tr><td width="100%">
+					<a href="#page" onclick="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user">Home</a>
+				</td>
+				<td width="120px" align="center"></td>
+				</tr></table>
+			</div><!-- /footer3 -->
+		</div><!-- /page3 -->
+		
+		<div id="page4" data-role="page" class="div2" >
+			<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true">
+				<table id="idheader4" height='50'><tr><td></td></tr></table>
+			</div>
+			
+			<div data-role="content"><center>Accedi al tuo account MisterTod</center></div>
+			
+			<center>
+				
+			<table id="formreg" align="center" width="320px">
+				<tr>
+					<td width="320px" align="center">
+						<div id='datilogin' align="center"></div>
+					</td>
+				</tr>
+				<tr>
+					<td width="320px" align="center">
+						o
+					</td>
+				</tr>
+				<tr id="campireg">
+					<td width="320px" align="center">
+						 <form name="formia2" action="entra2.asp" method="post">
+							 <input type="text" data-theme="b" name="email" id="email" value="" placeholder="Email">
+							 <input type="password" data-theme="b" name="password" id="password" value="" placeholder="Password">
+							 <a href="javascript:login();" id="#" data-role="button" class="custom-btn" data-theme="b">Accedi</a>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td width="320px" align="left">
+						<a href="#"><font size="1" color="#FF8000">Password dimenticata</font></a><br>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="320px" align="center">
+						<br>
+					</td>
+				</tr>
 
-        
-    </div><!-- /page -->
+			</table>
+			
+			<table align="center" width="320px">
+			<tr>
+				<td width="220px" align="left">
+					Serve un account MisterTod?
+				</td>
+				<td width="100px" align="center">
+					<a href="#page6" id="#" data-role="button" class="custom-btn3" data-theme="a">Iscriviti</a>
+				</td>
+			</tr>
+			</table>
+			
+			</center>
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table id="idfooter4"><tr><td width="200px">
+					<a href="#page" id="btnprofilo4" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
+				</td>
+				<td width="120px" align="center"></td>
+				</tr></table>
+			</div><!-- /footer4 -->
+		</div><!-- /page4 -->
+		
+		<div id="page5" data-role="page" class="div2" >
+			<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true">
+				<table id="idheader5" height='50'><tr><td></td></tr></table>
+			</div>
+			
+			<div data-role="content"></div>
+			<center>
+				<ul data-role="listview" data-inset="true" data-theme="b">
+					<li><a href="Voucher.html" rel="external">Chi siamo</a></li>
+				</ul><br>
+				<img src="Tod10.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Mister Tod</font>
+				<br><br>
+				<ul data-role="listview" data-inset="true" data-theme="a">
+					<li><a href="TerminiTotal.html" rel="external">Termini e condizioni di vendita</a></li>
+					<li><a href="Privacy.html" rel="external">Termini e condizioni d'uso</a></li>
+					<li><a href="Privacy.html" rel="external">Informativa sulla Privacy</a></li>
+					<li><a href="Privacy.html" rel="external">Politica sui Cookies</a></li>
+				</ul>
+			</center>
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table id="idfooter5"><tr><td width="200px">
+					<a href="#page" id="btnprofilo4" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
+				</td>
+				<td width="120px" align="center"></td>
+				</tr></table>
+			</div><!-- /footer5 -->
+		</div><!-- /page5 -->
+		
+		<div id="page6" data-role="page" class="div2" >
+			<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true">
+				<table id="idheader6" height='50' align='center'><tr><td><font color='#FFFFFF' size='3'>Iscriviti</font></td></tr></table>
+			</div>
+			<div data-role="content"><center>Registrati su MisterTod</center></div>
+			
+			<center>
+			
+			<table id="formreg" align="center" width="320px">
+				<tr>
+					<td width="320px" align="center">
+						<a href='javascript:loginFacebook();' class='zocial facebook'>Login Facebook</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" width="320px" align="center">
+						o
+					</td>
+				</tr>
+				<tr>
+					<td width="320px" align="center">
+					 <form name="formia" action="entra.asp" method="post">
+						<input type="text" data-theme="b" name="emailreg" id="emailreg" value="" placeholder="Email">
+						<input type="text" data-theme="b" name="Password" id="Password" value="" placeholder="Password">
+						<input type="text" data-theme="b" name="nome" id="nome" value="" placeholder="Nome e Cognome">
+									
+						<a href="javascript:iscriviti();" id="#" data-role="button" data-theme="b" class="custom-btn">Iscriviti</a>
+					 </form>
+					</td>
+				</tr>
+			</table>
+			
+<table align="center" width="320px">
+<tr>
+	<td width="220px" align="left">
+		Hai un account?
+	</td>
+	<td width="100px" align="center">
+		<a href="#page4" id="#" data-role="button" class="custom-btn3" data-theme="a">Accedi</a>
+	</td>
+</tr>
+</table>
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table id="idfooter6"><tr><td width="200px">
+					<a href="#page" onclick="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user">Home</a>
+				</td>
+				<td width="120px" align="center"></td>
+				</tr></table>
+			</div><!-- /footer6 -->
+		</div><!-- /page6 -->
+		
+		<div id="page7" data-role="page" class="div2" >
+
+			<div data-role="content"><center><img src="Tod10.png" height="130px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="6">Mister Tod</font></center></div>
+			
+			<center><br>
+				
+				<table id="formreg" align="center" width="320px">
+					<tr>
+						<td width="320px" align="center">
+							Per quale zona vuoi vedere le offerte?
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" width="320px" align="center">
+							<select id="ProvStep1" name="ProvStep1" width="300">
+								<option value="Agrigento">Agrigento</option>
+								<option value="Alessandria">Alessandria</option>
+								<option value="Ancona">Ancona</option>
+								<option value="Aosta">Aosta</option>
+								<option value="Arezzo">Arezzo</option>
+								<option value="Ascoli">Ascoli Piceno</option>
+								<option value="Asti">Asti</option>
+								<option value="Avellino">Avellino</option>
+								<option value="Bari">Bari</option>
+								<option value="Barletta">Barletta-Andria-Trani</option>
+								<option value="Belluno">Belluno</option>
+								<option value="Benevento">Benevento</option>
+								<option value="Bergamo">Bergamo</option>
+								<option value="Biella">Biella</option>
+								<option value="Bologna">Bologna</option>
+								<option value="Bolzano">Bolzano</option>
+								<option value="Brescia">Brescia</option>
+								<option value="Brindisi">Brindisi</option>
+								<option value="Cagliari">Cagliari</option>
+								<option value="Caltanissetta">Caltanissetta</option>
+								<option value="Campobasso">Campobasso</option>
+								<option value="Carbonia">Carbonia-iglesias</option>
+								<option value="Caserta">Caserta</option>
+								<option value="Catania">Catania</option>
+								<option value="Catanzaro">Catanzaro</option>
+								<option value="Chieti">Chieti</option>
+								<option value="Como">Como</option>
+								<option value="Cosenza">Cosenza</option>
+								<option value="Cremona">Cremona</option>
+								<option value="Crotone">Crotone</option>
+								<option value="Cuneo">Cuneo</option>
+								<option value="Enna">Enna</option>
+								<option value="Fermo">Fermo</option>
+								<option value="Ferrara">Ferrara</option>
+								<option value="Firenze">Firenze</option>
+								<option value="Foggia">Foggia</option>
+								<option value="Forli">Forl&igrave;-Cesena</option>
+								<option value="Frosinone">Frosinone</option>
+								<option value="Genova">Genova</option>
+								<option value="Gorizia">Gorizia</option>
+								<option value="Grosseto">Grosseto</option>
+								<option value="Imperia">Imperia</option>
+								<option value="Isernia">Isernia</option>
+								<option value="spezia">La spezia</option>
+								<option value="aquila">L'aquila</option>
+								<option value="Latina">Latina</option>
+								<option value="Lecce">Lecce</option>
+								<option value="Lecco">Lecco</option>
+								<option value="Livorno">Livorno</option>
+								<option value="Lodi">Lodi</option>
+								<option value="Lucca">Lucca</option>
+								<option value="Macerata">Macerata</option>
+								<option value="Mantova">Mantova</option>
+								<option value="Massa">Massa-Carrara</option>
+								<option value="Matera">Matera</option>
+								<option value="Medio">Medio Campidano</option>
+								<option value="Messina">Messina</option>
+								<option value="Milano">Milano</option>
+								<option value="Modena">Modena</option>
+								<option value="Monza">Monza e della Brianza</option>
+								<option value="Napoli">Napoli</option>
+								<option value="Napoli">c</option>
+								<option value="Nuoro">Nuoro</option>
+								<option value="Ogliastra">Ogliastra</option>
+								<option value="Olbia">Olbia-Tempio</option>
+								<option value="Oristano">Oristano</option>
+								<option value="Padova">Padova</option>
+								<option value="Palermo">Palermo</option>
+								<option value="Parma">Parma</option>
+								<option value="Pavia">Pavia</option>
+								<option value="Perugia">Perugia</option>
+								<option value="Pesaro">Pesaro e Urbino</option>
+								<option value="Pescara">Pescara</option>
+								<option value="Piacenza">Piacenza</option>
+								<option value="Pisa">Pisa</option>
+								<option value="Pistoia">Pistoia</option>
+								<option value="Pordenone">Pordenone</option>
+								<option value="Potenza">Potenza</option>
+								<option value="Prato">Prato</option>
+								<option value="Ragusa">Ragusa</option>
+								<option value="Ravenna">Ravenna</option>
+								<option value="Reggio">Reggio di Calabria</option>
+								<option value="ReggioEmilia">Reggio nell'Emilia</option>
+								<option value="Rieti">Rieti</option>
+								<option value="Rimini">Rimini</option>
+								<option value="Roma">Roma</option>
+								<option value="Rovigo">Rovigo</option>
+								<option value="Salerno">Salerno</option>
+								<option value="Sassari">Sassari</option>
+								<option value="Savona">Savona</option>
+								<option value="Siena">Siena</option>
+								<option value="Siracusa">Siracusa</option>
+								<option value="Sondrio">Sondrio</option>
+								<option value="Taranto">Taranto</option>
+								<option value="Teramo">Teramo</option>
+								<option value="Terni">Terni</option>
+								<option value="Torino">Torino</option>
+								<option value="Trapani">Trapani</option>
+								<option value="Trapani">c</option>
+								<option value="Treviso">Treviso</option>
+								<option value="Trieste">Trieste</option>
+								<option value="Udine">Udine</option>
+								<option value="Varese">Varese</option>
+								<option value="v">Venezia</option>
+								<option value="Verbano">Verbano-Cusio-Ossola</option>
+								<option value="Vercelli">Vercelli</option>
+								<option value="Verona">Verona</option>
+								<option value="Vibo">Vibo valentia</option>
+								<option value="Vicenza">Vicenza</option>
+								<option value="Viterbo">Viterbo</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td width="320px" align="center">
+							<a href="#page8" onclick="javascript:step1();" id="#" data-role="button" width="300" data-theme="b">Continua</a>
+						</td>
+					</tr>
+				</table>
+				
+
+
+				<a href="#page8" onclick="javascript:step1bis();" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user banner">Salta</a>
+
+				
+		</div><!-- /page7 -->
+		
+		<div id="page8" data-role="page" class="div2" >
+
+			<div class="spinner" id="spinner8"></div>
+
+			<div data-role="content"><center><img src="Tod10.png" height="130px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="6">Mister Tod</font></center></div>
+			
+			<center>
+				
+				<table id="formreg" align="center" width="320px">
+					<tr>
+						<td colspan="2" width="320px" align="center">
+							Inserisci il tuo indirizzo email per ricevere le migliori offerte della zona.<br>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" width="320px" align="center">
+							<br>
+						</td>
+					</tr>
+					<tr>
+						<td width="320px" align="center">
+							<a href='javascript:loginFacebook();' class='zocial facebook'>Login Facebook</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" width="320px" align="center">
+							<br>o<br>
+						</td>
+					</tr>
+					<tr>
+						<td width="320px" align="center">
+							<form name="formia8" action="entra.asp" method="post">
+								<input type="text" data-theme="b" name="emailMail" id="emailMail" value="" placeholder="Inserisci il tuo indirizzo email">
+								<a href="#page8" onclick="javascript:step2();" id="#" data-role="button" data-theme="b" class="custom-btn">Iscriviti</a>
+							</form>
+						</td>
+					</tr>
+				</table>
+				
+				<a href="#page" onclick="javascript:step2bis();" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user banner">Salta</a>
+
+		</div><!-- /page8 -->
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+		<script src="openfb.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
     </body>
 </html>
-
-
-
-
