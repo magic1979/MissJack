@@ -327,7 +327,7 @@ function riepilogo(idProdotto) {
 	
 	$("#idheader3").html("<table id='idheader' height='50'><tr><td width='30px' align='center'></td><td width='240px' align='center' valign='middle'><font color='#FFFFFF' size='3'>CONFERMA</font></td><td width='50px' align='center' valign='middle'><img src='Tod10.png' width='22'></td></tr></table>");
 	
-	$(".spinner").show();
+	//$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Riepilogo.asp",
