@@ -7,7 +7,7 @@
 		<name>MisterTod</name>
 		<description>MisterTod, e sei un cliente di serie A</description>
 		<author href="http://www.mistertod.it" email="info@mistertod.it">
-PokerAnswer Team
+PokerParade sas
 		</author>
 		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
@@ -33,11 +33,11 @@ PokerAnswer Team
 		<preference name="android-targetSdkVersion" value="11" />
 		<preference name="android-installLocation" value="auto" />
 		<preference name="SplashScreenDelay" value="10000" />
-		<preference name="ErrorUrl" value="http://www.pokeranswer.it"/>
+		<preference name="ErrorUrl" value="http://www.mistertod.it"/>
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="true"/>
-		<preference name="LoadingDialog" value="PokerAnswer,Loading"/> 
+		<preference name="LoadingDialog" value="MisterTod,Loading"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
 		<gap:platform name="android" />
