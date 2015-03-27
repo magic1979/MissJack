@@ -23,12 +23,12 @@ var app = {
     },
     // Bind Event Listeners
     //
-    // Bind any events that are required on startup. Common events are:
+    // Bind any events that are required on startup. Common events are:@
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
+    // deviceready Event Handler@
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
@@ -40,8 +40,14 @@ var app = {
 		//alert(loginfacebook);
 		
 		if (loginfacebook == "SI") {
+			//alert('http://graph.facebook.com/' + localStorage.getItem("pics") + '/picture?type=small');
+			if(!localStorage.getItem("pics")||localStorage.getItem("pics")==""){
+				document.getElementById("userPic").src = 'http://www.mistertod.it/Tod10.png';
+			}
+			else{
+				document.getElementById("userPic").src = 'http://graph.facebook.com/' + localStorage.getItem("pics") + '/picture?type=small';
+			}
 			
-			document.getElementById("userPic").src = 'http://graph.facebook.com/' + localStorage.getItem("pics") + '/picture?type=small';
 			$("#Nome").html(localStorage.getItem("nome"));
 			//$("#EmailCliente").html(localStorage.getItem("email"));
 			
@@ -52,14 +58,19 @@ var app = {
 			
 			if (loginvera == "SI") {
 				$("#Nome").html(localStorage.getItem("nome"));
-				document.getElementById("userPic").src = 'Tod10.png';
+				document.getElementById("userPic").src = 'http://www.mistertod.it/Tod10.png';
+				//document.getElementById("userPic").src = 'http://www.mistertod.it/Tod10.png';
 				//localStorage.setItem("idfacebook", "")@
 				//alert("exit");
 				//$(document).FaceGap('logout');
 			}
 		}
 		
-		window.location.href = "#page7";
+		
+		if(localStorage.getItem("step1")!="GO" && localStorage.getItem("step2")!="GO"){
+			window.location.href = "#page7";
+		}
+		
 
 		
     },
@@ -94,6 +105,7 @@ var app = {
 		openFB.init({appId: '410848245732219'});
 		var Categoria="";
 		var Provincia="";
+		var model = device.model;
 		
 		if((email=="")||(!email)){
 			$("#btnprofilo").attr("href", "#page4");
@@ -105,14 +117,8 @@ var app = {
 		
 		var filtro = '<table id="filtroTB" width="320px" align="center"><tr><td width="160px"><select id="Categoria" name="Categoria" data-theme="b"><option value="All" selected>Schegli Tra</option><option value="Ristoranti">Ristoranti</option><option value="Hotel">Hotel e Spa</option><option value="Eventi">Eventi</option><option value="Sport">Sport</option><option value="Salute">Bellezza</option><option value="Corsi">Corsi</option></select></td><td width="160px"><select id="Provincia" name="Provincia" data-theme="b"><option value="Tutte" selected>Provincia</option><option value="Roma">Roma</option><option value="Napoli">Napoli</option><option value="Agrigento">Agrigento</option></select></td><td width="80px" align="left"></td></tr></table>';
 		
-		$('#selezione').html(filtro);
-
 		
-		//$(window).scroll(function() {
-			//if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-				//$(".spinner").show();
-			//}
-		//});
+		//$('#selezione').html(filtro);
 		
 		//alert(localStorage.getItem("Categoria") + localStorage.getItem("Provincia"));
 		
@@ -137,7 +143,7 @@ var app = {
 		  //alert($value);
 		  Categoria = $value;
 		  localStorage.setItem("Categoria", Categoria)
-		  buildprodotto(Categoria,localStorage.getItem("Provincia"));
+		  buildprodotto(Categoria,localStorage.getItem("Provincia"),1);
 		});
 		
 		$('#Provincia').on('change', function(){
@@ -146,25 +152,30 @@ var app = {
 		  //alert($value);
 		  Provincia = $value;
 		  localStorage.setItem("Provincia", Provincia)
-		  buildprodotto(localStorage.getItem("Categoria"),Provincia);
+		  buildprodotto(localStorage.getItem("Categoria"),Provincia,1);
 		});
 		
 		var connectionStatus = false;
 		connectionStatus = navigator.onLine ? 'online' : 'offline';
 		
 		if(connectionStatus=='online'){
+			$('#noconn').hide();
+			$('#noconn2').hide();
+			
 			checkPos();
 			$(".spinner").hide();
-			buildprodotto(localStorage.getItem("Categoria"),localStorage.getItem("Provincia"));
+			buildprodotto(localStorage.getItem("Categoria"),localStorage.getItem("Provincia"),1);
 		}
 		else{
 			$('#noconn').show();
+			$('#noconn2').show();
 			
-			var tabella = '<table align="center" border="0" width="310px" height="60px" class="conn">';
-			tabella = tabella + '<tr><td align="center" width="50px"><img src="images/wire.png" width="32px"></td><td align="left"><font color="white" size="2">Nessuna connessione attiva</font></td><td><a href="javascript:verificawifi()"><div width="40px" class="home"></div></a></td></tr>';
+			var tabella = '<table align="center" border="0" width="100%" height="60px" class="conn">';
+			tabella = tabella + '<tr><td align="center" width="50px"><img src="img/wire.png" width="32px"></td><td align="left"><font color="white" size="2">Nessuna connessione attiva</font></td><td><a href="javascript:verificawifi()"><div width="40px" class="home"></div></a></td></tr>';
 			tabella = tabella + '</table>';
 			
 			$('#noconn').html(tabella);
+			$('#noconn2').html(tabella);
 			
 			$("#verifica").bind ("click", function (event)
 				{
@@ -195,6 +206,9 @@ var app = {
 	
 };
 
+function verificawifi(){
+	$("#verifica").click();
+}
 
 function alertDismissed() {
 	
@@ -261,16 +275,36 @@ function apri() {
 	//www.pokeranswer.it/live/aams.html
 }
 
+function GoBack() {
+	$(window).scroll(function() {
+					 if($(window).scrollTop() + $(window).height() > $(document).height() - 40) {
+					 buildprodotto(localStorage.getItem("Categoria"),localStorage.getItem("Provincia"),2,1);
+					 }
+					 });
+	  history.go(-1);
+	
+	}
+
 function prodotto(idProdotto) {
+
+//$(window).off("scroll");
 	
 $(document).on('pagebeforeshow', function () {
-		$(this).find('a[data-rel=back]').buttonMarkup({
-	iconpos: 'notext'
+	$(this).find('a[data-rel=back]').buttonMarkup({
+	  iconpos: 'notext'
 	});
+	
+		setTimeout(function() {
+			$(window).scrollTop($(window).scrollTop()+1);
+			//window.scrollTo(0,0);
+        }, 1000);
+			   
 });
 	
 	var landmark2 ="";
 	$(".spinner").show();
+	var Recensione = "";
+	var model = device.model;
 	
 	$.ajax({
 		   type:"GET",
@@ -286,7 +320,20 @@ $(document).on('pagebeforeshow', function () {
 				  
 				  	$("#idheader").html("<table id='idheader' height='50'><tr><td width='30px' align='center'></td><td width='240px' align='center' valign='middle'><font color='#FFFFFF' size='3'>"+ item.Nome +"</font></td><td width='50px' align='center' valign='middle'><img src='Tod10.png' width='22'></td></tr></table>");
 				  
-					$("#prodotto").html("<img src='http://www.mistertod.it/img/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'>"+ item.DescrizioneS +"</font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi();' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
+				  if((item.TitRecensione=="")||(!item.TitRecensione)){
+					var Recensione = "";
+				  }
+				  else{
+					Recensione = "<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>"+ item.TitRecensione +"<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Recensione +"</font></td></tr>";
+				  }
+				  
+					
+				if (model.indexOf('iPad') >= 0) {
+				  $("#prodotto").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='440px' class='arrotondamento'><table width='90%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr>"+ Recensione +"<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",1);' data-transition='slide' class='zocial email'>&nbsp;&nbsp;&nbsp;Regala Coupon&nbsp;&nbsp;&nbsp;</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi("+ idProdotto +");' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
+				  }
+				  else{
+					$("#prodotto").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr>"+ Recensione +"<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",1);' data-transition='slide' class='zocial email'>&nbsp;&nbsp;&nbsp;Regala Coupon&nbsp;&nbsp;&nbsp;</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi("+ idProdotto +");' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
+				  }
 				  
 					$("#clock").countdown("2015/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ item.OraScadenza +":"+ item.MinutiScadenza +":00", function(event) {
 							$(this).html(event.strftime('%D giorni %H:%M:%S'));
@@ -311,11 +358,11 @@ $(document).on('pagebeforeshow', function () {
 		   dataType:"jsonp"});
 
 	
-	$("#idfooter").html("<table id='idfooter' border='1'><tr><td width='200px' align='center'><span id='clock'></span></td><td width='120px' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +");' data-transition='slide' class='ui-btn ui-shadow ui-corner-all'>Acquista!</a></td></tr></table>");
+	$("#idfooter").html("<table id='idfooter' border='1'><tr><td width='200px' align='center'><span id='clock'></span></td><td width='120px' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",0);' data-transition='slide' class='ui-btn ui-shadow ui-corner-all'>Acquista!</a></td></tr></table>");
 	
 }
 
-function riepilogo(idProdotto) {
+function riepilogo(idProdotto,regalo) {
 	
 	
 	$(document).on('pagebeforeshow', function () {
@@ -324,10 +371,12 @@ function riepilogo(idProdotto) {
 		});
 	});
 	
+	var model = device.model;
+	
 	
 	$("#idheader3").html("<table id='idheader' height='50'><tr><td width='30px' align='center'></td><td width='240px' align='center' valign='middle'><font color='#FFFFFF' size='3'>CONFERMA</font></td><td width='50px' align='center' valign='middle'><img src='Tod10.png' width='22'></td></tr></table>");
 	
-	//$(".spinner").show();
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Riepilogo.asp",
@@ -341,9 +390,26 @@ function riepilogo(idProdotto) {
 		   $.each(result, function(i,item){
 				  if (item.ID != 0){
 				  
-				  $("#riepilogo1").html("<font color='#454545' size='3'>"+ item.DescrizioneS +"</font>");
+				  $("#riepilogo1").html("<font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font>");
 				  
-				  $("#riepilogo").html("<img src='http://www.mistertod.it/img/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td align='left' colspan='2' width='220px'><font color='#454545' size='3'>Prezzo Totale: </font></td><td align='right' width='100px'><b>"+ item.Deal +"&euro;</b> </font></td><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compracc("+ idProdotto +");' class='zocial cart'>Carte</a><img src='http://www.mistertod.it/img/Visa.png' width='40'></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'></font></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compra("+ idProdotto +");' class='zocial paypal'>Paga con Paypal</a><br></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><font size='1'>Accetto i nuovi termini di vendita</font></td></tr><tr><td colspan='3' align='center'><font size='1'>Informativa sulla Privacy</font></td></tr></table>");
+				if (model.indexOf('iPad') >= 0) {
+				  if(regalo==0){
+					$("#riepilogo").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table width='90%' border='0' id='' align='center'><tr><td align='left' colspan='2' width='70%'><font color='#454545' size='3'>Prezzo Totale: </font></td><td align='right' width='30%'><b>"+ item.Deal +"&euro;</b> </font></td><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compracc("+ idProdotto +");' class='zocial cart'></a><img src='img/CC_Visa.jpg' width='40'> <img src='img/CC_Mastercard.jpg' width='40'> <img src='img/CC_PostePay.jpg' width='40'></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'></font></td></tr><tr><td colspan='3'><hr class='style-six'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compra("+ idProdotto +");' class='zocial paypal'>Paga con Paypal</a><br></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><font size='1'>Accetto i nuovi termini di vendita</font></td></tr><tr><td colspan='3' align='center'><font size='1'>Informativa sulla Privacy <input type='hidden' data-theme='b' name='NomeRegalo' id='NomeRegalo' value='0' placeholder='Email'><input type='hidden' data-theme='b' name='TuoRegalo' id='TuoRegalo' value='0' placeholder='Email'><input type='hidden' data-theme='b' name='EmailRegalo' id='EmailRegalo' value='0' placeholder='Email'> <input type='hidden' data-theme='b' name='Messaggio' id='Messaggio' value='0' placeholder='Email'></font></td></tr></table>");
+				   }
+				  else{
+				  $("#riepilogo").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table width='90%' border='0' id='' align='center'><tr><td align='left' colspan='2' width='70%'><font color='#454545' size='3'>Prezzo Totale: </font></td><td align='right' width='30%'><b>"+ item.Deal +"&euro;</b> </font></td><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='NomeRegalo' id='NomeRegalo' value='' placeholder='Nome Destinatario'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='TuoRegalo' id='TuoRegalo' value='' placeholder='Tuo Nome'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='EmailRegalo' id='EmailRegalo' value='' placeholder='Email Destinatario'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='Messaggio' id='Messaggio' value='Un Regalo per te' placeholder='Messaggio'></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compracc("+ idProdotto +");' class='zocial cart'></a><img src='img/CC_Visa.jpg' width='40'> <img src='img/CC_Mastercard.jpg' width='40'> <img src='img/CC_PostePay.jpg' width='40'></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'></font></td></tr><tr><td colspan='3'><hr class='style-six'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compra("+ idProdotto +");' class='zocial paypal'>Paga con Paypal</a><br></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><font size='1'>Accetto i nuovi termini di vendita</font></td></tr><tr><td colspan='3' align='center'><font size='1'>Informativa sulla Privacy</font></td></tr></table>");
+				  }
+				}
+				else{
+				  if(regalo==0){
+				  $("#riepilogo").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td align='left' colspan='2' width='220px'><font color='#454545' size='3'>Prezzo Totale: </font></td><td align='right' width='100px'><b>"+ item.Deal +"&euro;</b> </font></td><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compracc("+ idProdotto +");' class='zocial cart'></a><img src='img/CC_Visa.jpg' width='40'> <img src='img/CC_Mastercard.jpg' width='40'> <img src='img/CC_PostePay.jpg' width='40'></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'></font></td></tr><tr><td colspan='3'><hr class='style-six'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compra("+ idProdotto +");' class='zocial paypal'>Paga con Paypal</a><br></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><font size='1'>Accetto i nuovi termini di vendita</font></td></tr><tr><td colspan='3' align='center'><font size='1'>Informativa sulla Privacy <input type='hidden' data-theme='b' name='NomeRegalo' id='NomeRegalo' value='0' placeholder='Email'><input type='hidden' data-theme='b' name='TuoRegalo' id='TuoRegalo' value='0' placeholder='Email'><input type='hidden' data-theme='b' name='EmailRegalo' id='EmailRegalo' value='0' placeholder='Email'> <input type='hidden' data-theme='b' name='Messaggio' id='Messaggio' value='0' placeholder='Email'></font></td></tr></table>");
+				  }
+				  else{
+				  $("#riepilogo").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td align='left' colspan='2' width='220px'><font color='#454545' size='3'>Prezzo Totale: </font></td><td align='right' width='100px'><b>"+ item.Deal +"&euro;</b> </font></td><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='NomeRegalo' id='NomeRegalo' value='' placeholder='Nome Destinatario'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='TuoRegalo' id='TuoRegalo' value='' placeholder='Tuo Nome'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='EmailRegalo' id='EmailRegalo' value='' placeholder='Email Destinatario'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='Messaggio' id='Messaggio' value='Un Regalo per te' placeholder='Messaggio'></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compracc("+ idProdotto +");' class='zocial cart'></a><img src='img/CC_Visa.jpg' width='40'> <img src='img/CC_Mastercard.jpg' width='40'> <img src='img/CC_PostePay.jpg' width='40'></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'></font></td></tr><tr><td colspan='3'><hr class='style-six'></td></tr><tr><td colspan='3'><a href='#page' onclick='javascript:compra("+ idProdotto +");' class='zocial paypal'>Paga con Paypal</a><br></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><font size='1'>Accetto i nuovi termini di vendita</font></td></tr><tr><td colspan='3' align='center'><font size='1'>Informativa sulla Privacy</font></td></tr></table>");
+				  }
+
+				}
+				  
 				  
 					$("#idfooter3").html("<table id='idfooter' align='center'><tr><td width='100%' align='center' valign='bottom'><font color='#FFFFFF' size='1'>La transazione avviene con connessione sicura</font></td></tr></table>");
 				  
@@ -390,6 +456,61 @@ function compra(idProdotto) {
 	var email = localStorage.getItem("email");
 	var EmailEsercente = "";
 	
+	var NomeRegalo = self.document.formia9.NomeRegalo.value;
+	var TuoRegalo = self.document.formia9.TuoRegalo.value;
+	var EmailRegalo = self.document.formia9.EmailRegalo.value;
+	var Messaggio = self.document.formia9.Messaggio.value;
+	
+	if ((email == "")||(!email)) {
+		navigator.notification.alert(
+									 'Devi prima effettuare il Login',  // message
+									 alertDismissed,         // callback
+									 'Login',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	if (NomeRegalo == "") {
+		navigator.notification.alert(
+									 'inserire Nome Destinario',  // message
+									 alertDismissed,         // callback
+									 'Nome Destinatario',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	if (TuoRegalo == "") {
+		navigator.notification.alert(
+									 'inserire il tuo nome',  // message
+									 alertDismissed,         // callback
+									 'Tuo Nome',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	if (EmailRegalo == "") {
+		navigator.notification.alert(
+									 'inserire un email valida',  // message
+									 alertDismissed,         // callback
+									 'Email Destinatario',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	if (Messaggio == "") {
+		navigator.notification.alert(
+									 'inserire un messaggio valido',  // message
+									 alertDismissed,         // callback
+									 'Messaggio',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Prodotto.asp",
@@ -405,7 +526,7 @@ function compra(idProdotto) {
 				  nome = item.Nome;
 				  EmailEsercente = item.EmailEsercente;
 				  
-				  vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente);
+				  vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio);
 			});
 		   
 		   $(".spinner").hide();
@@ -426,12 +547,12 @@ function compra(idProdotto) {
 
 }
 
-function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente){
+function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio){
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Transaction.asp",
 		   contentType: "application/json",
-		   data: {email:email,id_prodotto:idProdotto,qta:1,tot:amount.replace(".",","),trans:transazioneprodotto,NomeProdotto:nome,EmailEsercente:EmailEsercente},
+		   data: {email:email,id_prodotto:idProdotto,qta:1,tot:amount.replace(".",","),trans:transazioneprodotto,NomeProdotto:nome,EmailEsercente:EmailEsercente,NomeRegalo:NomeRegalo,TuoRegalo:TuoRegalo,EmailRegalo:EmailRegalo,Messaggio:Messaggio},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -442,7 +563,12 @@ function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,emai
 				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=no');
 				  }
 				  else{
-				  alert(item.Token);
+				  navigator.notification.alert(
+											   'Possibile errore di rete, riprova tra qualche minuto',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Done'                  // buttonName
+											   );
 				  }
 				  
 				  });
@@ -481,6 +607,61 @@ function compracc(idProdotto) {
 	var email = localStorage.getItem("email");
 	var EmailEsercente = "";
 	
+	var NomeRegalo = self.document.formia9.NomeRegalo.value;
+	var TuoRegalo = self.document.formia9.TuoRegalo.value;
+	var EmailRegalo = self.document.formia9.EmailRegalo.value;
+	var Messaggio = self.document.formia9.Messaggio.value;
+	
+	if ((email == "")||(!email)) {
+		navigator.notification.alert(
+									 'Devi prima effettuare il Login',  // message
+									 alertDismissed,         // callback
+									 'Login',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	if (NomeRegalo == "") {
+		navigator.notification.alert(
+									 'inserire Nome Destinario',  // message
+									 alertDismissed,         // callback
+									 'Nome Destinatario',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	if (TuoRegalo == "") {
+		navigator.notification.alert(
+									 'inserire il tuo nome',  // message
+									 alertDismissed,         // callback
+									 'Tuo Nome',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	if (EmailRegalo == "") {
+		navigator.notification.alert(
+									 'inserire un email valida',  // message
+									 alertDismissed,         // callback
+									 'Email Destinatario',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	if (Messaggio == "") {
+		navigator.notification.alert(
+									 'inserire un messaggio valido',  // message
+									 alertDismissed,         // callback
+									 'Messaggio',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Prodotto.asp",
@@ -496,7 +677,7 @@ function compracc(idProdotto) {
 				  nome = item.Nome;
 				  EmailEsercente = item.EmailEsercente;
 				  
-				  vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente);
+				  vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio);
 				  });
 		   
 		   $(".spinner").hide();
@@ -518,12 +699,12 @@ function compracc(idProdotto) {
 	
 }
 
-function vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente){
+function vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio){
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Transaction.asp",
 		   contentType: "application/json",
-		   data: {email:email,id_prodotto:idProdotto,qta:1,tot:amount.replace(".",","),trans:transazioneprodotto,NomeProdotto:nome,EmailEsercente:EmailEsercente},
+		   data: {email:email,id_prodotto:idProdotto,qta:1,tot:amount.replace(".",","),trans:transazioneprodotto,NomeProdotto:nome,EmailEsercente:EmailEsercente,NomeRegalo:NomeRegalo,TuoRegalo:TuoRegalo,EmailRegalo:EmailRegalo,Messaggio:Messaggio},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -534,7 +715,12 @@ function vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,Em
 				   var ref = window.open('http://www.mistertod.it/wbssella.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 				  }
 				  else{
-				  alert(item.Token);
+				  navigator.notification.alert(
+											   'Possibile errore di rete, riprova tra qualche minuto',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Done'                  // buttonName
+											   );
 				  }
 				  
 				  });
@@ -563,6 +749,11 @@ function checklogin() {
 		$(this).find('a[data-rel=back]').buttonMarkup({
 		iconpos: 'notext'
 	});
+				   
+	setTimeout(function() {
+		$(window).scrollTop($(window).scrollTop()+1);
+		//window.scrollTo(0,0);
+	}, 1000);
 });
 	
 	$("#idheader4").html("<table id='idheader' height='50'><tr><td width='320px' align='center' valign='middle'><font class='fontsforweb_fontid_2802' color='#FFFFFF' size='5.5'>Mister Tod</font></span></td></tr></table>");
@@ -644,10 +835,11 @@ function LoginVera(email,pin){
 					localStorage.setItem("loginvera", "SI")
 					$("#datilogin").html("Ciao "+item.Nome)
 				  
-				   $("#Nome").html(item.Nome);
+				   $("#Nome").html("Ciao " + item.Nome);
 				   localStorage.setItem("nome", item.Nome);
 				   $("#EmailCliente").html(email);
 				  localStorage.setItem("email", email);
+				  document.getElementById("userPic").src = 'http://www.mistertod.it/Tod10.png';
 				  
 					$("#btnprofilo").attr("href", "#mypanel");
 					$("#btnprofilo").attr("onclick", "#");
@@ -685,18 +877,25 @@ function LoginVera(email,pin){
 		   dataType:"jsonp"});
 }
 
-function buildprodotto(Categoria,Provincia) {
-	//alert(Categoria + " " + Provincia);
+function NextPage(Pagina) {
+	buildprodotto(localStorage.getItem("Categoria"),localStorage.getItem("Provincia"),Pagina);
+}
+
+function buildprodotto(Categoria,Provincia,Pagina) {
+	
+	localStorage.setItem("Categoria", Categoria);
+	localStorage.setItem("Provincia", Provincia);
 	
 	var idProdotto = 1;
-	var landmark2 ="";
+	var landmark2="";
 	$(".spinner").show();
+	var model = device.model;
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.mistertod.it/www/Check_Home2.asp",
+		   url:"http://www.mistertod.it/www/Check_Home4.asp",
 		   contentType: "application/json",
-		   data: {Categoria:Categoria,Provincia:Provincia,Pagina:1},
+		   data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -704,11 +903,25 @@ function buildprodotto(Categoria,Provincia) {
 		   
 		   $.each(result, function(i,item){
 				if (item.ID != 0){
-				  distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),41.874764,12.477965).toFixed(1);
+				  distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),item.Lat,item.Long).toFixed(1);
 				  
 				  //landmark2 = landmark2 + item.Cod_Prodotto + item.IMG + item.Descrizione + item.Provincia + item.Valore + distanza + item.Deal;
 				  
-				  landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:prodotto("+ item.Cod_Prodotto +");' data-transition='slide'><img src='http://www.mistertod.it/img/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>Valore: <strike>"+ item.Valore +"&euro;</strike></font></font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#FF8000'>"+ item.Deal +" &euro;</font></td></tr></table></a><br><hr class='div3'>";
+				  if (model.indexOf('iPad') >= 0) {
+					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:prodotto("+ item.Cod_Prodotto +");' data-transition='slide'><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>Valore: <strike>"+ item.Valore +"&euro;</strike></font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#FF8000'>"+ item.Deal +" &euro;</font></td></tr></table></a><br><hr class='div3'>";
+				  }
+				  else{
+					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:prodotto("+ item.Cod_Prodotto +");' data-transition='slide'><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>Valore: <strike>"+ item.Valore +"&euro;</strike></font></font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#FF8000'>"+ item.Deal +" &euro;</font></td></tr></table></a><br><hr class='div3'>";
+				  }
+				  
+				  if(item.Conteggio>18){
+					$("#NextPagina2").show();
+				  }
+				  else{
+					$("#NextPagina2").hide();
+				  }
+
+				  
 				}
 				else{
 				  landmark2 ="Nessun risultato trovato";
@@ -717,7 +930,16 @@ function buildprodotto(Categoria,Provincia) {
 			});
 		   
 		   $(".spinner").hide();
-		   $("#classifica").html(landmark2)
+		   $("#classifica").html(landmark2);
+		   
+		   if(Pagina==1){
+			$("#NextPagina").attr("href", "javascript:NextPage(2)");
+		   }
+		   else{
+		   $("#NextPagina").attr("href", "javascript:NextPage(1)");
+		   }
+		   
+		   //window.scrollTo(0, 0);
 		   
 		   },
 		   error: function(){
@@ -735,8 +957,45 @@ function buildprodotto(Categoria,Provincia) {
 
 }
 
-function condividi() {
-	alert('condiviso');
+function condividi(idProdotto) {
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://www.mistertod.it/www/Check_Riepilogo.asp",
+		   contentType: "application/json",
+		   data: {ID:idProdotto},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  if (item.ID != 0){
+				  
+				  	window.plugins.socialsharing.shareViaFacebook(''+ item.DescrizioneS +'', 'http://www.mistertod.it/plugin/up/'+ item.IMG +'.png', 'http://www.mistertod.it', function() {}, function(errormsg){notifiche('Nessuna Condivisione')});
+				  
+				  }
+				  
+				  });
+		   
+		   $(".spinner").hide();
+		   
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										alertDismissed,         // callback
+										'Attenzione',            // title
+										'Done'                  // buttonName@
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+	
 }
 
 function chie() {
@@ -792,6 +1051,7 @@ function getInfo() {
 			localStorage.setItem("nome", data.name)
 			$("#EmailCliente").html(data.email)
 			localStorage.setItem("email", data.email)
+			localStorage.setItem("step2", "GO");
 			   
 			$("#btnprofilo").attr("href", "#mypanel");
 			$("#btnprofilo").attr("onclick", "#");
@@ -824,6 +1084,108 @@ function compraFB() {
 	
 }
 
+function compraEmail() {
+	window.plugin.email.open({
+		to:      ['info@mistertod.it'],
+		subject: 'Contatti',
+		body:    '',
+		isHtml:  true
+	});
+}
+
+function EmailDimenticata() {
+	navigator.notification.prompt(
+								  'Inserisci il tuo indirizzo email',  // message
+								  onPrompt,                  // callback to invoke
+								  'Recupera la Password',            // title
+								  ['Invia','Annulla'],             // buttonLabels
+								  'Email'                 // defaultText
+								  );
+}
+
+function onPrompt(results) {
+	if(results.buttonIndex==1){
+		if (results.input1 == "") {
+			navigator.notification.alert(
+										 'inserire indirizzo email',  // message
+										 alertDismissed,         // callback
+										 'Email',            // title
+										 'OK'                  // buttonName
+										 );
+			return;
+		}
+		
+		EmailAddr = results.input1;
+		Filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
+		if (Filtro.test(EmailAddr)) {
+			
+		}
+		else {
+			navigator.notification.alert(
+										 'Caratteri email non consentiti',  // message
+										 alertDismissed,         // callback
+										 'Email',            // title
+										 'OK'                  // buttonName
+										 );
+			return;
+		}
+
+		//Recupera la Password
+		//alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+		
+		$.ajax({
+			   type:"GET",
+			   url:"http://www.mistertod.it/www/Check_RecPassword.asp",
+			   contentType: "application/json",
+			   data: {email:results.input1},
+			   timeout: 7000,
+			   jsonp: 'callback',
+			   crossDomain: true,
+			   success:function(result){
+			   
+			   $.each(result, function(i,item){
+					if(item.Token==1024){
+					  navigator.notification.alert(
+												   'Invio eseguito correttamente',  // message
+												   alertDismissed,         // callback
+												   'Recupero Password',            // title
+												   'OK'                  // buttonName
+												   );
+					}
+					else{
+						navigator.notification.alert(
+												   'Recupero fallito, riprova in seguito',  // message
+												   alertDismissed,         // callback
+												   'Errore Recupero',            // title
+												   'OK'                  // buttonName
+												   );
+					}
+
+			   
+					  
+				});
+			   
+			   $(".spinner").hide();
+			   
+			   },
+			   error: function(){
+			   $(".spinner").hide();
+			   
+			   navigator.notification.alert(
+											'Possibile errore di rete, riprova tra qualche minuto',  // message
+											alertDismissed,         // callback
+											'Attenzione',            // title
+											'Done'                  // buttonName@
+											);
+			   
+			   },
+		dataType:"jsonp"});
+
+		
+	}
+		
+}
+
 function errorHandler(error) {
 	navigator.notification.alert(
 								 'Possibile errore di rete, riprova tra qualche minuto',  // message
@@ -850,7 +1212,6 @@ function getKey(key){
 }
 
 function iscriviti(){
-	$('#spinner').show();
 	
 	var emailreg = self.document.formia.emailreg.value;
 	var pinreg = self.document.formia.Password.value;
@@ -902,54 +1263,12 @@ function iscriviti(){
 		return;
 	}
 	
-	$(".spinner").show();
-	$.ajax({
-		   type:"GET",
-		   url:"http://www.mistertod.it/www/Check_Reg.asp",
-		   contentType: "application/json",
-		   data: {email:emailreg,nome:nomereg,pin:pinreg},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				if (item.Token == '1024'){
-
-				  navigator.notification.alert(
-				  'Ti verra mandata un email di attivazione',  // message
-				  alertDismissed,         // callback
-				  'registrazione Eseguita',            // title
-				  'Done'                  // buttonName
-				  );
-				  
-				  window.location.href = "#page";
-				}
-				else{
-				  navigator.notification.alert(
-					'Cliente gia registrato',  // message
-					alertDismissed,         // callback
-					'Attenzione',            // title
-					'Done'                  // buttonName
-					 );
-				}
-			});
-		   
-		   $(".spinner").hide();
-		   
-		   },
-		   error: function(){
-		   $(".spinner").hide();
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
-										alertDismissed,         // callback
-										'Attenzione',            // title
-										'Done'                  // buttonName
-										);
-		   
-		   },
-		   dataType:"jsonp"});
+	
+	localStorage.setItem("emailreg", emailreg);
+	localStorage.setItem("pinreg", pinreg);
+	localStorage.setItem("nomereg", nomereg);
+	
+	window.location.href = "TerminiTotal.html";
 }
 
 function iscrivitiFB(emailfb,nomefb){
@@ -1067,7 +1386,12 @@ function step2() {
 				$("#spinner8").hide();
 			  },
 		   error: function(){
-		   alert('Al momento non è possibile elaborare la richiesta');
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										alertDismissed,         // callback
+										'Attenzione',            // title
+										'Done'                  // buttonName
+										);
 		   },
 		   dataType:"jsonp"});
 	

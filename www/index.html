@@ -181,6 +181,19 @@ a {text-decoration:none;}
 			border-top: 1px solid rgba(0, 0, 0, 0.1);
 			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 		}
+		
+		.mynav .ui-select, .mynav .ui-btn {
+			margin-top: 0;
+			margin-bottom: 0;
+			margin-left: 2px;
+			margin-right: 2px !important;
+		}
+		.conn {
+			font-size: 9pt;
+			color:#FFF;
+			background-color: #FF8000;
+		}
+
 
 
 		</style>
@@ -196,8 +209,10 @@ a {text-decoration:none;}
 			
 			<div id="noconn" align="center" style="display:none"></div>
 			<div data-role="content" class="div2">
-				<div class="div2" id="selezione"></div>
+				<div class="div2" id="selezione"><select id="Categoria" name="Categoria" data-theme="a"><option value="All" selected>Schegli Tra</option><option value="Ristoranti">Ristoranti</option><option value="Hotel">Hotel e Spa</option><option value="Eventi">Eventi</option><option value="Sport">Sport</option><option value="Salute">Bellezza</option><option value="Corsi">Corsi</option><option value="All">Tutti</option></select></div>
 			</div>
+			<center>
+			<a data-role=button id=verifica data-theme="b" style="display:none">Verifica Connessione</a>
 			
 			<div id="classifica" align="center">
 				<!--<a href="#page2" onclick="javascript:prodotto();" data-transition="slide">
@@ -228,29 +243,31 @@ a {text-decoration:none;}
 				</table></a>-->
 				
 			</div>
-
+			
+			<div id="NextPagina2" align="center" style="display:none">
+				<a href='#' id='NextPagina' data-role='button' data-theme='b' class='custom-btn'>Mostra altri risultati</a>
+			</div>
 			
 			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
-				<table><tr><td width="200px">
+				<table border="0" width="90%"><tr><td width="100%" align="left">
 					<a id="btnprofilo" href="#" onclick="#" data-transition="slide" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user">Profilo</a>
 					</td>
-				<td width="120px" align="center"></td>
 				</tr></table>
 			</div><!-- /footer -->
 			
-			<div data-role="panel" id="mypanel" data-display="overlay" data-theme="b" data-position-fixed="true" width="100%" class="div2">
+			<div data-role="panel" id="mypanel" data-display="overlay" data-theme="a" data-position-fixed="true" width="100%" class="div2">
 				<center>
 					<!--<img src="http://www.pokeranswer.it/IMG/AnswerB.png" width="130px" data-rel="external">-->
 					<img src="Tod10.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Mister Tod</font></center>
 						<br><br>
-						<img class="circolare" id="userPic"/>  Ciao<span id='Nome' align="center"></span>
+						<img src="Tod10.png" class="circolare" id="userPic" data-rel="external"/>  <span id='Nome' align="center"></span>
 						<br>
 						<!--<div id='EmailCliente' align="center"></div>-->
 						<br>
 						<ul data-role="listview" data-inset="true">
 							<li><a href="Miei.html" rel="external">I Miei Acquisti</a></li>
-							<li><a href="javascript:compraFB();" rel="external">Facebook</a></li>
 							<li><a href="#page5" onclick="javascript:chie()" data-transition='slide'>Chi &egrave; MisterTod</a></li>
+							<li><a href="javascript:compraEmail();" rel="external">Contattaci</a></li>
 						</ul>
 						<br>
 						<center>
@@ -289,7 +306,9 @@ a {text-decoration:none;}
 			</div>
 			<div data-role="content"><div id='riepilogo1' align="left"></div></div>
 			
-			<div id='riepilogo' align="center"></div>
+			<form name="formia9" action="entra2.asp" method="post">
+				<div id='riepilogo' align="center"></div>
+			</form>
 			
 			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
 				<table id="idfooter3"><tr><td width="100%">
@@ -331,7 +350,7 @@ a {text-decoration:none;}
 				</tr>
 				<tr>
 					<td width="320px" align="left">
-						<a href="#"><font size="1" color="#FF8000">Password dimenticata</font></a><br>
+						<a href="javascript:EmailDimenticata()"><font size="1" color="#FF8000">Password dimenticata</font></a><br>
 					</td>
 				</tr>
 				
@@ -356,7 +375,7 @@ a {text-decoration:none;}
 			
 			</center>
 			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
-				<table id="idfooter4"><tr><td width="200px">
+				<table id="idfooter4" width="90%"><tr><td width="100%" align="left">
 					<a href="#page" id="btnprofilo4" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
 				</td>
 				<td width="120px" align="center"></td>
@@ -372,19 +391,19 @@ a {text-decoration:none;}
 			<div data-role="content"></div>
 			<center>
 				<ul data-role="listview" data-inset="true" data-theme="b">
-					<li><a href="Voucher.html" rel="external">Chi siamo</a></li>
+					<li><a href="chi.html" rel="external">Chi siamo</a></li>
 				</ul><br>
 				<img src="Tod10.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Mister Tod</font>
 				<br><br>
 				<ul data-role="listview" data-inset="true" data-theme="a">
-					<li><a href="TerminiTotal.html" rel="external">Termini e condizioni di vendita</a></li>
-					<li><a href="Privacy.html" rel="external">Termini e condizioni d'uso</a></li>
+					<li><a href="TerminiVendita.html" rel="external">Termini e condizioni di vendita</a></li>
+					<li><a href="TerminiCondizioni.html" rel="external">Termini e condizioni d'uso</a></li>
 					<li><a href="Privacy.html" rel="external">Informativa sulla Privacy</a></li>
-					<li><a href="Privacy.html" rel="external">Politica sui Cookies</a></li>
+					<li><a href="Cookie.html" rel="external">Politica sui Cookies</a></li>
 				</ul>
 			</center>
 			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
-				<table id="idfooter5"><tr><td width="200px">
+				<table id="idfooter5" width="90%"><tr><td width="100%" align="left">
 					<a href="#page" id="btnprofilo4" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
 				</td>
 				<td width="120px" align="center"></td>
@@ -435,7 +454,7 @@ a {text-decoration:none;}
 </tr>
 </table>
 			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
-				<table id="idfooter6"><tr><td width="200px">
+				<table id="idfooter6" width="90%"><tr><td width="100%" align="left">
 					<a href="#page" onclick="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user">Home</a>
 				</td>
 				<td width="120px" align="center"></td>
@@ -445,9 +464,11 @@ a {text-decoration:none;}
 		
 		<div id="page7" data-role="page" class="div2" >
 
+			<div id="noconn2" align="center" style="display:none"></div>
 			<div data-role="content"><center><img src="Tod10.png" height="130px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="6">Mister Tod</font></center></div>
 			
-			<center><br>
+			<center>
+				<a data-role=button id=verifica data-theme="b" style="display:none">Verifica Connessione</a><br>
 				
 				<table id="formreg" align="center" width="320px">
 					<tr>
@@ -519,7 +540,6 @@ a {text-decoration:none;}
 								<option value="Modena">Modena</option>
 								<option value="Monza">Monza e della Brianza</option>
 								<option value="Napoli">Napoli</option>
-								<option value="Napoli">c</option>
 								<option value="Nuoro">Nuoro</option>
 								<option value="Ogliastra">Ogliastra</option>
 								<option value="Olbia">Olbia-Tempio</option>
@@ -561,7 +581,7 @@ a {text-decoration:none;}
 								<option value="Trieste">Trieste</option>
 								<option value="Udine">Udine</option>
 								<option value="Varese">Varese</option>
-								<option value="v">Venezia</option>
+								<option value="Venezia">Venezia</option>
 								<option value="Verbano">Verbano-Cusio-Ossola</option>
 								<option value="Vercelli">Vercelli</option>
 								<option value="Verona">Verona</option>
