@@ -819,7 +819,6 @@ function login() {
 }
 
 function LoginVera(email,pin){
-	$('#spinner').show();
 	//alert("Login");
 	
 	$(".spinner").show();
@@ -861,6 +860,12 @@ function LoginVera(email,pin){
 				  }
 				}
 				else{
+					navigator.notification.alert(
+											   'Credenziali non corrette',  // message
+											    alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Done'                  // buttonName@
+											   );
 				}
 			});
 
@@ -1210,7 +1215,8 @@ function getKey(key){
 	
 	if (keycode ==13){
 		
-		login();
+		document.activeElement.blur();
+		$("input").blur()
 		return false;
 	}
 	
