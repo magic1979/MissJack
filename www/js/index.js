@@ -306,6 +306,7 @@ $(document).on('pagebeforeshow', function () {
 	var Recensione = "";
 	var model = device.model;
 	
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Prodotto.asp",
@@ -510,7 +511,7 @@ function compra(idProdotto) {
 		return;
 	}
 	
-	
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Prodotto.asp",
@@ -548,6 +549,7 @@ function compra(idProdotto) {
 }
 
 function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio){
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Transaction.asp",
@@ -661,7 +663,7 @@ function compracc(idProdotto) {
 		return;
 	}
 
-	
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Prodotto.asp",
@@ -700,6 +702,7 @@ function compracc(idProdotto) {
 }
 
 function vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio){
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Transaction.asp",
@@ -819,6 +822,7 @@ function LoginVera(email,pin){
 	$('#spinner').show();
 	//alert("Login");
 	
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Login.asp",
@@ -891,6 +895,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	$(".spinner").show();
 	var model = device.model;
 	
+	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://www.mistertod.it/www/Check_Home4.asp",
