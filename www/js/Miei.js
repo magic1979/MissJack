@@ -205,7 +205,7 @@ function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,emai
 		   
 		   $.each(result, function(i,item){
 				  if (item.Token == "1024"){
-				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=no');
+				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=yes');
 				  }
 				  else{
 				  navigator.notification.alert(
@@ -296,7 +296,7 @@ function vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,Em
 		   
 		   $.each(result, function(i,item){
 				  if (item.Token == "1024"){
-				  var ref = window.open('http://www.mistertod.it/wbssella.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+				  var ref = window.open('http://www.mistertod.it/wbssella.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=yes');
 				  }
 				  else{
 				  navigator.notification.alert(
