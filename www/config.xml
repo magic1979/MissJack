@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.mistertod.tod"
+		id        = "it.dputignano.iba"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>MisterTod</name>
+		<name>D.Putignano</name>
 		<description>MisterTod, e sei un cliente di serie A</description>
 		<author href="http://www.mistertod.it" email="info@mistertod.it">
 PokerParade sas
