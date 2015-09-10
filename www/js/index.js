@@ -82,7 +82,15 @@ var app = {
 			setTimeout (function(){
 						
 						PushbotsPlugin.getToken(function(token){
-							regToken(token)
+							
+									   										navigator.notification.alert(
+																			 token,  // message
+																			 alertDismissed,         // callback
+																			 'Attenzione',            // title
+																			 'Done'                  // buttonName
+																			 );
+							
+							regToken(token);
 						});
 						
 						
@@ -241,6 +249,13 @@ function regToken(token) {
 	var ciccio;
 	var conta = 1;
 	
+										   										navigator.notification.alert(
+																			 token,  // message
+																			 alertDismissed,         // callback
+																			 'Attenzione',            // title
+																			 'Done'                  // buttonName
+																			 );
+	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
@@ -253,12 +268,7 @@ function regToken(token) {
 		   timeout: 7000,
 		   crossDomain: true,
 		   success:function(result){
-		   														navigator.notification.alert(
-																			 token,  // message
-																			 alertDismissed,         // callback
-																			 'Attenzione',            // title
-																			 'Done'                  // buttonName
-																			 );
+
 
 		   
 		   },
