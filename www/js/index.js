@@ -24,16 +24,13 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 		
-		/*if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("55e8c26e1779593a278b4567");
+		if(PushbotsPlugin.isiOS()){
+			PushbotsPlugin.initializeiOS("55eef2521779597d478b456a");
 		}
 		if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("55e8c26e1779593a278b4567", "37050399675");
-		}*/
+			PushbotsPlugin.initializeAndroid("55eef2521779597d478b456a", "1068247241830");
+		}
 		
-		//PushbotsPlugin.debug(true);
-		
-		//PushbotsPlugin.setBadge(1);
 		
 		var ciccio;
 		
@@ -79,9 +76,19 @@ var app = {
 			$(".spinner").hide();
 			
 			//provino()
-
 			
 			$("#footer").show();
+			
+			setTimeout (function(){
+						
+						PushbotsPlugin.getToken(function(token){
+							regToken(token)
+						});
+						
+						
+			}, 2000);
+			
+			
 			
 		}
 		else{
@@ -230,6 +237,46 @@ function provino() {
 }
 
 
+function regToken(token) {
+	var ciccio;
+	var conta = 1;
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/nD44CFruHMUPGbj213sd1kMiHygU41biNIThN36jWE2JPN8RZF/"+ token +"",
+		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
+		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
+		   //data: {token:localStorage.getItem("Token")},
+		   contentType: "application/json; charset=utf-8",
+		   json: 'callback',
+		   timeout: 7000,
+		   crossDomain: true,
+		   success:function(result){
+		   														navigator.notification.alert(
+																			 token,  // message
+																			 alertDismissed,         // callback
+																			 'Attenzione',            // title
+																			 'Done'                  // buttonName
+																			 );
+
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										'possible network error',  // message
+										alertDismissed,         // callback
+										'Error',            // title
+										'OK'                  // buttonName
+										);
+		   
+		   window.location.href = "#article4";
+		   
+		   },
+		   dataType:"json"});
+}
 
 
 
