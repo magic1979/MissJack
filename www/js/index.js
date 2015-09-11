@@ -77,9 +77,8 @@ var app = {
 			
 			//provino()
 			
-			$("#footer").show();
+			alert("Work");
 			
-						
 				PushbotsPlugin.getToken(function(token){
 						
 						alert(token);
