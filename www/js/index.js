@@ -79,24 +79,13 @@ var app = {
 			
 			$("#footer").show();
 			
-			setTimeout (function(){
 						
-						PushbotsPlugin.getToken(function(token){
-							
-									   										navigator.notification.alert(
-																			 token,  // message
-																			 alertDismissed,         // callback
-																			 'Attenzione',            // title
-																			 'Done'                  // buttonName
-																			 );
-							
-							regToken(token);
-						});
+				PushbotsPlugin.getToken(function(token){
 						
+						alert(token);
 						
-			}, 2000);
-			
-			
+						regToken(token);
+				});
 			
 		}
 		else{
@@ -249,12 +238,7 @@ function regToken(token) {
 	var ciccio;
 	var conta = 1;
 	
-										   										navigator.notification.alert(
-																			 token,  // message
-																			 alertDismissed,         // callback
-																			 'Attenzione',            // title
-																			 'Done'                  // buttonName
-																			 );
+	alert(token);
 	
 	$(".spinner").show();
 	$.ajax({
