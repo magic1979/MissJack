@@ -34,94 +34,8 @@ var app = {
 		
 		PushbotsPlugin.resetBadge();*/
 		
-		last_click_time = new Date().getTime();
-		
-		document.addEventListener('click', function (e) {
-								  
-								  click_time = e['timeStamp'];
-								  
-								  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-								  
-								  e.preventDefault();
-								  
-								  return false;
-								  
-								  }
-								  
-								  last_click_time = click_time;
-								  
-								  }, true);
-		
-		
+	
 		var ciccio;
-		
-		$(document).on("touchend", "#primo", function(e){
-			$.mobile.changePage( "#page2", { transition: "slide", changeHash: false });
-			carica()
-		});
-		
-		$(document).on("touchend", "#secondo", function(e){
-			$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
-			carica2()
-		});
-		
-		$(document).on("touchend", "#terzo", function(e){
-			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false });
-			carica3()
-		});
-		
-		$(document).on("touchend", "#quarto", function(e){
-			$.mobile.changePage( "#page6", { transition: "slide", changeHash: false });
-			carica4()
-		});
-		
-		$(document).on("touchend", "#primos", function(e){
-			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
-		});
-		
-		$(document).on("touchend", "#secondos", function(e){
-			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
-		});
-		
-		$(document).on("touchend", "#terzos", function(e){
-			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
-		});
-		
-		$(document).on("touchend", "#quartos", function(e){
-			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
-			carica3()
-		});
-		
-		$(document).on("touchend", "#quintos", function(e){
-			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
-		});
-		
-		$(document).on("touchend", "#pulsms", function(e){
-			aprisms()
-		});
-		
-		$(document).on("touchend", "#pulrefresh", function(e){
-			carica3()
-		});
-		
-		/*last_click_time = new Date().getTime();
-		
-		document.addEventListener('click', function (e) {
-								  
-								  click_time = e['timeStamp'];
-								  
-								  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-								  
-								  e.preventDefault();
-								  
-								  return false;
-								  
-								  }
-								  
-								  last_click_time = click_time;
-								  
-								  }, true);*/
-
 	
 	
 		var connectionStatus = false;
@@ -226,7 +140,7 @@ function carica() {
 		myScroll2 = new iScroll('wrapper2', { click: true, zoom:true });
 		setTimeout (function(){
 			myScroll2.refresh();
-		}, 1000);
+		}, 500);
 
 	
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
@@ -241,7 +155,7 @@ function carica2() {
 	myScroll3 = new iScroll('wrapper3', { click: true });
 	setTimeout (function(){
 		myScroll3.refresh();
-	}, 1000);
+	}, 500);
 	
 	
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
