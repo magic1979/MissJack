@@ -94,6 +94,7 @@ PokerParade sas
 		<gap:splash src="splash.png" />
 		<access origin="*" />
 		<access origin="*.pushbots.com" />
+		<access origin="*.interactivebusinessapp.it" />
 		<access origin="http://google.com" subdomains="true"  />
 		<access origin="http://google.com" subdomains="true"  />
 		<access origin="https://googleapis.com" subdomains="true"  />

@@ -133,7 +133,7 @@ var app = {
 			$(".spinner").hide();
 			
 			//provino()
-			checkpush() 
+			//checkpush() 
 			
 			/*setTimeout (function(){
 						
@@ -226,7 +226,7 @@ function carica() {
 		myScroll2 = new iScroll('wrapper2', { click: true, zoom:true });
 		setTimeout (function(){
 			myScroll2.refresh();
-		}, 500);
+		}, 1000);
 
 	
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
@@ -241,7 +241,7 @@ function carica2() {
 	myScroll3 = new iScroll('wrapper3', { click: true });
 	setTimeout (function(){
 		myScroll3.refresh();
-	}, 500);
+	}, 1000);
 	
 	
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
