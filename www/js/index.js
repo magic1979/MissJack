@@ -133,7 +133,7 @@ var app = {
 			$(".spinner").hide();
 			
 			//provino()
-			//checkpush() 
+			checkpush() 
 			
 			/*setTimeout (function(){
 						
