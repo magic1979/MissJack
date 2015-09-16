@@ -4,7 +4,7 @@
 		id        = "it.dputignano.iba"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>D.Putignano</name>
+		<name>Putignano</name>
 		<description>MisterTod, e sei un cliente di serie A</description>
 		<author href="http://www.mistertod.it" email="info@mistertod.it">
 PokerParade sas
@@ -100,7 +100,6 @@ PokerParade sas
 		<access origin="http://gstatic.com" subdomains="true"  />
 		<access origin="https://gstatic.com" subdomains="true"  />
 		<access origin="http://googleapis.com" subdomains="true"  />
-		<access origin="*.pushwoosh.com" />
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
 		<gap:plugin name="com.pushbots.push" version="1.2.4" source="plugins.cordova.io" />
 		
