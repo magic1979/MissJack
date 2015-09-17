@@ -41,7 +41,7 @@
 						
 							</script>
 						
-						<style type="text/css">
+											<style type="text/css">
 							* {
 								-webkit-box-sizing: border-box;
 								-moz-box-sizing: border-box;
@@ -101,20 +101,108 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #fff;
+							background: #ebe6e0;
 							overflow: hidden;
+							
+							background-image:url('img/Logo.png');
+							background-repeat:no-repeat;
+							background-attachment:fixed;
+							/*background-position:center; */
+							background-position: right bottom; /*Positioning*/
 							
 						}
 						
 						#wrapper2 {
 							position: absolute;
 							z-index: 1;
-							top: 52px;
+							top: 56px;
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #fff;
+							background: #ebe6e0;
+							
+							overflow: scroll;
+							
+							-webkit-overflow-scrolling: touch;
+							
+							transform: translate3d(20px, 20px, 0px);
+							
+							background-image:url('img/Logo.png');
+							background-repeat:no-repeat;
+							background-attachment:fixed;
+							/*background-position:center; */
+							background-position: right bottom; /*Positioning*/
+							
+						}
+						
+						#wrapper3 {
+							position: absolute;
+							z-index: 1;
+							top: 56px;
+							bottom: 0px;
+							left: 0;
+							width: 100%;
+							background: #ebe6e0;
 							overflow: hidden;
+							
+							background-image:url('img/Logo.png');
+							background-repeat:no-repeat;
+							background-attachment:fixed;
+							/*background-position:center; */
+							background-position: right bottom; /*Positioning*/
+							
+						}
+						
+						#wrapper4 {
+							position: absolute;
+							z-index: 1;
+							top: 56px;
+							bottom: 56px;
+							left: 0;
+							width: 100%;
+							background: #ebe6e0;
+							overflow: hidden;
+							
+							background-image:url('img/Logo.png');
+							background-repeat:no-repeat;
+							background-attachment:fixed;
+							/*background-position:center; */
+							background-position: right bottom; /*Positioning*/
+							
+						}
+						#wrapper5 {
+							position: absolute;
+							z-index: 1;
+							top: 56px;
+							bottom: 56px;
+							left: 0;
+							width: 100%;
+							background: #ebe6e0;
+							overflow: hidden;
+							
+							background-image:url('img/Logo.png');
+							background-repeat:no-repeat;
+							background-attachment:fixed;
+							/*background-position:center; */
+							background-position: right bottom; /*Positioning*/
+							
+						}
+						#wrapper6 {
+							position: absolute;
+							z-index: 1;
+							top: 56px;
+							bottom: 56px;
+							left: 0;
+							width: 100%;
+							background: #ebe6e0;
+							overflow: hidden;
+							
+							background-image:url('img/Logo.png');
+							background-repeat:no-repeat;
+							background-attachment:fixed;
+							/*background-position:center; */
+							background-position: right bottom; /*Positioning*/
+							
 						}
 						
 						#scroller {
@@ -200,11 +288,14 @@
 							vertical-align: middle;
 						}
 						.div2 {
-							background-color: #FFFFFF;
+							background-color: #ebe6e0;
+						}
+						.div9 {
+							background-color: #000000;
 						}
 						
 						.div3 {
-							background-color: #000;
+							background-color: #ebe6e0;
 							position: absolute;
 							z-index: 2;
 							top:5px;
@@ -213,6 +304,18 @@
 							height: 52px;
 							padding: 0;
 							color: #000;
+							
+							text-align: center;
+							font-weight: bold;
+							
+						}
+						.div33 {
+
+							position: absolute;
+							top:5px;
+							left:5px;
+
+							padding: 0;
 							
 							text-align: center;
 							font-weight: bold;
@@ -231,24 +334,57 @@
 						.div5 {
 							background-color: #000;
 							position: fixed;
-							z-index: 2;
+							z-index: 19;
 							bottom: 0;
 							left: 0;
 							width: 100%;
-							height: 52px;
+							height: 70px;
 							padding: 0;
 							color: #000;
 							
 							text-align: center;
 							font-weight: bold;
 							
-							opacity: 0.7;
-							filter: alpha(opacity=70);
+							opacity: 0.6;
+							filter: alpha(opacity=60);
 							
 						}
+						
+						.div55 {
+							position: fixed;
+							z-index: 20;
+							bottom: 0;
+							left: 0;
+							width: 100%;
+							height: 70px;
+							padding: 0;
+							color: #000;
+							
+							text-align: center;
+							font-weight: bold;
+							
+						}
+						
 						.div6 {
 							background-color: #000;
 						}
+						
+						.div8 {
+							z-index: 0;
+							top:62px;
+							left:5px;
+							width:98%;
+							height: 100%;
+							padding: 0;
+							color: #000;
+							font-size: 12px;
+							line-height: 1.5;
+							
+							text-align: center;
+							
+							transform: translate3d(20px, 20px, 0px);
+						}
+						
 						.trBorderCell
 						{
 							height: 30px;
@@ -497,8 +633,7 @@
 							border: 1px solid #fff;
 						}
 						.visione {
-							color:#000;
-							font-size: 9pt;
+
 							text-decoration: none;
 							text-shadow:0 0 0;
 						}
@@ -573,6 +708,357 @@
 							color: #777;
 						}
 						
+						#pluto {
+							/* Cosmettics only */
+							position:absolute;
+							background: #000000;
+							width: 100%;
+							height:100%;
+							
+							border: 1px solid black;
+							padding: 20px;
+							text-align: center;
+							/* The real deal */
+							margin: 1px auto;
+							top:0;
+							z-index: 100;
+							
+							
+							opacity: 0.6;
+							filter: alpha(opacity=60);
+						}
+						
+						#pippo {
+							/* Cosmettics only  */
+							
+							background: #000000;
+							border-radius: 10px;
+							
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							margin-top: -150px;
+							margin-left: -150px;
+							width: 300px;
+							height: 260px;
+							
+							z-index: 101;
+							
+						}
+						
+						#pluto5 {
+							/* Cosmettics only */
+							position:absolute;
+							background: #000000;
+							width: 100%;
+							height:100%;
+							
+							border: 1px solid black;
+							padding: 20px;
+							text-align: center;
+							/* The real deal */
+							margin: 1px auto;
+							top:0;
+							z-index: 110;
+							
+							
+							opacity: 0.6;
+							filter: alpha(opacity=60);
+						}
+						
+						#pippo5 {
+							/* Cosmettics only  */
+							
+							background: #000000;
+							border-radius: 10px;
+							
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							margin-top: -150px;
+							margin-left: -150px;
+							width: 300px;
+							height: 260px;
+							
+							z-index: 111;
+							
+						}
+						
+						#pluto1 {
+							background: #000000;
+							
+							opacity: 0.6;
+							filter: alpha(opacity=60);
+						}
+						
+						.pulsante1 {
+							background-image: url(img/button3.png);
+							background-size: 60px 60px;
+							background-repeat: no-repeat;
+							background-position:center;
+							
+							height:60px;
+							width:60px;
+							
+							z-index: 21;
+							border-radius:999em;
+							 -moz-border-radius:999em;
+							 -webkit-border-radius:999em;
+							 -o-border-radius: 999em;
+							 
+							 /*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+						}
+						
+						.pulsante1:active {
+							background-image: url(img/button3a.png);
+							
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+						.pulsante2 {
+							background-image: url(img/video.png);
+							background-size: 60px 60px;
+							background-repeat: no-repeat;
+							background-position:center;
+							
+							height:60px;
+							width:60px;
+							
+							z-index: 21;
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							/*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+						}
+						
+						.pulsante2:active {
+							background-image: url(img/videoa.png);
+							
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+						.pulsante3 {
+							background-image: url(img/button5.png);
+							background-size: 60px 60px;
+							background-repeat: no-repeat;
+							background-position:center;
+							
+							height:60px;
+							width:60px;
+							
+							z-index: 21;
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							/*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+						}
+						
+						.pulsante3:active {
+							background-image: url(img/button5a.png);
+							
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+						.pulsante3new {
+							background-image: url(img/button5_new.png);
+							background-size: 60px 60px;
+							background-repeat: no-repeat;
+							background-position:center;
+							
+							height:60px;
+							width:60px;
+							
+							z-index: 21;
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							/*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+						}
+						
+						.pulsante3new:active {
+							background-image: url(img/button5a.png);
+							
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+						.pulsanteback {
+							background-image: url(img/back.png);
+							background-size: 60px 60px;
+							background-repeat: no-repeat;
+							background-position:center;
+							
+							height:60px;
+							width:60px;
+							
+							z-index: 21;
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							/*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+						}
+						
+						.pulsanteback:active {
+							background-image: url(img/backa.png);
+							
+							border-radius:5px;
+							-moz-border-radius:5px;
+							-webkit-border-radius:5px;
+							-o-border-radius: 5px;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+						.pulsantereply {
+							background-image: url(img/buttonSMS.png);
+							background-size: 60px 60px;
+							background-repeat: no-repeat;
+							background-position:center;
+							
+							height:60px;
+							width:60px;
+							
+							z-index: 21;
+							border-radius:5px;
+							-moz-border-radius:5px;
+							-webkit-border-radius:5px;
+							-o-border-radius: 5px;
+							
+							/*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+							 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+						}
+						
+						.pulsantereply:active {
+							background-image: url(img/backa.png);
+							
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+
+.pulsanterefresh {
+	background-image: url(img/refresh.png);
+	background-size: 60px 60px;
+	background-repeat: no-repeat;
+	background-position:center;
+	
+	height:60px;
+	width:60px;
+	
+	z-index: 21;
+	border-radius:999em;
+	-moz-border-radius:999em;
+	-webkit-border-radius:999em;
+	-o-border-radius: 999em;
+	
+	/*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+	 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+	 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+}
+						
+						.pulsanterefresh:active {
+							background-image: url(img/refresha.png);
+							
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+
+.pulsante4 {
+	background-image: url(img/button4.png);
+	background-size: 60px 60px;
+	background-repeat: no-repeat;
+	background-position:center;
+	
+	height:60px;
+	width:60px;
+	
+	z-index: 21;
+	border-radius:999em;
+	-moz-border-radius:999em;
+	-webkit-border-radius:999em;
+	-o-border-radius: 999em;
+	
+	/*-webkit-box-shadow: 0px 0px 0.5px 1.5px #000;
+	 -moz-box-shadow: 0px 0px 0.5px 1.5px #000;
+	 box-shadow: 0px 0px 0.5px 1.5px #000;*/
+}
+						
+						.pulsante4:active {
+							background-image: url(img/button4a.png);
+							
+							border-radius:999em;
+							-moz-border-radius:999em;
+							-webkit-border-radius:999em;
+							-o-border-radius: 999em;
+							
+							z-index: 21;
+							-webkit-box-shadow: 0px 0px 0.5px 0px #000;
+							-moz-box-shadow: 0px 0px 0.5px 0px #000;
+							box-shadow: 0px 0px 0.5px 0px #000;
+						}
+
+
 							</style>
 	</head>
 	<body>

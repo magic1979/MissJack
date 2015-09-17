@@ -75,16 +75,18 @@ var app = {
 			
 			$(".spinner").hide();
 			
+			checkpush(); 
+			
 			//provino()
 			
-			alert("Work");
+			//alert("Work");
 			
-				PushbotsPlugin.getToken(function(token){
+				/*PushbotsPlugin.getToken(function(token){
 						
 						alert(token);
 						
 						regToken(token);
-				});
+				});*/
 			
 		}
 		else{
@@ -253,7 +255,7 @@ function regToken(token) {
 		   success:function(result){
 
 
-		   
+		   $(".spinner").hide();
 		   },
 		   error: function(){
 		   $(".spinner").hide();
@@ -271,6 +273,51 @@ function regToken(token) {
 		   dataType:"json"});
 }
 
+function checkpush() {
+
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
+		   //data: {token:localStorage.getItem("Token")},
+		   contentType: "application/json; charset=utf-8",
+		   json: 'callback',
+		   timeout: 7000,
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if (item.company_id!=0){
+				  //OK
+				  
+					if(item.is_read==false){
+					  $("#pushbutton").removeClass("pulsante3").addClass("pulsante3new");
+					  return false;
+					}
+				  }
+			});
+
+		   
+		   $(".spinner").hide();
+		   
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										'possible network error',  // message
+										alertDismissed,         // callback
+										'Error',            // title
+										'OK'                  // buttonName
+										);
+		   
+		   
+		   },
+		   dataType:"json"});
+}
 
 
 
