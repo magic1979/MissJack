@@ -36,6 +36,55 @@ var app = {
 		
 	
 		var ciccio;
+		
+		$(document).on("touchend", "#primo", function(e){
+			$.mobile.changePage( "#page2", { transition: "slide", changeHash: false });
+			carica()
+		});
+		
+		$(document).on("touchend", "#secondo", function(e){
+			$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
+			carica2()
+		});
+		
+		$(document).on("touchend", "#terzo", function(e){
+			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false });
+			carica3()
+		});
+		
+		$(document).on("touchend", "#quarto", function(e){
+			$.mobile.changePage( "#page6", { transition: "slide", changeHash: false });
+			carica4()
+		});
+		
+		$(document).on("touchend", "#primos", function(e){
+			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
+		});
+		
+		$(document).on("touchend", "#secondos", function(e){
+			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
+		});
+		
+		$(document).on("touchend", "#terzos", function(e){
+			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
+		});
+		
+		$(document).on("touchend", "#quartos", function(e){
+			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
+			carica3()
+		});
+		
+		$(document).on("touchend", "#quintos", function(e){
+			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
+		});
+		
+		$(document).on("touchend", "#pulsms", function(e){
+			aprisms()
+		});
+		
+		$(document).on("touchend", "#pulrefresh", function(e){
+			carica3()
+		});
 	
 	
 		var connectionStatus = false;
