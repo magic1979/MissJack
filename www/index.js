@@ -34,6 +34,7 @@ var app = {
 		
 		PushbotsPlugin.resetBadge();*/
 		
+		StatusBar.styleDefault();
 		
 		last_click_time = new Date().getTime();
 		
