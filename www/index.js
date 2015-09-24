@@ -120,9 +120,9 @@ var app = {
 			carica3()
 		});
 		
-		$("#video").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/cf5PVgbrlCM?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
+		//$("#video").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/cf5PVgbrlCM?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
 		
-		$("#video2").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/Hl10lNEVBrU?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
+		//$("#video2").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/Hl10lNEVBrU?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
 		
 		/*last_click_time = new Date().getTime();
 		
@@ -637,6 +637,18 @@ function aprimappa () {
 	var addressLongLat = '41.929622, 12.608878';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	
+}
+
+function aprivideo1 () {
+	
+VideoPlayer.play("https://www.youtube.com/watch?v=cf5PVgbrlCM");
+	
+}
+
+function aprivideo2 () {
+	
+VideoPlayer.play("https://www.youtube.com/watch?v=Hl10lNEVBrU");
 	
 }
 
