@@ -651,7 +651,7 @@ function aprivideo2 () {
 var id = "Hl10lNEVBrU";
 var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
 	
-
+}
 
 /*function aprivideo1 () {
 	
@@ -663,6 +663,6 @@ function aprivideo2 () {
 	
 VideoPlayer.play("https://www.youtube.com/watch?v=Hl10lNEVBrU");
 	
-}}*/
+}*/
 
 
