@@ -552,25 +552,25 @@ function regToken(token) {
 function apri(){
 
 	$("#pluto").show();
-	$("#pippo").slideToggle( "slow" );
+	$("#pippo").show( "slow" );
 }
 
 function aprisms(){
 	
 	$("#pluto5").show();
-	$("#pippo5").slideToggle("slow");
+	$("#pippo5").show("slow");
 }
 
 function chiudi(){
 	
 	$("#pluto").hide();
-	$("#pippo").slideToggle( "slow" );
+	$("#pippo").hide( "slow" );
 }
 
 function chiudi5(){
 	
 	$("#pluto5").hide();
-	$("#pippo5").slideToggle("slow");
+	$("#pippo5").hide("slow");
 }
 
 function vedi () {
