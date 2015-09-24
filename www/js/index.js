@@ -639,4 +639,18 @@ function aprimappa () {
 	
 }
 
+function aprivideo () {
+	
+var id = "cf5PVgbrlCM";
+var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank', 'location=yes');
+	
+}
+
+function aprivideo2 () {
+	
+var id = "Hl10lNEVBrU";
+var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
+	
+}
+
 
