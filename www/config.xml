@@ -33,11 +33,12 @@ PokerParade sas
 		<preference name="android-targetSdkVersion" value="11" />
 		<preference name="android-installLocation" value="auto" />
 		<preference name="SplashScreenDelay" value="10000" />
-		<preference name="ErrorUrl" value="http://www.mistertod.it"/>
+		<preference name="SplashMaintainAspectRatio" value="true|false" />
+		<preference name="ErrorUrl" value="http://www.ermesitalia.it"/>
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="true"/>
-		<preference name="LoadingDialog" value="MisterTod,Loading"/> 
+		<preference name="LoadingDialog" value="ErmesItalia,Loading"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
 		<gap:platform name="android" />
@@ -105,5 +106,5 @@ PokerParade sas
 		<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
 		<gap:plugin name="com.pushbots.push" version="1.2.4" source="plugins.cordova.io" />
 		<gap:plugin name="com.dawsonloudon.videoplayer" version="1.0.0" />
-		
+
 	</widget>
