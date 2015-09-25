@@ -5,12 +5,12 @@ var app = {
     },
     
     bindEvents: function() {
-        document.addEventListener("deviceready", this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.onDeviceReady, false);
     },
    
     onDeviceReady: function() {
 	navigator.splashscreen.show();	
-	document.addEventListener("resume", onResume, false);
+	document.addEventListener('resume', onResume, false);
         app.receivedEvent('deviceready');
     },
     
