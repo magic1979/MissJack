@@ -16,13 +16,13 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+		document.addEventListener("resume", onResume, false);
         app.receivedEvent('deviceready');
 
 		
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		document.addEventListener("resume", onResume, false);
 		
 		/*if(PushbotsPlugin.isiOS()){
 			PushbotsPlugin.initializeiOS("55eef2521779597d478b456a");
@@ -36,7 +36,7 @@ var app = {
 		
 		//var isPhone = screen.height < 800 || screen.width < 800;
 		
-		alert(screen.height);
+		alert(screen.width);
 
 		//StatusBar.styleDefault();
 		
@@ -677,3 +677,4 @@ function aprivideo2 () {
 VideoPlayer.play("https://www.youtube.com/watch?v=Hl10lNEVBrU");
 	
 }*/
+
