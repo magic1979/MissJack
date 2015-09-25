@@ -16,13 +16,13 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		//document.addEventListener("resume", onResume, false);
         app.receivedEvent('deviceready');
 
 		
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		document.addEventListener("resume", onResume, false);
 		
 		/*if(PushbotsPlugin.isiOS()){
 			PushbotsPlugin.initializeiOS("55eef2521779597d478b456a");
@@ -34,6 +34,11 @@ var app = {
 		
 		PushbotsPlugin.resetBadge();*/
 		
+		//var isPhone = screen.height < 800 || screen.width < 800;
+		
+		alert(screen.height);
+
+		//StatusBar.styleDefault();
 		
 		last_click_time = new Date().getTime();
 		
@@ -119,9 +124,9 @@ var app = {
 			carica3()
 		});
 		
-		//$("#video").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/cf5PVgbrlCM?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
+		$("#video").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/cf5PVgbrlCM?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
 		
-		//$("#video2").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/Hl10lNEVBrU?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
+		$("#video2").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/Hl10lNEVBrU?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
 		
 		/*last_click_time = new Date().getTime();
 		
@@ -200,7 +205,15 @@ function verificawifi(){
 
 
 function onResume() {
-	app.initialize();
+
+	setTimeout(function() {
+		navigator.splashscreen.show();
+		window.location.href = "#page";
+		myScroll.scrollTo(0,0);
+		//app.initialize();
+	}, 0);
+	
+	//show splash
 }
 
 
@@ -552,25 +565,25 @@ function regToken(token) {
 function apri(){
 
 	$("#pluto").show();
-	$("#pippo").show();
+	$("#pippo").slideToggle( "slow" );
 }
 
 function aprisms(){
 	
 	$("#pluto5").show();
-	$("#pippo5").show();
+	$("#pippo5").slideToggle("slow");
 }
 
 function chiudi(){
 	
 	$("#pluto").hide();
-	$("#pippo").hide();
+	$("#pippo").slideToggle( "slow" );
 }
 
 function chiudi5(){
 	
 	$("#pluto5").hide();
-	$("#pippo5").hide();
+	$("#pippo5").slideToggle("slow");
 }
 
 function vedi () {
@@ -664,5 +677,3 @@ function aprivideo2 () {
 VideoPlayer.play("https://www.youtube.com/watch?v=Hl10lNEVBrU");
 	
 }*/
-
-
