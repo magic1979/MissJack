@@ -1,7 +1,19 @@
-document.addEventListener('deviceready', onDeviceReady, false);
-
-	function onDeviceReady() {
-		document.addEventListener("resume", onResume, false);
+var app = {
+   
+    initialize: function() {
+        this.bindEvents();
+    },
+    
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+   
+    onDeviceReady: function() {
+		document.addEventListener('resume', onResume, false);
+        app.receivedEvent('deviceready');
+    },
+    
+    receivedEvent: function(id) {
 		
 		/*if(PushbotsPlugin.isiOS()){
 			PushbotsPlugin.initializeiOS("55eef2521779597d478b456a");
@@ -175,7 +187,13 @@ document.addEventListener('deviceready', onDeviceReady, false);
 		}
     }
 	
+};
 
+function onDeviceReady() {
+    document.addEventListener("resume", onResume, false);
+}
+
+//app.initialize();
 
 function verificawifi(){
 	$("#verifica").click();
@@ -184,14 +202,19 @@ function verificawifi(){
 
 function onResume() {
 
-	setTimeout(function() {
-		navigator.splashscreen.show();
-		window.location.href = "#page";
-		myScroll.scrollTo(0,0);
+	//setTimeout(function() {
+		//navigator.splashscreen.show();
+		//window.location.href = "#page";
+		//myScroll.scrollTo(0,0);
 		//app.initialize();
-	}, 0);
+	//}, 0);
 	
 	//show splash
+	alert("Resume");
+}
+
+function onResume() {
+	alert("Pause");
 }
 
 
