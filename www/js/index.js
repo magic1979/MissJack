@@ -9,7 +9,6 @@ var app = {
     },
    
     onDeviceReady: function() {
-	navigator.splashscreen.show();	
 	document.addEventListener('resume', onResume, false);
         app.receivedEvent('deviceready');
     },
@@ -198,17 +197,16 @@ function verificawifi(){
 
 
 function onResume() {
-	alert("Device Ready!!");
 	
-	/*setTimeout(function() {
+	setTimeout(function() {
 		navigator.splashscreen.show();
 		//window.location.href = "#page";
 		//myScroll.scrollTo(0,0);
 		//app.initialize();
-	}, 0);*/
+	}, 1000);
 	
 	//show splash
-	//alert("Resume");
+	alert("Device Ready!!");
 }
 
 
