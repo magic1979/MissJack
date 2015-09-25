@@ -5,11 +5,12 @@ var app = {
     },
     
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("deviceready", this.onDeviceReady, false);
     },
    
     onDeviceReady: function() {
-		document.addEventListener('resume', onResume, false);
+		alert("Device Ready!!");
+		document.addEventListener("resume", onResume, false);
         app.receivedEvent('deviceready');
     },
     
@@ -189,10 +190,6 @@ var app = {
 	
 };
 
-function onDeviceReady() {
-    document.addEventListener("resume", onResume, false);
-}
-
 //app.initialize();
 
 function verificawifi(){
@@ -202,15 +199,19 @@ function verificawifi(){
 
 function onResume() {
 
-	//setTimeout(function() {
-		//navigator.splashscreen.show();
+	setTimeout(function() {
+		navigator.splashscreen.show();
 		//window.location.href = "#page";
 		//myScroll.scrollTo(0,0);
 		//app.initialize();
-	//}, 0);
+	}, 0);
 	
 	//show splash
-	alert("Resume");
+	//alert("Resume");
+}
+
+function onResume() {
+	alert("Pause");
 }
 
 
