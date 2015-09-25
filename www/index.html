@@ -45,6 +45,13 @@
 						<!--<script type="application/javascript" src="http://cubiq.org/dropbox/iscroll4/src/iscroll.js"></script>-->
 						<script type="text/javascript" src="js/iscroll4.js"></script>
 						<script type="text/javascript" src="js/iscroll-zoom.js"></script>
+
+						<script type="text/javascript" src="cordova.js"></script>
+						<script type="text/javascript" src="js/index.js"></script>
+						
+						<script type="text/javascript">
+							app.initialize();
+						</script>
 						
 						<script type="text/javascript">
 							
@@ -58,6 +65,7 @@
 								});
 								setTimeout (function(){
 									myScroll.refresh();
+									document.addEventListener("deviceready", onDeviceReady, false);
 								}, 700);
 							}
 						
@@ -1212,7 +1220,7 @@
 
 						</style>
 	</head>
-	<body>
+	<body onload="loaded()">
 		
 		<div id="page" data-role="page" class="div2" >
 			
@@ -2287,17 +2295,6 @@
 			</table>
 			
 		</div>
-
-
-
-
-		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
-		
-		<script type="text/javascript">
-			app.initialize();
-			</script>
-		
 
 
 	</body>
