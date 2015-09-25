@@ -210,10 +210,6 @@ function onResume() {
 	//alert("Resume");
 }
 
-function onResume() {
-	alert("Pause");
-}
-
 
 function getKey(key){
 	if ( key == null ) {
