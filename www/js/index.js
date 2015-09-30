@@ -154,19 +154,18 @@ var app = {
 						
 						PushbotsPlugin.getToken(function(token){
 												
-												navigator.notification.alert(
+												/*navigator.notification.alert(
 																			 token,  // message
 																			 alertDismissed,         // callback
 																			 'Attenzione',            // title
 																			 'Done'                  // buttonName
-																			 );
+																			 );*/
 												
-												regToken(token)
-												checkpush()
-												//console.log(token);
+							localStorage.setItem("Token", token);							 
+												
+							regToken()
 												
 						});
-						
 						
 			}, 2000);
 			
@@ -354,7 +353,7 @@ function provino() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -424,7 +423,7 @@ function provino() {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet nelle push, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -444,7 +443,7 @@ function provino2(id) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -491,7 +490,7 @@ function provino2(id) {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet nelle push2, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -504,12 +503,11 @@ function provino2(id) {
 
 function checkpush() {
 	
-	PushbotsPlugin.getToken(function(token){
-												
+			
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/"+ token +"",
+		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -542,7 +540,7 @@ function checkpush() {
 		   $(".spinner").hide();
 		
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet nelle check push, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -551,19 +549,18 @@ function checkpush() {
 		   
 		   },
 		   dataType:"json"});
-												
-	});
+
 }
 
 
-function regToken(token) {
+function regToken() {
 	var ciccio;
 	var conta = 1;
 	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/iiyWJvGB2pvCv4jKCAsTIWIWzhmllX1DwXn1y3CAt8dYcwIP7/"+ token +"",
+		   url:"http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/iiyWJvGB2pvCv4jKCAsTIWIWzhmllX1DwXn1y3CAt8dYcwIP7/"+ localStorage.getItem("Token") +"",
 		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
 		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
 		   //data: {token:localStorage.getItem("Token")},
@@ -580,7 +577,7 @@ function regToken(token) {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet nel reg token, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -590,6 +587,9 @@ function regToken(token) {
 		   
 		   },
 		   dataType:"json"});
+	   
+	   
+	   checkpush()
 }
 
 function apri(){
