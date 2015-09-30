@@ -154,7 +154,7 @@ var app = {
 																			 );
 												
 												regToken(token)
-												checkpush(token)
+												checkpush()
 												//console.log(token);
 												
 						});
@@ -271,9 +271,9 @@ function carica() {
 					document.addEventListener('DOMContentLoaded', loaded, false);
 					
 					
-		}, 1000);
+		}, 500);
 				
-	}, 500);
+	}, 1000);
 	
 }
 
@@ -494,8 +494,10 @@ function provino2(id) {
 		   dataType:"json"});
 }
 
-function checkpush(token) {
-
+function checkpush() {
+	
+	PushbotsPlugin.getToken(function(token){
+												
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
@@ -526,10 +528,6 @@ function checkpush(token) {
 		   },
 		   error: function(jqxhr,textStatus,errorThrown){
 		
-		console.log(jqxhr);
-		console.log(textStatus);
-		console.log(errorThrown);
-
 					
 		   //alert(ts.responseText)
 		   
@@ -545,6 +543,8 @@ function checkpush(token) {
 		   
 		   },
 		   dataType:"json"});
+												
+	});
 }
 
 
