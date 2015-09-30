@@ -148,9 +148,10 @@ var app = {
 			
 			$(".spinner").hide();
 			
+			 checkpush()
 			//provino()
 			
-			setTimeout (function(){
+			/*setTimeout (function(){
 						
 						PushbotsPlugin.getToken(function(token){
 							
@@ -167,8 +168,7 @@ var app = {
 												
 						});
 						
-			}, 2000);
-			
+			}, 2000);*/
 			
 			
 		}
@@ -353,7 +353,7 @@ function provino() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
+		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -443,7 +443,7 @@ function provino2(id) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/"+ localStorage.getItem("Token") +"",
+		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/tokendiprova",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -503,17 +503,10 @@ function provino2(id) {
 
 function checkpush() {
 	
-		navigator.notification.alert(
-		"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",  // message
-		alertDismissed,         // callback
-		'checkpush',            // title
-		 'Done'                  // buttonName
-		);
-	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
+		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -561,13 +554,6 @@ function checkpush() {
 function regToken() {
 	var ciccio;
 	var conta = 1;
-	
-	navigator.notification.alert(
-																			 "http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/iiyWJvGB2pvCv4jKCAsTIWIWzhmllX1DwXn1y3CAt8dYcwIP7/"+ localStorage.getItem("Token") +"",  // message
-																			 alertDismissed,         // callback
-																			 'regToken',            // title
-																			 'Done'                  // buttonName
-																			 );
 	
 	$(".spinner").show();
 	$.ajax({
