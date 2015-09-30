@@ -37,8 +37,16 @@ var app = {
 
 		//IPAD CHANGE
 		if(screen.width < 768){
-			//alert(screen.width);
-			//alert(screen.height);
+			if(screen.height > 568){
+				$("#copertina").attr("height", "60%");
+				$("#testoTitolo").attr("class", "visione2DROID");
+				//$("#testo").attr("class", "visioneIPAD");
+				$("#testoCentrale").attr("class", "visione3DROID");
+				$("#Nome").attr("class", "visione3DROID");
+				$("#titolo").attr("class", "visione4DROID");
+				$("#spazioipad").show();
+			}
+
 		}
 		else
 		{
