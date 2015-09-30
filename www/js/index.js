@@ -1,56 +1,62 @@
+
 var app = {
-   
+    // Application Constructor
     initialize: function() {
         this.bindEvents();
     },
-    
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:@
+    // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-   
+    // deviceready Event Handler@
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-	document.addEventListener('resume', onResume, false);
+		document.addEventListener("resume", onResume, false);
         app.receivedEvent('deviceready');
+
     },
-    
+    // Update DOM on a Received Event
     receivedEvent: function(id) {
 		
-		/*if(PushbotsPlugin.isiOS()){
+		if(PushbotsPlugin.isiOS()){
 			PushbotsPlugin.initializeiOS("55eef2521779597d478b456a");
 		}
 		if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("55eef2521779597d478b456a", "1068247241830");
+			PushbotsPlugin.initializeAndroid("55eef2521779597d478b456a", "316671979548");
 		}
 		
-		
-		PushbotsPlugin.resetBadge();*/
+		//PushbotsPlugin.resetBadge();
 		
 		//var isPhone = screen.height < 800 || screen.width < 800;
 		
-		//alert(screen.width);
+		//alert(screen.height);
 
-		//StatusBar.styleDefault();
+		//IPAD CHANGE
+		if(screen.width < 768){
+			//alert(screen.width);
+			//alert(screen.height);
+		}
+		else
+		{
+			//alert(screen.width);
+			
+			$("#testoTitolo").attr("class", "visione2IPAD");
+			$("#testo").attr("class", "visioneIPAD");
+			$("#testoCentrale").attr("class", "visione3IPAD");
+			$("#Nome").attr("class", "visione3IPAD");
+			$("#titolo").attr("class", "visione4IPAD");
+			$("#copertina").attr("height", "100%");
+			$("#pallina").attr("width", "46px");
+			$("#spazioipad").show();
+		}
 		
-		last_click_time = new Date().getTime();
-		
-		document.addEventListener('click', function (e) {
-								  
-								  click_time = e['timeStamp'];
-								  
-								  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-								  
-								  e.preventDefault();
-								  
-								  return false;
-								  
-								  }
-								  
-								  last_click_time = click_time;
-								  
-								  }, true);
-		
-		
+
 		var ciccio;
+		var token;
 		
 		$(document).on("touchend", "#primo", function(e){
 			$.mobile.changePage( "#page2", { transition: "slide", changeHash: false });
@@ -73,7 +79,8 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#sesto", function(e){
-		   myScroll.scrollTo(0,-440);
+			$.mobile.changePage( "#page8", { transition: "slide", changeHash: false });
+			carica8();
 		});
 		
 		$(document).on("touchend", "#vedi", function(e){
@@ -107,6 +114,11 @@ var app = {
 			myScroll.scrollTo(0,0);
 		});
 		
+		$(document).on("touchend", "#ottavos", function(e){
+			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
+			myScroll.scrollTo(0,0);
+		});
+		
 		$(document).on("touchend", "#pulsms", function(e){
 			aprisms()
 		});
@@ -119,26 +131,7 @@ var app = {
 		
 		$("#video2").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/Hl10lNEVBrU?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
 		
-		/*last_click_time = new Date().getTime();
-		
-		document.addEventListener('click', function (e) {
-								  
-								  click_time = e['timeStamp'];
-								  
-								  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-								  
-								  e.preventDefault();
-								  
-								  return false;
-								  
-								  }
-								  
-								  last_click_time = click_time;
-								  
-								  }, true);*/
 
-	
-	
 		var connectionStatus = false;
 		connectionStatus = navigator.onLine ? 'online' : 'offline';
 		
@@ -148,9 +141,8 @@ var app = {
 			$(".spinner").hide();
 			
 			//provino()
-			checkpush() 
 			
-			/*setTimeout (function(){
+			setTimeout (function(){
 						
 						PushbotsPlugin.getToken(function(token){
 												
@@ -161,13 +153,14 @@ var app = {
 																			 'Done'                  // buttonName
 																			 );
 												
-												//regToken(token)
-												console.log(token);
+												regToken(token)
+												checkpush(token)
+												//console.log(token);
 												
 						});
 						
 						
-			}, 2000);*/
+			}, 2000);
 			
 			
 			
@@ -187,9 +180,8 @@ var app = {
 		}
     }
 	
-};
+}
 
-//app.initialize();
 
 function verificawifi(){
 	$("#verifica").click();
@@ -199,14 +191,14 @@ function verificawifi(){
 function onResume() {
 	
 	setTimeout(function() {
+		//alert("onResume");
 		navigator.splashscreen.show();
-		//window.location.href = "#page";
-		//myScroll.scrollTo(0,0);
-		//app.initialize();
-	}, 1000);
+		window.location.href = "#page";
+		setTimeout(function() {
+			navigator.splashscreen.hide();
+		}, 2500);
+	}, 0);
 	
-	//show splash
-	alert("Device Ready!!");
 }
 
 
@@ -246,22 +238,43 @@ function initscroll() {
 
 function carica() {
 	
-	var myScroll2;
-
-		myScroll2 = new iScroll('wrapper2', {
-								zoom: true,
-								click: true,
-								zoomMin:1,
-								zoomMax:2
-		});
+	$(".spinner").show();
+	
+	$("#galleriaimg").html("<tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+	
+	setTimeout (function(){
+				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig1.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig2.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig3.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+				
+		
 		setTimeout (function(){
-			myScroll2.refresh();
+				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig4.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig5.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig6.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig7.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig8.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig9.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig10.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+					
+					$(".spinner").hide();
+					
+					var myScroll2;
+					
+					myScroll2 = new iScroll('wrapper2', {
+											zoom: true,
+											click: true,
+											zoomMin:1,
+											zoomMax:2
+											});
+					setTimeout (function(){
+						
+						myScroll2.refresh();
+								
+					}, 1000);
+					
+					
+					document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+					
+					document.addEventListener('DOMContentLoaded', loaded, false);
+					
+					
 		}, 1000);
-
+				
+	}, 500);
 	
-	//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-	
-	document.addEventListener('DOMContentLoaded', loaded, false);
 }
 
 function carica2() {
@@ -301,11 +314,28 @@ function carica4() {
 	document.addEventListener('DOMContentLoaded', loaded, false);
 }
 
+function carica8() {
+	
+	var myScroll8;
+	
+	myScroll8 = new iScroll('wrapper8', { click: true });
+	setTimeout (function(){
+		myScroll8.refresh();
+	}, 1000);
+	
+	
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	
+	document.addEventListener('DOMContentLoaded', loaded, false);
+}
+
 function carica5(id) {
 	//alert(id)
 	provino2(id)
 
 }
+
+
 
 function provino() {
 	var ciccio;
@@ -330,12 +360,12 @@ function provino() {
 				  //OK
 				  
 				  if(item.is_read==false){
-					contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='220' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><font size='3' color='#042e72'>"+ item.activated_at +" - "+ item.expire_on +" </font></td></tr><tr><td width='100%' colspan='2' valign='center'><font size='3'>"+ item.title +"</font> </td></tr></table></td><td width='120' align='center' valign='center'><img src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+					contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><font size='3' color='#042e72'>"+ item.activated_at +" - "+ item.expire_on +" </font></td></tr><tr><td width='100%' colspan='2' valign='center'><font size='3'>"+ item.title +"</font> </td></tr></table></td><td width='120' align='center' valign='center'><img src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
 				  
 					//ciccio = item.image_tag;
 				  }
 				  else{
-					contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='220' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><font size='3' color='#042e72'>"+ item.activated_at +" - "+ item.expire_on +" </font></td></tr><tr><td width='100%' colspan='2' valign='center'><font size='3'>"+ item.title +"</font> </td></tr></table></td><td width='120' align='center' valign='center'><img src='img/read.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+					contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><font size='3' color='#042e72'>"+ item.activated_at +" - "+ item.expire_on +" </font></td></tr><tr><td width='100%' colspan='2' valign='center'><font size='3'>"+ item.title +"</font> </td></tr></table></td><td width='120' align='center' valign='center'><img src='img/read.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
 				  
 					//ciccio = ciccio + item.image_tag;
 				  }
@@ -386,7 +416,7 @@ function provino() {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'possible network error 2',  // message
+										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -453,7 +483,7 @@ function provino2(id) {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'possible network error',  // message
+										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -464,12 +494,12 @@ function provino2(id) {
 		   dataType:"json"});
 }
 
-function checkpush() {
+function checkpush(token) {
 
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_list/"+ token +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -506,7 +536,7 @@ function checkpush() {
 		   $(".spinner").hide();
 		
 		   navigator.notification.alert(
-										'possible network error 3',  // message
+										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -518,7 +548,6 @@ function checkpush() {
 }
 
 
-
 function regToken(token) {
 	var ciccio;
 	var conta = 1;
@@ -526,7 +555,7 @@ function regToken(token) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/device/set_token/lpJkwsXpIGgLLAROXQoDbvEMblCgeTjAj2VQuTgdAwZl7Q95Gy/nD44CFruHMUPGbj213sd1kMiHygU41biNIThN36jWE2JPN8RZF/"+ token +"",
+		   url:"http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/iiyWJvGB2pvCv4jKCAsTIWIWzhmllX1DwXn1y3CAt8dYcwIP7/"+ token +"",
 		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
 		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
 		   //data: {token:localStorage.getItem("Token")},
@@ -543,7 +572,7 @@ function regToken(token) {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'possible network error',  // message
+										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -557,29 +586,36 @@ function regToken(token) {
 
 function apri(){
 
-	$("#pluto").show();
-	$("#pippo").slideToggle( "slow" );
+	$("#pippo").show( "slow" );
 }
 
 function aprisms(){
 	
-	$("#pluto5").show();
-	$("#pippo5").slideToggle("slow");
+	$("#pippo5").show("slow");
 }
 
 function chiudi(){
 	
-	$("#pluto").hide();
-	$("#pippo").slideToggle( "slow" );
+	$("#pippo").hide( "slow" );
 }
 
 function chiudi5(){
 	
-	$("#pluto5").hide();
-	$("#pippo5").slideToggle("slow");
+	$("#pippo5").hide("slow");
 }
 
 function vedi () {
+	if(screen.width < 768){
+		//alert(screen.width);
+		//alert(screen.height);
+	}
+	else
+	{
+		//alert(screen.width);
+		
+		$("#testoTitolo3").attr("class", "visione2IPAD");
+		$("#testo3").attr("class", "visioneIPAD");
+	}
 	
 	var myScroll7;
 	
@@ -634,6 +670,9 @@ window.plugin.email.open({
 }
 
 function mandasms () {
+	
+	chiudi5()
+	
 	window.plugins.socialsharing.shareViaSMS("My cool message", "0612345678", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
@@ -647,27 +686,16 @@ function aprimappa () {
 
 function aprivideo1 () {
 	
-var id = "cf5PVgbrlCM";
-var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank', 'location=yes');
+	var id = "cf5PVgbrlCM";
+	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank', 'location=yes');
 	
 }
 
 function aprivideo2 () {
 	
-var id = "Hl10lNEVBrU";
-var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
+	var id = "Hl10lNEVBrU";
+	var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
 	
 }
 
-/*function aprivideo1 () {
-	
-VideoPlayer.play("https://www.youtube.com/watch?v=cf5PVgbrlCM");
-	
-}
-
-function aprivideo2 () {
-	
-VideoPlayer.play("https://www.youtube.com/watch?v=Hl10lNEVBrU");
-	
-}*/
 

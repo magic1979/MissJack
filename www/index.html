@@ -1,24 +1,4 @@
 <!DOCTYPE html>
-<!--
- Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
- 
- Licensed to the Apache Software Foundation (ASF) under one
- or more contributor license agreements.  See the NOTICE file
- distributed with this work for additional information
- regarding copyright ownership.  The ASF licenses this file
- to you under the Apache License, Version 2.0 (the
- "License"); you may not use this file except in compliance
- with the License.  You may obtain a copy of the License at
- 
- http://www.apache.org/licenses/LICENSE-2.0
- 
- Unless required by applicable law or agreed to in writing,
- software distributed under the License is distributed on an
- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- KIND, either express or implied.  See the License for the
- specific language governing permissions and limitations@
- under the License.
- -->
 <html>
 	<head>
 		<meta property="og:locale" content="en_US" />
@@ -42,16 +22,7 @@
 						<script src="js/jquery-ui.min.js"></script>
 						<script src="js/jquery.mobile-1.4.5.min.js"></script>
 						
-						<!--<script type="application/javascript" src="http://cubiq.org/dropbox/iscroll4/src/iscroll.js"></script>-->
 						<script type="text/javascript" src="js/iscroll4.js"></script>
-						<script type="text/javascript" src="js/iscroll-zoom.js"></script>
-
-						<script type="text/javascript" src="cordova.js"></script>
-						<script type="text/javascript" src="js/index.js"></script>
-						
-						<script type="text/javascript">
-							app.initialize();
-						</script>
 						
 						<script type="text/javascript">
 							
@@ -68,7 +39,7 @@
 								}, 700);
 							}
 						
-						//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+						document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 						
 						document.addEventListener('DOMContentLoaded', loaded, false);
 						
@@ -130,7 +101,7 @@
 						#wrapper {
 							position: absolute;
 							z-index: 1;
-							top: 16%;
+							top: 12%;
 							bottom: 0px;
 							left: 0;
 							width: 100%;
@@ -145,16 +116,17 @@
 							
 						}
 						
+						
+						
 						#wrapper2 {
 							position: absolute;
 							z-index: 1;
-							top: 56px;
+							top: 2%;
 							bottom: 0px;
 							left: 0;
 							width: 100%;
 							background: #ebe6e0;
-							overflow: scroll;
-
+							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
 							background-repeat:no-repeat;
@@ -167,7 +139,7 @@
 						#wrapper3 {
 							position: absolute;
 							z-index: 1;
-							top: 56px;
+							top: 12%;
 							bottom: 0px;
 							left: 0;
 							width: 100%;
@@ -185,8 +157,8 @@
 						#wrapper4 {
 							position: absolute;
 							z-index: 1;
-							top: 56px;
-							bottom: 56px;
+							top: 12%;
+							bottom: 0px;
 							left: 0;
 							width: 100%;
 							background: #ebe6e0;
@@ -202,8 +174,8 @@
 						#wrapper5 {
 							position: absolute;
 							z-index: 1;
-							top: 56px;
-							bottom: 56px;
+							top: 12%;
+							bottom: 0px;
 							left: 0;
 							width: 100%;
 							background: #ebe6e0;
@@ -219,8 +191,8 @@
 						#wrapper6 {
 							position: absolute;
 							z-index: 1;
-							top: 56px;
-							bottom: 56px;
+							top: 12%;
+							bottom: 0px;
 							left: 0;
 							width: 100%;
 							background: #ebe6e0;
@@ -237,8 +209,26 @@
 						#wrapper7 {
 							position: absolute;
 							z-index: 1;
-							top: 56px;
-							bottom: 56px;
+							top: 12%;
+							bottom: 0px;
+							left: 0;
+							width: 100%;
+							background: #ebe6e0;
+							overflow: hidden;
+							
+							background-image:url('img/Logo.png');
+							background-repeat:no-repeat;
+							background-attachment:fixed;
+							/*background-position:center; */
+							background-position: right bottom; /*Positioning*/
+							
+						}
+						
+						#wrapper8 {
+							position: absolute;
+							z-index: 1;
+							top: 12%;
+							bottom: 0px;
 							left: 0;
 							width: 100%;
 							background: #ebe6e0;
@@ -252,7 +242,7 @@
 							
 						}
 
-						
+
 						#scroller {
 							position: absolute;
 							z-index: 1;
@@ -364,7 +354,7 @@
 							top:0px;
 							left:0px;
 							width:100%;
-							height: 12%;
+							height: 8%;
 							padding: 0;
 							color: #000;
 							
@@ -396,7 +386,7 @@
 						}
 						.div5 {
 							background-color: #000;
-							position: fixed;
+							position: absolute;
 							z-index: 19;
 							bottom: 0;
 							left: 0;
@@ -408,13 +398,13 @@
 							text-align: center;
 							font-weight: bold;
 							
-							opacity: 0.6;
-							filter: alpha(opacity=60);
+							opacity: 0.5;
+							filter: alpha(opacity=50);
 							
 						}
 						
 						.div55 {
-							position: fixed;
+							position: absolute;
 							z-index: 20;
 							bottom: 0;
 							left: 0;
@@ -425,20 +415,25 @@
 							
 							text-align: center;
 							font-weight: bold;
-							
 						}
 						
 						.div56{
-							background-color: #000;
+							background-color: #2E2E2E;
 							width: 100%;
 							
 							text-decoration: none;
 							text-shadow:0 0 0;
+							
+							width:90%;
 
 
 							opacity: 0.9;
 							filter: alpha(opacity=90);
 							
+						}
+						
+						.galleriaimmagini {
+							position: absolute;
 						}
 						
 						.div6 {
@@ -704,11 +699,7 @@
 							box-shadow:0 0 1px #333;
 							border: 1px solid #fff;
 						}
-						.visione {
-
-							text-decoration: none;
-							text-shadow:0 0 0;
-						}
+						
 						
 						.someClass b {
 							font-weight: normal;
@@ -1207,19 +1198,69 @@
 
 						}
 						
-						html,body,.paperino
-						{
-							height: 100%;
-						}
 
 							</style>
 						
 						<style type="text/css">
-							div#wrapper img { -webkit-transform:translate3d(0,0,0) }
+							img { -webkit-transform:translate3d(0,0,0) }
+							div { -webkit-transform:translate3d(0,0,0) }
+							
+							.visione {
+								font-size:12px;
+								text-decoration: none;
+								text-shadow:0 0 0;
+								color: #000;
+							}
+						
+						.visioneIPAD {
+							font-size:24px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #000;
+						}
+						
+						.visione2 {
+							font-size:12px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #042e72;
+						}
+						
+						.visione2IPAD {
+							font-size:24px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #042e72;
+						}
+						
+						.visione3 {
+							font-size:15px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #042e72;
+						}
+						.visione3IPAD {
+							font-size:30px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #042e72;
+						}
+						.visione4 {
+							font-size:15px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: red;
+						}
+						.visione4IPAD {
+							font-size:30px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: red;
+						}
 
 						</style>
 	</head>
-	<body onload="loaded()">
+	<body>
 		
 		<div id="page" data-role="page" class="div2" >
 			
@@ -1236,239 +1277,78 @@
 		
 		<div id="wrapper">
 			<div id="scroller">
+				<table id="spazioipad" style="display: none;" height="20px"><tr><td></td></tr></table>
 				
-				<table width="98%" border="1" valign="center" align="center" >
+				<table width="98%" border="0" valign="center" align="center" >
 					<tr>
 						<td width="95%">
-							<p><font color="#042e72"><b>16.00, Soluzioni e Tecnologie per il vostro business</b></font></p>
+							<div id="testoTitolo" class="visione2"><b>Soluzioni e Tecnologie per il vostro business</b></div>
 						</td>
 						<td width="5%">
-								<a href="javascript:apri()"><img src="img/info.png" width="26"></a>
+								<a href="javascript:apri()"><img id="pallina" src="img/info.png" width="26"></a>
 						</td>
 					</tr>
 					<tr>
 						<td width="100%" align="justify" colspan="2">
-							<font color="#000" class="visione">Ermes Italia produce tecnologie innovative e progetta soluzioni d’avanguardia in ambito ICT e Business Intelligence.<br> Struttura aziendale orientata al Cliente pronta a raccogliere le nuove sfide del mercato.<br>Ermes Italia competenza e creatività nel rispetto della concretezza e fattibilità delle soluzioni tecnologiche. Professionalità, Versatilità e Capacità di Team  Working consentono ad Ermes Italia di competere nelle aree di: </font><font color="#000" class="visione"><a id="vedi" href="#" class="visione"><font color="#042e72">continua&nbsp;[...]</font></a></font>
+							<div id="testo" class="visione">Ermes Italia produce tecnologie innovative e progetta soluzioni d’avanguardia in ambito ICT e Business Intelligence.<br> Struttura aziendale orientata al Cliente pronta a raccogliere le nuove sfide del mercato.<br>Ermes Italia garantisce competenza e creatività nel rispetto della concretezza e fattibilità delle soluzioni tecnologiche. Professionalità, Versatilità e Capacità di Team  Working consentono ad Ermes Italia di competere nelle aree di:&nbsp;<a id="vedi" href="#" ><font color="#042e72">continua&nbsp;[...]</a></div>
+						</td>
+					</tr>
+					<tr>
+						<td width="100%" colspan="2" align="center">
+							
 						</td>
 					</tr>
 
 					<tr>
 						<td width="100%" colspan="2" align="center">
-							<div><font color="#042e72" size="3"><b>Computing, Consulting &amp; Mobile</b></font></div>
+							<div id="testoCentrale" class="visione3"><b>Computing, Consulting &amp; Mobile</b></div>
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="center" colspan="2">
-							<table align="center" border="1" width="100%" height="100%">
-								<tr>
-									<td  width="60%">
-										<div height="90%" class="foto"></div>
-									</td>
-									<td  width="40%">
-										Ciao
-									</td>
-								</tr>
-							</table>
+						<td width="100%" colspan="2" align="center">
+							
 						</td>
 					</tr>
-					
+					<tr>
+						<td width="100%" colspan="2" align="center">
+							
+						</td>
+					</tr>
+
 					</table>
-				
-				
-				<!--<table align="center" border="1" width="100%" height="100%">
+				<table id="phone" align="center" border="0" width="97%" height="90%">
 					<tr>
-						<td align="center" width="40%" height="200" valign="center">
-							<div class="foto" height="100%"></div>
+						<td align="right" width="40%" valign="top">
+							<img id="copertina" src="img/Immagine.png" height="56%"></div>
 						</td>
 						<td align="center" width="60%" valign="center">
-							<table align="center">
-								<tr>
-									<td align="center">
-										<font color="#042e72" size="3"><b>Domenico Putignano</b></font>
-									</td>
-								</tr>
-								<tr>
-									<td align="center">
-										&nbsp;
-									</td>
-								</tr>
-								<tr>
-									<td align="center">
-										
-									</td>
-								</tr>
-								<tr>
-									<td align="center">
-										<font color="red" size="3"><b>CEO &amp; Founder</b></font>
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					
-				</table>-->
-				
-					<!--<table width="100%" height="10%" border="0" valign="center" align="center" >
-						<tr>
-							<td width="100%" align="center">
-								
-							</td>
-						</tr>
-					</table>
-					
-					<table id="ciccio" width="98%" height="100%" border="0" valign="center" align="center" class="div56">
+				<table align="center">
 					<tr>
-						<td width="100%" colspan="2" align="center">&nbsp;
-							<font color="#FFF" size="3"><b>My Social Network</b></font>
+						<td align="center">
+							<div id="Nome" class="visione3"><b>Domenico Putignano</b></div>
 						</td>
 					</tr>
 					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
+						<td align="center">
+							&nbsp;
 						</td>
 					</tr>
-
 					<tr>
-						<td width="100%" colspan="2" align="center">
-							<a href="javascript:aprifb()"><img src="img/social1.png" height="74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:apritw()"><img src="img/social4.png" height="74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:aprili()"><img src="img/social3.png" height="74"></a>
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-					</table>
-					<br><br>
-					
-					<table id="contatto" width="98%" height="100%" border="0" valign="center" align="center" class="div56">
-
-					<tr>
-						<td width="100%" colspan="2" align="center" >&nbsp;
-							<font color="#FFF" size="3"><b>My Contact</b></font>
-						</td>
-					</tr>
-
-					</table>
-					<br>
-					<table id="contatto" width="98%" height="100%" border="0" valign="center" align="center">
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<img src="img/Dindirizzo.png" height="32"><font color="#7e7e7e" size="2"><b>Address</b></font>
-								</td>
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<a href="javascript:aprimappa()" class="visione"><font color="#042e72" size="3"><b>Via Zoe Fontana, 220 Roma</b></font></a>
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<a href="javascript:aprimappa()" class="visione"><img src="img/Piantina.png" width="300px"></a>
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
+						<td align="center">
 							
 						</td>
 					</tr>
 					<tr>
-						<td width="100%" colspan="2" align="left">
-							<img src="img/Dtel.png" height="32"><font color="#7e7e7e" size="2"><b>Phone</b></font>
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<a href="tel:+39064153215" class="visione"><font color="#042e72" size="3">+39 06 4153215</font></a>
-							
+						<td align="center">
+							<div id="titolo" class="visione4"><b>CEO &amp; Founder</b></div>
 						</td>
 					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<img src="img/Dcell.png" height="32"><font color="#7e7e7e" size="2"><b>Mobile</b></font>
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<a href="tel:+393357540725" class="visione"><font color="#042e72" size="3">+39 335 7540725</font></a>
-						</td>
-					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<img src="img/Demail.png" height="32"><font color="#7e7e7e" size="2"><b>e-mail</b></font>
-								</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<a href="javascript:aprimail()"><font color="#042e72" size="3">d.putignano@ermesitalia.it</font></a>
-						</td>
-					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<img src="img/Dinternet1.png" height="32"><font color="#7e7e7e" size="2"><b>Web</b></font>
-								</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="left">
-							<font color="#042e72" size="3"><b>www.ermesitalia.it</b></font>
-						</td>
-					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-					
-					
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-					<tr>
-						<td width="100%" colspan="2">&nbsp;
-							
-						</td>
-						
-					</tr>
-				</table>-->
-
-
-
+				</table>
+			</td>
+			</tr>
+			
+			</table>
+			
 			</div>
 			
 		</div>
@@ -1521,8 +1401,8 @@
 			</table>
 		</div>
 		
-		
-		<table width="100%" border="0" align="center" valign="center" class="div5">
+
+		<table id="zoccolo" width="100%" border="0" align="center" valign="center" class="div5" >
 			<tr>
 				<td algn="center" width="20%" align="center">
 					<div class="pulsante11"></div>
@@ -1542,7 +1422,7 @@
 			</tr>
 		</table>
 		
-		<table width="100%" border="0" align="center" valign="center" class="div55">
+		<table width="100%" border="0" align="center" valign="center" class="div55" >
 			<tr>
 				<td algn="center" width="20%" align="center">
 					<a id="primo" href="#"><div class="pulsante1"></div></a>
@@ -1569,147 +1449,17 @@
 		
 		<div id="page2" data-role="page" class="div2" >
 			
-			
-			<div id="pluto2" align="center" valign="top" style="display: none;" >
-				
-			</div>
-			
-			<div id="pippo2" style="display: none;">
-				<table border="0" align="center" width="100%" height="260px">
-					<tr height="32px">
-						<td width="100%" align="right">
-							<a href="javascript:chiudi()"><img src="img/exit.png" width="32px"></a>
-						</td>
-					</tr>
-					<tr>
-						<td width="100%" align="center" valign="center">
-							<img src="img/sms.png" width="100px">
-								</td>
-					</tr>
-				</table>
-			</div>
-			
-			
+			<div class="spinner" id="spinner"></div>
+
 			<div id="wrapper2">
 				<div id="scroller">
 					
-					<table width="98%" border="0" valign="center" align="center" >
+					<table id="galleriaimmagini" width="98%" border="0" valign="center" align="center" >
 						
-						<tr>
-							<td width="100%" align="center" >
-								<img src="img/fig1.jpg" width="90%">
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" colspan="2">&nbsp;
-								
-							</td>
+						<div id="galleriaimg">
 							
-						</tr>
-						<tr>
-							<td width="100%" align="center" >
-								<img src="img/fig2.png" width="90%">
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" >&nbsp;
-								
-							</td>
-							
-						</tr>
-						<tr>
-							<td width="100%" align="center" >
-								<img src="img/fig3.png" width="90%">
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" >&nbsp;
-								
-							</td>
-							
-						</tr>
-						<tr>
-							<td width="100%" align="center" >
-								<img src="img/fig4.png" width="90%">
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" >&nbsp;
-								
-							</td>
-							
-						</tr>
-						<tr>
-							<td width="100%" align="center">
-								<img src="img/fig5.png" width="90%">
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" >&nbsp;
-								
-							</td>
-							
-						</tr>
-						<tr>
-							<td width="100%" align="center" >
-								<img src="img/fig6.png" width="90%">
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" >&nbsp;
-								
-							</td>
-							
-						</tr>
-						<tr>
-							<td width="100%" align="center" >
-								<img src="img/fig7.png" width="90%">
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" colspan="2">&nbsp;
-								
-							</td>
-							
-						</tr>
-						<tr>
-							<td width="100%" align="center" >
-								<img src="img/fig8.png" width="90%">
-						</td>
-							<tr>
-								<td width="100%" colspan="2">&nbsp;
-									
-								</td>
-								
-							</tr>
-							<tr>
-								<td width="100%" align="center" >
-									<img src="img/fig9.png" width="90%">
-								</td>
-							</tr>
-							<tr>
-								<td width="100%" colspan="2">&nbsp;
-									
-								</td>
-								
-							</tr>
-							<tr>
-								<td width="100%" align="center" >
-									<img src="img/fig10.jpg" width="90%">
-								</td>
-							</tr>
-							<tr>
-								<td width="100%" >&nbsp;
-									
-								</td>
-								
-							</tr>
-							<tr>
-								<td width="100%" >&nbsp;
-									
-								</td>
-								
-							</tr>
+						</div>
+						
 					</table>
 					
 					
@@ -1717,8 +1467,7 @@
 				
 			</div>
 			
-			
-		<table width="100%" border="0" align="center" valign="center" class="div5">
+			<table width="100%" border="0" align="center" valign="center" class="div5" data-position="fixed" data-tap-toggle="false">
 				<tr>
 					<td algn="center" width="20%" align="center">
 						<div class="pulsante11"></div>
@@ -1738,10 +1487,10 @@
 				</tr>
 			</table>
 			
-			<table width="100%" border="0" align="center" valign="center" class="div55">
+			<table width="100%" border="0" align="center" valign="center" class="div55" data-position="fixed" data-tap-toggle="false">
 				<tr>
 					<td algn="center" width="20%">
-						<a id="primos" href="#"><div class="pulsanteback"></div></a>
+						<a id="primos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
 					<td algn="center" width="20%">
 						
@@ -1757,15 +1506,16 @@
 					</td>
 				</tr>
 			</table>
+			
 		</div><!-- /page2 -->
 		
 		<div id="page3" data-role="page" class="div2" >
 			
-			<table width="98%" height="52px" border="0" valign="center" align="center" class="div3">
+			<table width="100%" border="0" valign="center" align="center" class="div3">
 				<tr>
 					<td width="100%" align="center">
-						<img src="img/logoermes.png" width="300px">
-					</td>
+						<img src="img/logoermes.png" width="100%">
+							</td>
 				</tr>
 				
 			</table>
@@ -1837,30 +1587,30 @@
 			</div>
 			<br><br>
 			
-	<table width="100%" border="0" align="center" valign="center" class="div5">
-			<tr>
-				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-			</tr>
-		</table>
+			<table width="100%" border="0" align="center" valign="center" class="div5">
+				<tr>
+					<td algn="center" width="20%" align="center">
+						<div class="pulsante11"></div>
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+				</tr>
+			</table>
 			
 			<table width="100%" border="0" align="center" valign="center" class="div55">
 				<tr>
 					<td algn="center" width="20%">
-						<a id="secondos" href="#"><div class="pulsanteback"></div></a>
+						<a id="secondos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
 					<td algn="center" width="20%">
 						
@@ -1882,10 +1632,10 @@
 		
 		<div id="page4" data-role="page" class="div2" >
 			
-			<table width="98%" height="52px" border="0" valign="center" align="center" class="div3">
+			<table width="100%" border="0" valign="center" align="center" class="div3">
 				<tr>
 					<td width="100%" align="center">
-						<img src="img/logoermes.png" width="300px">
+						<img src="img/logoermes.png" width="100%">
 							</td>
 				</tr>
 				
@@ -1907,36 +1657,6 @@
 					<table width="98%" height="100%" border="1" valign="center" align="center" class="div8">
 						<div id="contenuto"></div>
 
-						<!--<tr>
-							<td width="80%" align="center">
-								<table width="100%" align="left" valign="center">
-									<tr>
-										<td width="95%">&nbsp;
-											
-										</td>
-										<td width="5%">
-											
-										</td>
-									</tr>
-									<tr>
-										<td width="100%" align="left" colspan="2" valign="center">
-											12/09/2015 - 31/10/2015
-										</td>
-									</tr>
-									<tr>
-										<td width="100%" colspan="2" valign="center">
-											Titolo della notifica
-										</td>
-										
-									</tr>
-								</table>
-							</td>
-							<td width="20%" align="center" valign="center">
-								<img src="img/notRead.png" width="42px">
-							</td>
-						</tr>
-						<tr><td colspan="2"><hr></td></tr>-->
-						
 					</table>
 					
 				</div>
@@ -1944,36 +1664,36 @@
 			</div>
 			
 			
-	<table width="100%" border="0" align="center" valign="center" class="div5">
-			<tr>
-				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-			</tr>
-		</table>
+			<table width="100%" border="0" align="center" valign="center" class="div5">
+				<tr>
+					<td algn="center" width="20%" align="center">
+						<div class="pulsante11"></div>
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+				</tr>
+			</table>
 			
 			<table width="100%" border="0" align="center" valign="center" class="div55">
 				<tr>
 					<td algn="center" width="20%">
-						<a id="terzos" href="#"><div class="pulsanteback"></div></a>
+						<a id="terzos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
 					<td algn="center" width="20%">
 						
 					</td>
 					<td algn="center" width="20%">
-						<a id="pulrefresh" href="#"><div class="pulsanterefresh"></div></a>
+						<a id="pulrefresh" href="#"><div width='50px' class="pulsanterefresh"></div></a>
 					</td>
 					<td algn="left" width="20%">
 						
@@ -1988,10 +1708,10 @@
 		
 		<div id="page5" data-role="page" class="div2" >
 			
-			<table width="98%" height="52px" border="0" valign="center" align="center" class="div3">
+			<table width="100%" border="0" valign="center" align="center" class="div3">
 				<tr>
 					<td width="100%" align="center">
-						<img src="img/logoermes.png" width="300px">
+						<img src="img/logoermes.png" width="100%">
 							</td>
 				</tr>
 				
@@ -2040,36 +1760,36 @@
 			</div>
 			
 			
-	<table width="100%" border="0" align="center" valign="center" class="div5">
-			<tr>
-				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-			</tr>
-		</table>
+			<table width="100%" border="0" align="center" valign="center" class="div5">
+				<tr>
+					<td algn="center" width="20%" align="center">
+						<div class="pulsante11"></div>
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+				</tr>
+			</table>
 			
 			<table width="100%" border="0" align="center" valign="center" class="div55">
 				<tr>
 					<td algn="center" width="20%">
-						<a id="quartos" href="#"><div class="pulsanteback"></div></a>
+						<a id="quartos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
 					<td algn="center" width="20%">
 						
 					</td>
 					<td algn="center" width="20%">
-						<a id="pulsms" href="#"><div class="pulsantereply"></div></a>
+						<a id="pulsms" href="#"><div width='50px' class="pulsantereply"></div></a>
 					</td>
 					<td algn="left" width="20%">
 						
@@ -2084,10 +1804,10 @@
 		
 		<div id="page6" data-role="page" class="div2" >
 			
-			<table width="98%" height="52px" border="0" valign="center" align="center" class="div3">
+			<table width="100%" border="0" valign="center" align="center" class="div3">
 				<tr>
 					<td width="100%" align="center">
-						<img src="img/logoermes.png" width="300px">
+						<img src="img/logoermes.png" width="100%">
 							</td>
 				</tr>
 				
@@ -2096,14 +1816,6 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper6">
 				<div id="scroller">
-					
-					<table width="100%" height="24px" border="0" valign="center" align="center" >
-						<tr>
-							<td width="100%" align="center">
-								
-							</td>
-						</tr>
-					</table>
 					
 					
 					<table width="98%" height="100%" border="0" valign="center" align="center" >
@@ -2114,7 +1826,7 @@
 						</tr>
 						<tr>
 							<td width="100%" align="center" colspan="2">
-								<font color="#042e72" size="4">Send My App</font
+								<font color="#042e72" size="4"><b>Send My App</b></font
 							</td>
 						</tr>
 						<tr>
@@ -2129,20 +1841,20 @@
 						</tr>
 						<tr>
 							<td width="100%" align="center" colspan="2">
-								<font color="#042e72" size="5">Digital Business Card</font>
+								<font color="#042e72" size="5"><b>Digital Business Card</b></font>
 							</td>
 						</tr>
 						<tr>
 							<td width="100%" colspan="2">&nbsp;
-								
+								<br>
 							</td>
 						</tr>
 						<tr>
 							<td width="50%" align="center">
-								<a href="javascript:mandasms()"><img src="img/sms.png" width="100px"></a>
+								<a href="javascript:mandasms()"><img src="img/sms.png" width="66%"></a>
 							</td>
 							<td width="50%" align="center">
-								<a href="javascript:aprimail()"><img src="img/email.png" width="100px"></a>
+								<a href="javascript:aprimail()"><img src="img/email.png" width="66%"></a>
 							</td>
 						</tr>
 						<tr>
@@ -2152,7 +1864,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" width="100%" align="center">&nbsp;
-								<img src="img/d_putignano.jpg" width="100px">
+								<img src="img/d_putignano.jpg" width="33%">
 							</td>
 						</tr>
 					</table>
@@ -2162,30 +1874,30 @@
 			</div>
 			
 			
-	<table width="100%" border="0" align="center" valign="center" class="div5">
-			<tr>
-				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-				<td algn="center" width="20%" align="center">
-					
-				</td>
-			</tr>
-		</table>
+			<table width="100%" border="0" align="center" valign="center" class="div5">
+				<tr>
+					<td algn="center" width="20%" align="center">
+						<div class="pulsante11"></div>
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+					<td algn="center" width="20%" align="center">
+						
+					</td>
+				</tr>
+			</table>
 			
 			<table width="100%" border="0" align="center" valign="center" class="div55">
 				<tr>
 					<td algn="center" width="20%">
-						<a id="quintos" href="#"><div class="pulsanteback"></div></a>
+						<a id="quintos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
 					<td algn="center" width="20%">
 						
@@ -2203,13 +1915,13 @@
 			</table>
 			
 		</div>
-		
+
 		<div id="page7" data-role="page" class="div2" >
 			
-			<table width="98%" height="52px" border="0" valign="center" align="center" class="div3">
+			<table width="100%" border="0" valign="center" align="center" class="div3">
 				<tr>
 					<td width="100%" align="center">
-						<img src="img/logoermes.png" width="300px">
+						<img src="img/logoermes.png" width="100%">
 							</td>
 				</tr>
 				
@@ -2219,28 +1931,30 @@
 			<div id="wrapper7">
 				<div id="scroller">
 					
-					<table width="100%" height="24px" border="0" valign="center" align="center" >
-						<tr>
-							<td width="100%" align="center">
-								
-							</td>
-						</tr>
-					</table>
-					
 					<table width="90%" height="100%" border="0" valign="center" align="center" >
 						<tr>
 							<td width="100%">
-								<font ><font color="#042e72"><b>Soluzioni e Tecnologie per il vostro business</b></font></font>
+								<div id="testoTitolo3" class="visione2"><b>Soluzioni e Tecnologie per il vostro business</b><br><br></div>
 							</td>
 						</tr>
 						<tr>
 							<td width="90%" align="justify" colspan="2">
-								<font><div>L’ultimo progetto di sviluppo di Ermes Italia riguarda il settore Mobile, strumento strategico per comunicare non solo tramite la voce ma soprattutto attraverso App-licazioni che ci permettono  di essere i primi a Promuovere, Pubblicare, Diffondere, Comunicare la Vostra Immagine il vostro Brand la vostra offerta di prodotti/servizi.<br><br>
+								<div id="testo3" class="visione">L’ultimo progetto di sviluppo di Ermes Italia riguarda il settore Mobile, strumento strategico per comunicare non solo tramite la voce ma soprattutto attraverso App-licazioni che ci permettono  di essere i primi a Promuovere, Pubblicare, Diffondere, Comunicare la Vostra Immagine il vostro Brand la vostra offerta di prodotti/servizi.<br><br>
 										Tale progetto si chiama IBA – Interactive Business App – un sistema innovativo di personalizzazione del profilo di qualsiasi attività, professione o azienda.<br><br> E’ indicato per piccole, medie e grandi imprese, per artigiani e professionisti, attività commerciali, settore sportivo e ricreativo, ristorazione e alberghi è per tutti coloro che vogliono e cercano un modo nuovo di comunicare rispetto ad altri, per uscire dal mucchio ed essere presenti sul display più consultato al mondo, quello dello Smartphone e Tablet.<br><br>
 										
-										Ermes Italia si occupa anche di Business Intelligence a supporto della Governance Integrata.<br><br> L’offerta si compone di una serie di attività di Consulenza Direzionale in ambito Process & Management ICT, Planning & Control, Audit & Compliance. Le soluzioni che proponiamo vanno dalla progettazione e realizzazione di modelli di sviluppo aziendali alle strategie di semplificazione per il miglioramento delle performance in ottica di protezione delle risorse, risparmio e riduzione dei costi, senza penalizzare e compromettere la qualità dell’ambiente,  della sicurezza sul lavoro e dei risultati attesi.&nbsp;</div></font>
+										Ermes Italia si occupa anche di Business Intelligence a supporto della Governance Integrata.<br><br> L’offerta si compone di una serie di attività di Consulenza Direzionale in ambito Process & Management ICT, Planning & Control, Audit & Compliance. Le soluzioni che proponiamo vanno dalla progettazione e realizzazione di modelli di sviluppo aziendali alle strategie di semplificazione per il miglioramento delle performance in ottica di protezione delle risorse, risparmio e riduzione dei costi, senza penalizzare e compromettere la qualità dell’ambiente,  della sicurezza sul lavoro e dei risultati attesi.&nbsp;<br><br></div>
 				
 				</td>
+				</tr>
+				<tr>
+					<td width="100%" colspan="2" align="center">
+						<font ><font color="blue">&nbsp;</font></font>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" colspan="2" align="center">
+						<font ><font color="blue">&nbsp;</font></font>
+					</td>
 				</tr>
 				<tr>
 					<td width="100%" colspan="2" align="center">
@@ -2256,7 +1970,7 @@
 			</div>
 		
 		
-	<table width="100%" border="0" align="center" valign="center" class="div5">
+		<table width="100%" border="0" align="center" valign="center" class="div5">
 			<tr>
 				<td algn="center" width="20%" align="center">
 					<div class="pulsante11"></div>
@@ -2278,16 +1992,19 @@
 		
 			<table width="100%" border="0" align="center" valign="center" class="div55">
 				<tr>
-					<td algn="center" width="25%">
+					<td algn="center" width="20%">
 						<a id="quintos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
-					<td algn="center" width="25%">
+					<td algn="center" width="20%">
 						
 					</td>
-					<td algn="center" width="25%">
+					<td algn="center" width="20%">
 						
 					</td>
-					<td algn="center" width="25%">
+					<td algn="center" width="20%">
+						
+					</td>
+					<td algn="center" width="20%">
 						
 					</td>
 				</tr>
@@ -2295,6 +2012,237 @@
 			
 		</div>
 
+<div id="page8" data-role="page" class="div2" >
+	
+	<table width="100%" border="0" valign="center" align="center" class="div3">
+		<tr>
+			<td width="100%" align="center">
+				<img src="img/logoermes.png" width="100%">
+					</td>
+		</tr>
+		
+	</table>
+	
+	<div class="spinner" id="spinner"></div>
+	<div id="wrapper8">
+		<div id="scroller">
+			
+			<table width="100%" height="24px" border="0" valign="center" align="center" >
+				<tr>
+					<td width="100%" align="center">
+						
+					</td>
+				</tr>
+			</table>
+			
+			<table width="100%" height="10%" border="0" valign="center" align="center" >
+			 <tr>
+			 <td width="100%" align="center">
+			 
+			 </td>
+			 </tr>
+			 </table>
+			 
+			 <table id="ciccio" height="100%" border="0" valign="center" align="center" class="div56">
+				 <tr>
+					 <td width="100%" colspan="2">&nbsp;
+						 
+					 </td>
+				 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="center">&nbsp;
+			 <font color="#FFF" size="3"><b>My Social Network</b></font>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 </tr>
+			 
+			 <tr>
+			 <td width="100%" colspan="2" align="center">
+			 <a href="javascript:aprifb()"><img src="img/social1.png" width="25%"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:apritw()"><img src="img/social4.png" width="25%"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:aprili()"><img src="img/social3.png" width="25%"></a>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 </table>
+			 <br><br>
+			 
+			 <br>
+			 <table id="contatto" width="90%" height="100%" border="0" valign="center" align="center">
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dindirizzo.png" height="25%"><font color="#7e7e7e" size="2"><b>Address</b></font>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="javascript:aprimappa()" class="visione"><font color="#042e72" size="3"><b>Via Zoe Fontana, 220 Roma</b></font></a>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="javascript:aprimappa()" class="visione"><img src="img/Piantina.png" width="300px"></a>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dtel.png" height="25%"><font color="#7e7e7e" size="2"><b>Phone</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="tel:+39064153215" class="visione"><font color="#042e72" size="3">+39 06 41531215</font></a>
+			 
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dcell.png" height="25%"><font color="#7e7e7e" size="2"><b>Mobile</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="tel:+393357540725" class="visione"><font color="#042e72" size="3">+39 335 7540725</font></a>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Demail.png" height="25%"><font color="#7e7e7e" size="2"><b>e-mail</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="javascript:aprimail()"><font color="#042e72" size="3">d.putignano@ermesitalia.it</font></a>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dinternet1.png" height="25%"><font color="#7e7e7e" size="2"><b>Web</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <font color="#042e72" size="3"><b>www.ermesitalia.it</b></font>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 
+			 
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			</table>
+
+		</div>
+		
+	</div>
+	
+	
+	<table width="100%" border="0" align="center" valign="center" class="div5">
+		<tr>
+			<td algn="center" width="20%" align="center">
+				<div class="pulsante11"></div>
+			</td>
+			<td algn="center" width="20%" align="center">
+				
+			</td>
+			<td algn="center" width="20%" align="center">
+				
+			</td>
+			<td algn="center" width="20%" align="center">
+				
+			</td>
+			<td algn="center" width="20%" align="center">
+				
+			</td>
+		</tr>
+	</table>
+	
+	<table width="100%" border="0" align="center" valign="center" class="div55">
+		<tr>
+			<td algn="center" width="20%">
+				<a id="ottavos" href="#"><div width='50px' class="pulsanteback"></div></a>
+			</td>
+			<td algn="center" width="20%">
+				
+			</td>
+			<td algn="center" width="20%">
+				
+			</td>
+			<td algn="center" width="20%">
+				
+			</td>
+			<td algn="center" width="20%">
+				
+			</td>
+		</tr>
+	</table>
+	
+</div>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script type="text/javascript">
+			app.initialize();
+			</script>
 
 	</body>
 </html>
