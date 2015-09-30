@@ -135,9 +135,9 @@ var app = {
 			carica3()
 		});
 		
-		$("#video").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/cf5PVgbrlCM?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
+		//$("#video").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/cf5PVgbrlCM?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
 		
-		$("#video2").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/Hl10lNEVBrU?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
+		//$("#video2").html("<iframe width='220' height='130' src='http://www.youtube.com/embed/Hl10lNEVBrU?feature=player_embedded' frameborder='0' allowfullscreen></iframe>");
 		
 
 		var connectionStatus = false;
@@ -153,15 +153,15 @@ var app = {
 			setTimeout (function(){
 						
 						PushbotsPlugin.getToken(function(token){
-												
-												/*navigator.notification.alert(
-																			 token,  // message
+							
+							localStorage.setItem("Token", token);
+							
+							navigator.notification.alert(
+																			 localStorage.getItem("Token"),  // message
 																			 alertDismissed,         // callback
-																			 'Attenzione',            // title
+																			 'Token',            // title
 																			 'Done'                  // buttonName
-																			 );*/
-												
-							localStorage.setItem("Token", token);							 
+																			 );
 												
 							regToken()
 												
@@ -503,7 +503,13 @@ function provino2(id) {
 
 function checkpush() {
 	
-			
+		navigator.notification.alert(
+		"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",  // message
+		alertDismissed,         // callback
+		'checkpush',            // title
+		 'Done'                  // buttonName
+		);
+	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
@@ -534,7 +540,6 @@ function checkpush() {
 		   },
 		   error: function(jqxhr,textStatus,errorThrown){
 		
-					
 		   //alert(ts.responseText)
 		   
 		   $(".spinner").hide();
@@ -556,6 +561,13 @@ function checkpush() {
 function regToken() {
 	var ciccio;
 	var conta = 1;
+	
+	navigator.notification.alert(
+																			 "http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/iiyWJvGB2pvCv4jKCAsTIWIWzhmllX1DwXn1y3CAt8dYcwIP7/"+ localStorage.getItem("Token") +"",  // message
+																			 alertDismissed,         // callback
+																			 'regToken',            // title
+																			 'Done'                  // buttonName
+																			 );
 	
 	$(".spinner").show();
 	$.ajax({
@@ -582,8 +594,6 @@ function regToken() {
 										'Error',            // title
 										'OK'                  // buttonName
 										);
-		   
-		   window.location.href = "#article4";
 		   
 		   },
 		   dataType:"json"});
