@@ -37,6 +37,10 @@ var app = {
 
 		//IPAD CHANGE
 		if(screen.width < 768){
+
+            $("#video").attr("width", "220px");
+            $("#video2").attr("width", "220px");
+
 			if(screen.height > 568){
 				$("#copertina").attr("height", "60%");
 				$("#testoTitolo").attr("class", "visione2DROID");
@@ -45,6 +49,12 @@ var app = {
 				$("#Nome").attr("class", "visione3DROID");
 				$("#titolo").attr("class", "visione4DROID");
 				$("#spazioipad").show();
+                $("#spazioipad3").show();
+			    $("#spazioipad4").show();
+			    $("#spazioipad5").show();
+			    $("#spazioipad6").show();
+			    $("#spazioipad7").show();
+			    $("#spazioipad8").show();
 			}
 
 		}
@@ -57,9 +67,38 @@ var app = {
 			$("#testoCentrale").attr("class", "visione3IPAD");
 			$("#Nome").attr("class", "visione3IPAD");
 			$("#titolo").attr("class", "visione4IPAD");
+			$("#titolov1").attr("class", "visione4IPAD");
+			$("#titolov2").attr("class", "visione4IPAD");
 			$("#copertina").attr("height", "100%");
 			$("#pallina").attr("width", "46px");
 			$("#spazioipad").show();
+			$("#spazioipad3").show();
+			$("#spazioipad4").show();
+			$("#spazioipad5").show();
+			$("#spazioipad6").show();
+			$("#spazioipad7").show();
+			$("#spazioipad8").show();
+			
+			$("#sendapp").attr("class", "visione3IPAD");
+			$("#scegli").attr("class", "visioneIPAD0");
+			$("#digital").attr("class", "visione3IPAD");
+			
+			$("#indirizzotext").attr("class", "visioneIPAD");
+			$("#indirizzoV").attr("class", "visione2IPAD");
+			$("#phonetext").attr("class", "visioneIPAD");
+			$("#phoneV").attr("class", "visione2IPAD");
+			$("#mobiletext").attr("class", "visioneIPAD");
+			$("#mobileV").attr("class", "visione2IPAD");
+			$("#emailtext").attr("class", "visioneIPAD");
+			$("#emailV").attr("class", "visione2IPAD");
+			$("#webtext").attr("class", "visioneIPAD");
+			$("#webV").attr("class", "visione2IPAD");
+
+            $("#video").attr("width", "460px");
+            $("#video2").attr("width", "460px");
+
+            initscroll()
+
 		}
 		
 
@@ -114,7 +153,7 @@ var app = {
 		
 		$(document).on("touchend", "#quartos", function(e){
 			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
-			carica3()
+			//carica3()
 		});
 		
 		$(document).on("touchend", "#quintos", function(e){
@@ -235,11 +274,17 @@ function alertDismissed() {
 
 function initscroll() {
 	
-	myScroll = new IScroll('#wrapper', { click: true });
-				   
-	document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-				   
-	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+myScroll = new iScroll('wrapper', {
+				zoom: true,
+				click: true,
+				hScrollbar: false, 
+				vScrollbar: false,
+				zoomMin:1,
+				zoomMax:2,
+				zoomStart:1
+});
+
+myScroll.scrollTo(0,0);
 
 }
 
@@ -261,10 +306,13 @@ function carica() {
 					var myScroll2;
 					
 					myScroll2 = new iScroll('wrapper2', {
-											zoom: true,
-											click: true,
-											zoomMin:1,
-											zoomMax:2
+												zoom: true,
+												click: true,
+												hScrollbar: false, 
+												vScrollbar: false,
+												zoomMin:1,
+												zoomMax:2,
+												zoomStart:1
 											});
 					setTimeout (function(){
 						
@@ -342,13 +390,13 @@ function carica5(id) {
 
 }
 
-
-
 function provino() {
 	var ciccio;
 	var conta = 1;
+	localStorage.setItem("controllo", "1");
 	
 	var contenuto = ""
+	//alert("1");
 
 	$(".spinner").show();
 	$.ajax({
@@ -367,12 +415,23 @@ function provino() {
 				  //OK
 				  
 				  if(item.is_read==false){
-					contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><font size='3' color='#042e72'>"+ item.activated_at +" - "+ item.expire_on +" </font></td></tr><tr><td width='100%' colspan='2' valign='center'><font size='3'>"+ item.title +"</font> </td></tr></table></td><td width='120' align='center' valign='center'><img src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  
+					if(screen.width < 768){
+					    contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visione'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visione'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='noletto' src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
+				  else{
+					 contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visioneIPAD'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visioneIPAD'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='noletto' src='img/notRead.png' width='80px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
 				  
 					//ciccio = item.image_tag;
 				  }
 				  else{
-					contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><font size='3' color='#042e72'>"+ item.activated_at +" - "+ item.expire_on +" </font></td></tr><tr><td width='100%' colspan='2' valign='center'><font size='3'>"+ item.title +"</font> </td></tr></table></td><td width='120' align='center' valign='center'><img src='img/read.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+					if(screen.width < 768){
+					   contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visione'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visione'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='letto' src='img/read.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
+				  else{
+					contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visioneIPAD'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visioneIPAD'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='letto' src='img/read.png' width='80px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
 				  
 					//ciccio = ciccio + item.image_tag;
 				  }
@@ -386,7 +445,14 @@ function provino() {
 				  //self.document.formia2.emailL.value = localStorage.getItem("emailMemoria");
 				  //window.location.href = "#article4";
 				  
-					contenuto = contenuto + "<tr title='http://path/to/download'><td width='220' align='center'><table width='100%' align='left' valign='center'><tr><td width='95%'>&nbsp;</td><td width='5%'></td></tr><tr><td width='100%' align='left' colspan='2' valign='center'><font size='3' color='#042e72'>Nessuna Notifica</font></td></tr><tr><td width='100%' colspan='2' valign='center'><font size='3'> </font> </td></tr></table></td><td width='120' align='center' valign='center'><img src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  if(screen.width < 768){
+				  contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visione'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visione'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='noletto' src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
+				  else{
+					 contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visioneIPAD'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visioneIPAD'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='noletto' src='img/notRead.png' width='80px'></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
+
+				  
 			}
 				  
 		   });
@@ -396,12 +462,23 @@ function provino() {
 		   $(".spinner").hide();
 		   
 		   $("tr").click(function(event) {
+						 
 				if(event.target.nodeName != "A"){
 					if ($(this).attr("title") === null || typeof($(this).attr("title")) == 'undefined' || $(this).attr("title")==0){
 				}
 					else{
+						 
+						 if(localStorage.getItem("controllo") == "1"){
+						 
 						 $.mobile.changePage( "#page5", { transition: "slide", changeHash: false });
+
 						 carica5($(this).attr("title"))
+						 e.stopImmediatePropagation();
+						 e.preventDefault();
+						 return false;
+						 
+						 }
+
 					}
 				}
 			});
@@ -423,7 +500,7 @@ function provino() {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet nelle push, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -437,6 +514,8 @@ function provino() {
 function provino2(id) {
 	var ciccio;
 	var conta = 1;
+	localStorage.setItem("controllo", "2");
+	//alert("2")
 	
 	var contenuto2 = ""
 	
@@ -452,8 +531,13 @@ function provino2(id) {
 		   success:function(result){
 
 				  if (result.company_id!=0){
-					contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'><font size='3' color='#042e72'><b>"+ result.activated_at +" - "+ result.expire_on +"</b></font></td></tr><tr><td width='100%' colspan='2' align='center'><font size='3' color='#000'><b>"+ result.title +"</b></font></td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'>"+ result.description +"</td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ result.image_tag +"' width='90%'></td></tr></table>"
-				  
+			        if(screen.width < 768){
+					contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'><font size='3' color='#042e72'><b>"+ result.activated_at +" - "+ result.expire_on +"</b></font></td></tr><tr><td width='100%' colspan='2' align='center'><font size='3' color='#000'><b>"+ result.title +"</b></font></td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'>"+ result.description +"</td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ result.image_tag +"' width='90%'></td></tr><tr><td></td></tr><tr><td></td></tr></table>"
+		            }
+		   else{
+			contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'><div id='datepush' class='visioneIPAD'><b>"+ result.activated_at +" - "+ result.expire_on +"</b></div></td></tr><tr><td width='100%' colspan='2' align='center'><div id='datepush' class='visione2IPAD'><b>"+ result.title +"</b></div></td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'><div id='datepush' class='visioneIPAD'>"+ result.description +"</div></td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ result.image_tag +"' width='90%'></td></tr><tr><td></td></tr><tr><td></td></tr></table>"
+		   }
+		   
 					conta = conta + 1;
 				  
 				  }
@@ -476,6 +560,10 @@ function provino2(id) {
 		   setTimeout (function(){
 				$(".spinner").hide();
 				myScroll5.refresh();
+				
+					   e.stopImmediatePropagation();
+					   e.preventDefault();
+					   return false;
 			}, 700);
 		   
 		   
@@ -490,7 +578,7 @@ function provino2(id) {
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet nelle push2, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
 										'Error',            // title
 										'OK'                  // buttonName
@@ -500,6 +588,7 @@ function provino2(id) {
 		   },
 		   dataType:"json"});
 }
+
 
 function checkpush() {
 	
@@ -549,7 +638,6 @@ function checkpush() {
 		   dataType:"json"});
 
 }
-
 
 function regToken() {
 	var ciccio;

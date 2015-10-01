@@ -1,10 +1,30 @@
 <!DOCTYPE html>
+<!--
+ Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+ 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations@
+ under the License.
+ -->
 <html>
 	<head>
 		<meta property="og:locale" content="en_US" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			
-			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=3.0">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=3.0">
 				
 				<link rel="stylesheet" type="text/css" href="css/index.css" />
 				<link rel="stylesheet" href="font.css">
@@ -31,12 +51,12 @@
 								myScroll = new iScroll('wrapper', {
 									zoom: true,
 									click: true,
-									hScrollbar: false, 
-									vScrollbar: false,
 									zoomMin:1,
-									zoomMax:2,
-									zoomStart:1
+									zoomMax:2
 								});
+								setTimeout (function(){
+									myScroll.refresh();
+								}, 700);
 							}
 						
 						document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
@@ -314,7 +334,6 @@
 						
 						.ui-mobile, .ui-mobile .ui-page, .ui-mobile [data-role="page"],
 						.ui-mobile [data-role="dialog"], .ui-page, .ui-mobile .ui-page-active {
-							height: 100%;
 							overflow: hidden;
 							-webkit-backface-visibility: hidden;
 						}
@@ -387,7 +406,7 @@
 						}
 						.div5 {
 							background-color: #000;
-							position: absolute;
+							position: fixed;
 							z-index: 19;
 							bottom: 0;
 							left: 0;
@@ -405,7 +424,7 @@
 						}
 						
 						.div55 {
-							position: absolute;
+							position: fixed;
 							z-index: 20;
 							bottom: 0;
 							left: 0;
@@ -1220,8 +1239,8 @@
 							color: #000;
 						}
 						
-						.visioneIPAD0 {
-							font-size:16px;
+						.visioneDROID {
+							font-size:14px;
 							text-decoration: none;
 							text-shadow:0 0 0;
 							color: #000;
@@ -1241,6 +1260,13 @@
 							color: #042e72;
 						}
 						
+						.visione2DROID {
+							font-size:14px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #042e72;
+						}
+						
 						.visione3 {
 							font-size:15px;
 							text-decoration: none;
@@ -1253,6 +1279,14 @@
 							text-shadow:0 0 0;
 							color: #042e72;
 						}
+						
+						.visione3DROID {
+							font-size:18px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #042e72;
+						}
+						
 						.visione4 {
 							font-size:15px;
 							text-decoration: none;
@@ -1261,6 +1295,13 @@
 						}
 						.visione4IPAD {
 							font-size:30px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: red;
+						}
+						
+						.visione4DROID {
+							font-size:18px;
 							text-decoration: none;
 							text-shadow:0 0 0;
 							color: red;
@@ -1289,7 +1330,7 @@
 				
 				<table width="98%" border="0" valign="center" align="center" >
 					<tr>
-						<td width="95%" align="center">
+						<td width="95%">
 							<div id="testoTitolo" class="visione2"><b>Soluzioni e Tecnologie per il vostro business</b></div>
 						</td>
 						<td width="5%">
@@ -1416,16 +1457,16 @@
 					<div class="pulsante11"></div>
 				</td>
 				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
+					
 				</td>
 				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
+					
 				</td>
 				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
+					
 				</td>
 				<td algn="center" width="20%" align="center">
-					<div class="pulsante11"></div>
+					
 				</td>
 			</tr>
 		</table>
@@ -1437,6 +1478,7 @@
 				</td>
 				<td algn="center" width="20%" align="center">
 					<a id="secondo" href="#"><div class="pulsante2"></div></a>
+					<!--<a href="#page3" onclick="carica2()" data-transition="slide"><img src="img/video.png" width="60">-->
 				</td>
 				<td algn="center" width="20%" align="center">
 					<a id="terzo" href="#"><div id="pushbutton" width='100%' class="pulsante3"></div></a>
@@ -1451,6 +1493,8 @@
 		</table>
 		
 		</div>
+		
+		<!--<a href="#" data-rel="back" data-transition="slide" data-direction="reverse" >Close</a>-->
 		
 		<div id="page2" data-role="page" class="div2" >
 			
@@ -1471,7 +1515,6 @@
 				</div>
 				
 			</div>
-			
 			
 			<table width="100%" border="0" align="center" valign="center" class="div5" data-position="fixed" data-tap-toggle="false">
 				<tr>
@@ -1529,7 +1572,6 @@
 			
 			<div id="wrapper3">
 				<div id="scroller">
-					<table id="spazioipad3" style="display: none;" height="20px"><tr><td></td></tr></table>
 					
 					<table width="100%" height="24px" border="0" valign="center" align="center" >
 						<tr>
@@ -1543,12 +1585,11 @@
 					<table width="98%" height="100%" border="0" valign="center" align="center" >
 						<tr>
 							<td width="100%" align="center">
-								<div id="titolov1" class="visione4"><b>Presentazione Aziendale</b></font></div>
+								<font color="#042e72" size="3"><b>Presentazione Aziendale</b></font></font>
 							</td>
 						</tr>
 						<tr>
 							<td width="100%" align="center">
-								<!--<div id="video"><div>-->
 								<a href="javascript:aprivideo1()"><img src="http://www.pokeranswer.it/img/video1.png" width="240px" data-rel="external"></a>
 							</td>
 						</tr>
@@ -1564,12 +1605,11 @@
 						</tr>
 						<tr>
 							<td width="100%" align="center">
-								<div id="titolov2" class="visione4"><b>BNI - Referall Marketing</b></font></div>
+								<font color="#042e72" size="3"><b>BNI - Referall Marketing</b></font></font>
 							</td>
 						</tr>
 						<tr>
 							<td width="100%" align="center">
-								<!--<div id="video2"><div>-->
 								<a href="javascript:aprivideo2()"><img src="http://www.pokeranswer.it/img/video2.png" width="240px" data-rel="external"></a>
 							</td>
 						</tr>
@@ -1653,7 +1693,6 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper4">
 				<div id="scroller">
-					<table id="spazioipad4" style="display: none;" height="20px"><tr><td></td></tr></table>
 					
 					<table width="100%" height="24px" border="0" valign="center" align="center" >
 						<tr>
@@ -1667,14 +1706,6 @@
 					<table width="98%" height="100%" border="1" valign="center" align="center" class="div8">
 						<div id="contenuto"></div>
 
-					</table>
-
-                    <table width="100%" height="52px" border="0" valign="center" align="center" >
-						<tr>
-							<td width="100%" align="center">
-								
-							</td>
-						</tr>
 					</table>
 					
 				</div>
@@ -1763,7 +1794,6 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper5">
 				<div id="scroller">
-					<table id="spazioipad5" style="display: none;" height="20px"><tr><td></td></tr></table>
 					
 					<table width="100%" height="24px" border="0" valign="center" align="center" >
 						<tr>
@@ -1802,7 +1832,7 @@
 			<table width="100%" border="0" align="center" valign="center" class="div55">
 				<tr>
 					<td algn="center" width="20%">
-						<a id="quartos44" href="#"><div width='50px' class="pulsanteback"></div></a>
+						<a id="quartos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
 					<td algn="center" width="20%">
 						
@@ -1835,7 +1865,7 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper6">
 				<div id="scroller">
-					<table id="spazioipad6" style="display: none;" height="20px"><tr><td></td></tr></table>
+					
 					
 					<table width="98%" height="100%" border="0" valign="center" align="center" >
 						<tr>
@@ -1845,7 +1875,7 @@
 						</tr>
 						<tr>
 							<td width="100%" align="center" colspan="2">
-								<div id="sendapp" class="visione3"><b>Send My App</b></div>
+								<font color="#042e72" size="4"><b>Send My App</b></font
 							</td>
 						</tr>
 						<tr>
@@ -1855,12 +1885,12 @@
 						</tr>
 						<tr>
 							<td width="100%" align="center" colspan="2">
-								<div id="scegli" class="visione">scegli come inviare la tua</font>
+								<font color="#000" size="2">scegli come inviare la tua</font>
 							</td>
 						</tr>
 						<tr>
 							<td width="100%" align="center" colspan="2">
-								<div id="digital" class="visione3"><b>Digital Business Card</b></div>
+								<font color="#042e72" size="5"><b>Digital Business Card</b></font>
 							</td>
 						</tr>
 						<tr>
@@ -1934,7 +1964,7 @@
 			</table>
 			
 		</div>
-		
+
 		<div id="page7" data-role="page" class="div2" >
 			
 			<table width="100%" border="0" valign="center" align="center" class="div3">
@@ -1949,7 +1979,6 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper7">
 				<div id="scroller">
-					<table id="spazioipad7" style="display: none;" height="20px"><tr><td></td></tr></table>
 					
 					<table width="90%" height="100%" border="0" valign="center" align="center" >
 						<tr>
@@ -1971,16 +2000,18 @@
 						<font ><font color="blue">&nbsp;</font></font>
 					</td>
 				</tr>
+				<tr>
+					<td width="100%" colspan="2" align="center">
+						<font ><font color="blue">&nbsp;</font></font>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" colspan="2" align="center">
+						<font ><font color="blue">&nbsp;</font></font>
+					</td>
+				</tr>
 			
 				</table>
-
-                    <table width="100%" height="24px" border="0" valign="center" align="center" >
-						<tr>
-							<td width="100%" align="center">
-								
-							</td>
-						</tr>
-					</table>
 
 
 				</div>
@@ -2044,7 +2075,6 @@
 	<div class="spinner" id="spinner"></div>
 	<div id="wrapper8">
 		<div id="scroller">
-			<table id="spazioipad8" style="display: none;" height="20px"><tr><td></td></tr></table>
 			
 			<table width="100%" height="24px" border="0" valign="center" align="center" >
 				<tr>
@@ -2096,124 +2126,119 @@
 			 
 			 <br>
 			 <table id="contatto" width="90%" height="100%" border="0" valign="center" align="center">
-				 <tr>
-					 <td width="10%" align="left" align="center">
-						 <img src="img/Dindirizzo.png" height="25%">
-							 </td>
-					 <td width="90%" align="left" valign="bottom">
-						 <div id="indirizzotext" class="visione2"><font color="#7e7e7e"><b>Address</b></font></div>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2" align="left">
-						 <a href="javascript:aprimappa()" class="visione2"><div id="indirizzoV" class="visione"><b>Via Zoe Fontana, 220 Roma</b></div></a>
-					 </td>
-					 
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2" align="left">
-						 <a href="javascript:aprimappa()" class="visione2"><img src="img/Piantina.png" width="90%"></a>
-					 </td>
-					 
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2"><br>&nbsp;<br>
-						 
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="10%" align="left" align="center">
-						 <img src="img/Dtel.png" height="25%">
-							 </td>
-					 <td width="90%" align="left" valign="bottom">
-				   <div id="phonetext" class="visione2"><font color="#7e7e7e"><b>Phone</b></font></div>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2" align="left">
-						 <a href="tel:+39064153215" class="visione2"><div id="phoneV" class="visione">+39 06 41531215</div></a>
-						 
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2"><br>&nbsp;<br>
-						 
-					 </td>
-					 
-				 </tr>
-				 <tr>
-					 <td width="10%" align="left" align="center">
-						 <img src="img/Dcell.png" height="25%">
-							 </td>
-					 <td width="90%" align="left" valign="bottom">
-						 <div id="mobiletext" class="visione2"><font color="#7e7e7e"><b>Mobile</b></font></div>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2" align="left">
-						 <a href="tel:+393357540725" class="visione2"><div id="mobileV" class="visione">+39 335 7540725</div></a>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2"><br>&nbsp;<br>
-						 
-					 </td>
-					 
-				 </tr>
-				 <tr>
-					 <td width="10%" align="left" align="center">
-						 <img src="img/Demail.png" height="25%">
-							 </td>
-					 <td width="90%" align="left" valign="bottom">
-						 <div id="emailtext" class="visione2"><font color="#7e7e7e"><b>e-mail</b></font></div>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2" align="left">
-						 <a href="javascript:aprimail()"><div id="emailV" class="visione2">d.putignano@ermesitalia.it</div></a>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2"><br>&nbsp;<br>
-						 
-					 </td>
-					 
-				 </tr>
-				 <tr>
-					 <td width="10%" align="left" align="center">
-						 <img src="img/Dinternet1.png" height="25%">
-							 </td>
-					 <td width="90%" align="left" valign="bottom">
-						 <div id="webtext" class="visione2"><font color="#7e7e7e"><b>Web</b></font></div>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2" align="left">
-						 <div id="webV" class="visione2"><b>www.ermesitalia.it</b></div>
-					 </td>
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2"><br>&nbsp;<br>
-						 
-					 </td>
-					 
-				 </tr>
-				 <tr>
-					 <td width="100%" colspan="2">&nbsp;
-						 
-					 </td>
-					 
-				 </tr>
-				 
-			 </table>
-
-            <table width="100%" height="24px" border="0" valign="center" align="center" >
-						<tr>
-							<td width="100%" align="center">
-								
-							</td>
-						</tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dindirizzo.png" height="25%"><font color="#7e7e7e" size="2"><b>Address</b></font>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="javascript:aprimappa()" class="visione"><font color="#042e72" size="3"><b>Via Zoe Fontana, 220 Roma</b></font></a>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="javascript:aprimappa()" class="visione"><img src="img/Piantina.png" width="300px"></a>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dtel.png" height="25%"><font color="#7e7e7e" size="2"><b>Phone</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="tel:+39064153215" class="visione"><font color="#042e72" size="3">+39 06 41531215</font></a>
+			 
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dcell.png" height="25%"><font color="#7e7e7e" size="2"><b>Mobile</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="tel:+393357540725" class="visione"><font color="#042e72" size="3">+39 335 7540725</font></a>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Demail.png" height="25%"><font color="#7e7e7e" size="2"><b>e-mail</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <a href="javascript:aprimail()"><font color="#042e72" size="3">d.putignano@ermesitalia.it</font></a>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <img src="img/Dinternet1.png" height="25%"><font color="#7e7e7e" size="2"><b>Web</b></font>
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2" align="left">
+			 <font color="#042e72" size="3"><b>www.ermesitalia.it</b></font>
+			 </td>
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 
+			 
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
+			 <tr>
+			 <td width="100%" colspan="2">&nbsp;
+			 
+			 </td>
+			 
+			 </tr>
 			</table>
+
 		</div>
 		
 	</div>

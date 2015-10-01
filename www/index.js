@@ -78,7 +78,8 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#sesto", function(e){
-		   myScroll.scrollTo(0,-440);
+		    $.mobile.changePage( "#page8", { transition: "slide", changeHash: false });
+			carica8();
 		});
 		
 		$(document).on("touchend", "#vedi", function(e){
@@ -104,7 +105,7 @@ var app = {
 		
 		$(document).on("touchend", "#quartos", function(e){
 			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
-			carica3()
+			//carica3()
 		});
 		
 		$(document).on("touchend", "#quintos", function(e){
