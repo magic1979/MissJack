@@ -132,7 +132,6 @@ var app = {
 		
 		$(document).on("touchend", "#terzo", function(e){
             e.preventDefault();
-            $("#contenuto").html("");
 			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false });
 			carica3()
 		});
@@ -170,7 +169,6 @@ var app = {
 		
 		$(document).on("touchend", "#quartos", function(e){
 			e.preventDefault();
-            $("#contenuto").html("");
             $.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
 			carica3()
 		});
@@ -370,10 +368,8 @@ function carica2() {
 
 function carica3() {
 
-	setTimeout (function(){
-        provino()
-    }, 1000);
-	
+    provino()
+
 }
 
 function carica4() {
@@ -409,9 +405,7 @@ function carica8() {
 function carica5(id) {
 	//alert(id)
 
-	setTimeout (function(){
-        provino2(id)
-    }, 1000);
+     provino2(id)
 
 }
 
@@ -494,9 +488,7 @@ function provino() {
 					else{
 						 
 						 if(localStorage.getItem("controllo") == "1"){
-
-                         $("#contenuto2").html("");
-						 
+		 
 						 $.mobile.changePage( "#page5", { transition: "slide", changeHash: false });
 
 						 carica5($(this).attr("title"))
@@ -536,6 +528,8 @@ function provino() {
 }
 
 function provino2(id) {
+    $("#contenuto2").html("");
+
 	var ciccio;
 	var conta = 1;
 	localStorage.setItem("controllo", "2");
