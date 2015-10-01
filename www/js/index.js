@@ -55,6 +55,21 @@ var app = {
 			    $("#spazioipad6").show();
 			    $("#spazioipad7").show();
 			    $("#spazioipad8").show();
+
+                $("#sendapp").attr("class", "visione3DROID");
+			    $("#scegli").attr("class", "visioneDROID0");
+			    $("#digital").attr("class", "visione3DROID");
+			
+			    $("#indirizzotext").attr("class", "visione2DROID");
+			    $("#indirizzoV").attr("class", "visione2DROID");
+			    $("#phonetext").attr("class", "visione2DROID");
+			    $("#phoneV").attr("class", "visione2DROID");
+			    $("#mobiletext").attr("class", "visione2DROID");
+			    $("#mobileV").attr("class", "visione2DROID");
+			    $("#emailtext").attr("class", "visione2DROID");
+			    $("#emailV").attr("class", "visione2DROID");
+			    $("#webtext").attr("class", "visione2DROID");
+			    $("#webV").attr("class", "visione2DROID");
 			}
 
 		}
@@ -152,8 +167,9 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#quartos", function(e){
-			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
-			//carica3()
+			e.preventDefault();
+            $.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
+			carica3()
 		});
 		
 		$(document).on("touchend", "#quintos", function(e){
@@ -473,9 +489,6 @@ function provino() {
 						 $.mobile.changePage( "#page5", { transition: "slide", changeHash: false });
 
 						 carica5($(this).attr("title"))
-						 e.stopImmediatePropagation();
-						 e.preventDefault();
-						 return false;
 						 
 						 }
 
@@ -560,10 +573,6 @@ function provino2(id) {
 		   setTimeout (function(){
 				$(".spinner").hide();
 				myScroll5.refresh();
-				
-					   e.stopImmediatePropagation();
-					   e.preventDefault();
-					   return false;
 			}, 700);
 		   
 		   
