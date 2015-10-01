@@ -131,6 +131,8 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#terzo", function(e){
+            e.preventDefault();
+            $("#contenuto").html("");
 			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false });
 			carica3()
 		});
@@ -168,6 +170,7 @@ var app = {
 		
 		$(document).on("touchend", "#quartos", function(e){
 			e.preventDefault();
+            $("#contenuto").html("");
             $.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
 			carica3()
 		});
@@ -366,7 +369,10 @@ function carica2() {
 }
 
 function carica3() {
-	provino()
+
+	setTimeout (function(){
+        provino()
+    }, 1000);
 	
 }
 
@@ -402,7 +408,10 @@ function carica8() {
 
 function carica5(id) {
 	//alert(id)
-	provino2(id)
+
+	setTimeout (function(){
+        provino2(id)
+    }, 1000);
 
 }
 
@@ -485,6 +494,8 @@ function provino() {
 					else{
 						 
 						 if(localStorage.getItem("controllo") == "1"){
+
+                         $("#contenuto2").html("");
 						 
 						 $.mobile.changePage( "#page5", { transition: "slide", changeHash: false });
 
