@@ -33,15 +33,15 @@ var app = {
 		
 		//var isPhone = screen.height < 800 || screen.width < 800;
 		
-		alert(screen.width);
-
+		var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
+		
+		alert(isMobileScreenWidth);
+		
+		//$(window).height()
+		
 		//IPAD CHANGE
-		if(screen.width < 800){
+		if(isMobileScreenWidth < 768){
 
-            $("#video").attr("width", "220px");
-            $("#video2").attr("width", "220px");
-
-			if(screen.height > 568){
 				$("#copertina").attr("height", "60%");
 				$("#testoTitolo").attr("class", "visione2DROID");
 				//$("#testo").attr("class", "visioneIPAD");
@@ -72,8 +72,6 @@ var app = {
 			    $("#webV").attr("class", "visione2DROID");
 				
 				initscroll()
-			}
-
 		}
 		else
 		{
@@ -788,10 +786,10 @@ function aprimappa () {
 	
 	var addressLongLat = '41.929622, 12.608878';
 	
-	var refff = window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_blank');
 	
 	refff.addEventListener('exit', function (event) {
-    	alert(event.type);
+    	//alert(event.type);
 		refff.close();
 	});
 	
@@ -803,7 +801,7 @@ function aprivideo1 () {
 	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank', 'location=yes');
 	
 	ref.addEventListener('exit', function (event) {
-    	alert(event.type);
+    	//alert(event.type);
 		ref.close();
 	});
 	
@@ -812,10 +810,10 @@ function aprivideo1 () {
 function aprivideo2 () {
 	
 	var id = "Hl10lNEVBrU";
-	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_self', 'location=yes');
+	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
 	
 	reff.addEventListener('exit', function (event) {
-    	alert(event.type);
+    	//alert(event.type);
 		reff.close();
 	});
 
