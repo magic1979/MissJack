@@ -35,18 +35,18 @@ var app = {
 		
 		var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
 			
-		alert("RATIO:" + window.devicePixelRatio);
+		//alert("RATIO:" + window.devicePixelRatio);
 		
 		//$(window).height()
 		
 		//IPAD CHANGE
 		if(isMobileScreenWidth < 768){
 			
-				alert("Phone:" + isMobileScreenWidth);
+				//alert("Phone:" + isMobileScreenWidth);
 
 				$("#copertina").attr("height", "60%");
 				$("#testoTitolo").attr("class", "visione2DROID");
-				//$("#testo").attr("class", "visioneIPAD");
+				$("#testo").attr("class", "visioneDROID");
 				$("#testoCentrale").attr("class", "visione3DROID");
 				$("#Nome").attr("class", "visione3DROID");
 				$("#titolo").attr("class", "visione4DROID");
@@ -77,7 +77,7 @@ var app = {
 		}
 		else
 		{
-			alert("Tablet:" + isMobileScreenWidth);
+			//alert("Tablet:" + isMobileScreenWidth);
 			
 			$("#testoTitolo").attr("class", "visione2IPAD");
 			$("#testo").attr("class", "visioneIPAD");
@@ -717,7 +717,9 @@ function chiudi5(){
 }
 
 function vedi () {
-	if(screen.width < 768){
+	var isMobileScreenWidth4 = (screen.width / window.devicePixelRatio)
+		
+	if(isMobileScreenWidth4 < 768){
 		//alert(screen.width);
 		//alert(screen.height);
 	}
