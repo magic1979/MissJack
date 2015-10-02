@@ -416,6 +416,8 @@ function provino() {
 	var conta = 1;
 	localStorage.setItem("controllo", "1");
 	
+	var isMobileScreenWidth2 = (screen.width / window.devicePixelRatio)
+	
 	var contenuto = ""
 	//alert("1");
 
@@ -437,7 +439,7 @@ function provino() {
 				  
 				  if(item.is_read==false){
 				  
-					if(screen.width < 768){
+					if(isMobileScreenWidth2 < 768){
 					    contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visione'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visione'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='noletto' src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
 				  }
 				  else{
@@ -447,7 +449,7 @@ function provino() {
 					//ciccio = item.image_tag;
 				  }
 				  else{
-					if(screen.width < 768){
+					if(isMobileScreenWidth2 < 768){
 					   contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visione'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visione'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='letto' src='img/read.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
 				  }
 				  else{
@@ -466,7 +468,7 @@ function provino() {
 				  //self.document.formia2.emailL.value = localStorage.getItem("emailMemoria");
 				  //window.location.href = "#article4";
 				  
-				  if(screen.width < 768){
+				  if(isMobileScreenWidth2 < 768){
 				  contenuto = contenuto + "<tr title='"+ item.event_id +"'><td width='90%' align='center'><table width='100%' align='left' valign='center'><tr><td width='100%' align='left' colspan='2' valign='center'><div id='datepush' class='visione'>"+ item.activated_at +" - "+ item.expire_on +" </div></td></tr><tr><td width='100%' colspan='2' valign='center'><div id='titolopush' class='visione'>"+ item.title +"</div> </td></tr></table></td><td width='120' align='center' valign='center'><img id='noletto' src='img/notRead.png' width='42px'></td></tr><tr><td colspan='2'><hr></td></tr>"
 				  }
 				  else{
@@ -537,6 +539,8 @@ function provino2(id) {
 	localStorage.setItem("controllo", "2");
 	//alert("2")
 	
+	var isMobileScreenWidth3 = (screen.width / window.devicePixelRatio)
+	
 	var contenuto2 = ""
 	
 	$(".spinner").show();
@@ -551,7 +555,7 @@ function provino2(id) {
 		   success:function(result){
 
 				  if (result.company_id!=0){
-			        if(screen.width < 768){
+			        if(isMobileScreenWidth3 < 768){
 					contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'><font size='3' color='#042e72'><b>"+ result.activated_at +" - "+ result.expire_on +"</b></font></td></tr><tr><td width='100%' colspan='2' align='center'><font size='3' color='#000'><b>"+ result.title +"</b></font></td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'>"+ result.description +"</td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ result.image_tag +"' width='90%'></td></tr><tr><td></td></tr><tr><td></td></tr></table>"
 		            }
 		   else{
