@@ -169,7 +169,7 @@ var app = {
 				$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
 				myScroll.scrollTo(0,0);
 				checkpush()
-			}, 500);
+			}, 300);
 
 		});
 		
@@ -802,7 +802,7 @@ function aprimappa () {
 	
 	var addressLongLat = '41.929622, 12.608878';
 	
-	var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_blank');
+	var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_system');
 	
 	refff.addEventListener('exit', function (event) {
 		
@@ -817,7 +817,7 @@ function aprimappa () {
 function aprivideo1 () {
 	
 	var id = "cf5PVgbrlCM";
-	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank');
+	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_system');
 	
 	ref.addEventListener('exit', function (event) {
 		
@@ -832,7 +832,7 @@ function aprivideo1 () {
 function aprivideo2 () {
 	
 	var id = "Hl10lNEVBrU";
-	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank');
+	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_system');
 	
 	reff.addEventListener('exit', function (event) {
 		
