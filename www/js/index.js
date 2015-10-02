@@ -34,13 +34,15 @@ var app = {
 		//var isPhone = screen.height < 800 || screen.width < 800;
 		
 		var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
-		
-		alert(isMobileScreenWidth);
+			
+		alert("RATIO:" + window.devicePixelRatio);
 		
 		//$(window).height()
 		
 		//IPAD CHANGE
 		if(isMobileScreenWidth < 768){
+			
+				alert("Phone:" + isMobileScreenWidth);
 
 				$("#copertina").attr("height", "60%");
 				$("#testoTitolo").attr("class", "visione2DROID");
@@ -75,7 +77,7 @@ var app = {
 		}
 		else
 		{
-			//alert(screen.width);
+			alert("Tablet:" + isMobileScreenWidth);
 			
 			$("#testoTitolo").attr("class", "visione2IPAD");
 			$("#testo").attr("class", "visioneIPAD");
