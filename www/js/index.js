@@ -793,23 +793,15 @@ function aprimappa () {
 function aprivideo1 () {
 	
 	var id = "cf5PVgbrlCM";
-	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank', 'location=yes');
-	
-	window.ref.addEventListener("exit", function () {
-    	ref.close();
-	});
+	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_system', 'location=yes');
 	
 }
 
 function aprivideo2 () {
 	
 	var id = "Hl10lNEVBrU";
-	var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
-	
-	ref.addEventListener("exit", function () {
-    	ref.close();
-	});
-	
+	var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_self', 'location=yes');
+
 }
 
 function aprivideo3 () {
@@ -817,8 +809,18 @@ function aprivideo3 () {
 	var id = "Hl10lNEVBrU";
 	var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
 	
-	window.addEventListener("exit", function () {
-    	window.close();
+	ref.addEventListener('loadstop', function (event) {
+    	alert(event.type);
+		if (event.url.match("mobile/close")) {
+			ref.close();
+		}
+	});
+	
+	ref.addEventListener('exit', function (event) {
+    	alert(event.type);
+		if (event.url.match("mobile/close")) {
+			ref.close();
+		}
 	});
 	
 }
