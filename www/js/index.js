@@ -118,7 +118,6 @@ var app = {
 
 		}
 		
-
 		var ciccio;
 		var token;
 		
@@ -164,12 +163,18 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#terzos", function(e){
-			$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
-			myScroll.scrollTo(0,0);
-			checkpush()
+			var contenuto = ""
+			
+			setTimeout (function(){
+				$.mobile.changePage( "#page", { transition: "slide", changeHash: false, reverse: true });
+				myScroll.scrollTo(0,0);
+				checkpush()
+			}, 500);
+
 		});
 		
 		$(document).on("touchend", "#quartos", function(e){
+				
 			e.preventDefault();
             $.mobile.changePage( "#page4", { transition: "slide", changeHash: false, reverse: true });
 			carica3()
@@ -612,6 +617,8 @@ function provino2(id) {
 
 function checkpush() {
 	
+	setTimeout (function(){
+	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
@@ -653,9 +660,10 @@ function checkpush() {
 										'OK'                  // buttonName
 										);
 		   
-		   
 		   },
 		   dataType:"json"});
+	   
+	   }, 500);
 
 }
 
@@ -797,8 +805,11 @@ function aprimappa () {
 	var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_blank');
 	
 	refff.addEventListener('exit', function (event) {
-    	//alert(event.type);
-		refff.close();
+		
+		setTimeout (function(){
+			refff.close();
+		}, 500);
+		
 	});
 	
 }
@@ -806,11 +817,14 @@ function aprimappa () {
 function aprivideo1 () {
 	
 	var id = "cf5PVgbrlCM";
-	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank', 'location=yes');
+	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank');
 	
 	ref.addEventListener('exit', function (event) {
-    	//alert(event.type);
-		ref.close();
+		
+		setTimeout (function(){
+			ref.close();
+		}, 500);
+		
 	});
 	
 }
@@ -818,11 +832,14 @@ function aprivideo1 () {
 function aprivideo2 () {
 	
 	var id = "Hl10lNEVBrU";
-	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
+	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank');
 	
 	reff.addEventListener('exit', function (event) {
-    	//alert(event.type);
-		reff.close();
+		
+		setTimeout (function(){
+			reff.close();
+		}, 500);
+		
 	});
 
 }
