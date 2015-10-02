@@ -33,10 +33,10 @@ var app = {
 		
 		//var isPhone = screen.height < 800 || screen.width < 800;
 		
-		//alert(screen.height);
+		alert(screen.width);
 
 		//IPAD CHANGE
-		if(screen.width < 768){
+		if(screen.width < 800){
 
             $("#video").attr("width", "220px");
             $("#video2").attr("width", "220px");
@@ -70,6 +70,8 @@ var app = {
 			    $("#emailV").attr("class", "visione2DROID");
 			    $("#webtext").attr("class", "visione2DROID");
 			    $("#webV").attr("class", "visione2DROID");
+				
+				initscroll()
 			}
 
 		}
@@ -786,43 +788,37 @@ function aprimappa () {
 	
 	var addressLongLat = '41.929622, 12.608878';
 	
-	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	var refff = window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	
+	refff.addEventListener('exit', function (event) {
+    	alert(event.type);
+		refff.close();
+	});
 	
 }
 
 function aprivideo1 () {
 	
 	var id = "cf5PVgbrlCM";
-	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_system', 'location=yes');
+	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_blank', 'location=yes');
+	
+	ref.addEventListener('exit', function (event) {
+    	alert(event.type);
+		ref.close();
+	});
 	
 }
 
 function aprivideo2 () {
 	
 	var id = "Hl10lNEVBrU";
-	var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_self', 'location=yes');
-
-}
-
-function aprivideo3 () {
+	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_self', 'location=yes');
 	
-	var id = "Hl10lNEVBrU";
-	var ref = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_blank', 'location=yes');
-	
-	ref.addEventListener('loadstop', function (event) {
+	reff.addEventListener('exit', function (event) {
     	alert(event.type);
-		if (event.url.match("mobile/close")) {
-			ref.close();
-		}
+		reff.close();
 	});
-	
-	ref.addEventListener('exit', function (event) {
-    	alert(event.type);
-		if (event.url.match("mobile/close")) {
-			ref.close();
-		}
-	});
-	
+
 }
 
 
