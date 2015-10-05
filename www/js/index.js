@@ -48,7 +48,7 @@ var app = {
 				$("#testoTitolo").attr("class", "visione2DROID");
 				$("#testo").attr("class", "visioneDROID");
 				$("#testoCentrale").attr("class", "visione3DROID");
-				$("#Nome").attr("class", "visione3DROID");
+				$("#Nome").attr("class", "visione3aDROID");
 				$("#titolo").attr("class", "visione4DROID");
 				$("#spazioipad").show();
                 $("#spazioipad3").show();
@@ -212,27 +212,27 @@ var app = {
 			
 			$(".spinner").hide();
 			
-			 //checkpush()
+			 checkpush()
 			//provino()
 			
-			setTimeout (function(){
+			/*setTimeout (function(){
 						
 						PushbotsPlugin.getToken(function(token){
 							
 							localStorage.setItem("Token", token);
 							
-							/*navigator.notification.alert(
+							navigator.notification.alert(
 																			 localStorage.getItem("Token"),  // message
 																			 alertDismissed,         // callback
 																			 'Token',            // title
 																			 'Done'                  // buttonName
-																			 );*/
+																			 );
 												
 							regToken()
 												
 						});
 						
-			}, 2000);
+			}, 2000);*/
 			
 			
 		}
@@ -330,7 +330,7 @@ function carica() {
 	$("#galleriaimg").html("<tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
 	
 	setTimeout (function(){
-				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig1.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig2.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig3.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig1.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig2.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig3.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
 				
 		
 		setTimeout (function(){
@@ -562,7 +562,7 @@ function provino2(id) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/"+ localStorage.getItem("Token") +"",
+		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/tokendiprova",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -633,7 +633,7 @@ function checkpush() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
+		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -689,6 +689,7 @@ function regToken() {
 		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
 		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
 		   //data: {token:localStorage.getItem("Token")},
+		   //j7qIDp2jpS1AmQRCHcvZ8fqOTRAFImtFMC2nQWLU6cCQhJ3iBn
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
 		   timeout: 7000,
