@@ -32,7 +32,7 @@ PokerParade sas
 		<preference name="android-minSdkVersion" value="11" />
 		<preference name="android-targetSdkVersion" value="11" />
 		<preference name="android-installLocation" value="auto" />
-		<preference name="SplashScreenDelay" value="10000" />
+		<preference name="SplashScreenDelay" value="5000" />
 		<preference name="SplashMaintainAspectRatio" value="true|false" />
 		<preference name="ErrorUrl" value="http://www.ermesitalia.it"/>
 		<preference name="BackgroundColor" value="#707070"/>
