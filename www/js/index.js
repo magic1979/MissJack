@@ -23,10 +23,10 @@ var app = {
     receivedEvent: function(id) {
 		
 		if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("55eef2521779597d478b456a");
+			PushbotsPlugin.initializeiOS("56124b6a177959a61f8b4569");
 		}
 		if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("55eef2521779597d478b456a", "316671979548");
+			PushbotsPlugin.initializeAndroid("56124b6a177959a61f8b4569", "832900999185");
 		}
 		
 		//PushbotsPlugin.resetBadge();
@@ -127,8 +127,9 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#secondo", function(e){
-			$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
-			carica2()
+			aprisms0()
+			//$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
+			//carica2()
 		});
 		
 		$(document).on("touchend", "#terzo", function(e){
@@ -211,27 +212,27 @@ var app = {
 			
 			$(".spinner").hide();
 			
-			 checkpush()
+			 //checkpush()
 			//provino()
 			
-			/*setTimeout (function(){
+			setTimeout (function(){
 						
 						PushbotsPlugin.getToken(function(token){
 							
 							localStorage.setItem("Token", token);
 							
-							navigator.notification.alert(
+							/*navigator.notification.alert(
 																			 localStorage.getItem("Token"),  // message
 																			 alertDismissed,         // callback
 																			 'Token',            // title
 																			 'Done'                  // buttonName
-																			 );
+																			 );*/
 												
 							regToken()
 												
 						});
 						
-			}, 2000);*/
+			}, 2000);
 			
 			
 		}
@@ -247,6 +248,16 @@ var app = {
 			$(".spinner").hide();
 			
 			$("#footer").show();*/
+				
+			$(".spinner").hide();
+			
+					   navigator.notification.alert(
+							'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+							alertDismissed,         // callback
+							'Connessione Internet',            // title
+							'OK'                  // buttonName
+						);
+				
 		}
     }
 	
@@ -323,7 +334,7 @@ function carica() {
 				
 		
 		setTimeout (function(){
-				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig4.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig5.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig6.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig7.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig8.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig9.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig10.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig4.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig5.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig6.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig7.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig8.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig9.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
 					
 					$(".spinner").hide();
 					
@@ -527,7 +538,7 @@ function provino() {
 		   navigator.notification.alert(
 										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
-										'Error',            // title
+										'Connessione Internet',            // title
 										'OK'                  // buttonName
 										);
 		   
@@ -551,7 +562,7 @@ function provino2(id) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -572,7 +583,7 @@ function provino2(id) {
 				  }
 				  else{
 				  
-				  contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'>Nessuna Notifica</td></tr><tr><td width='100%' colspan='2'>Titolo della notifica</td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'></td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'></td></tr></table>"
+				  contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'>Nessuna Notifica Presente.</td></tr><tr><td width='100%' colspan='2'>Titolo della notifica</td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'></td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'></td></tr></table>"
 				  }
 		   
 		   $("#contenuto2").html(contenuto2);
@@ -605,7 +616,7 @@ function provino2(id) {
 		   navigator.notification.alert(
 										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
-										'Error',            // title
+										'Connessione Internet',            // title
 										'OK'                  // buttonName
 										);
 		   
@@ -622,7 +633,7 @@ function checkpush() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -654,9 +665,9 @@ function checkpush() {
 		   $(".spinner").hide();
 		
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet nelle check push, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
-										'Error',            // title
+										'Connessione Internet',            // title
 										'OK'                  // buttonName
 										);
 		   
@@ -674,7 +685,7 @@ function regToken() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/iiyWJvGB2pvCv4jKCAsTIWIWzhmllX1DwXn1y3CAt8dYcwIP7/"+ localStorage.getItem("Token") +"",
+		   url:"http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/j7qIDp2jpS1AmQRCHcvZ8fqOTRAFImtFMC2nQWLU6cCQhJ3iBn/"+ localStorage.getItem("Token") +"",
 		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
 		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
 		   //data: {token:localStorage.getItem("Token")},
@@ -684,24 +695,23 @@ function regToken() {
 		   crossDomain: true,
 		   success:function(result){
 		   
-
-		   
 		   },
 		   error: function(){
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet nel reg token, Riprova Tra Qualche Minuto',  // message
-										alertDismissed,         // callback
-										'Error',            // title
-										'OK'                  // buttonName
-										);
+				'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+				alertDismissed,         // callback
+				'Connessione Internet',            // title
+				'OK'                  // buttonName
+			);
 		   
 		   },
 		   dataType:"json"});
 	   
-	   
-	   checkpush()
+	   setTimeout (function(){
+		checkpush()
+	   }, 1000);
 }
 
 function apri(){
@@ -714,6 +724,11 @@ function aprisms(){
 	$("#pippo5").show("slow");
 }
 
+function aprisms0(){
+	
+	$("#pippo0").show("slow");
+}
+
 function chiudi(){
 	
 	$("#pippo").hide( "slow" );
@@ -722,6 +737,11 @@ function chiudi(){
 function chiudi5(){
 	
 	$("#pippo5").hide("slow");
+}
+
+function chiudi0(){
+	
+	$("#pippo0").hide("slow");
 }
 
 function vedi () {
@@ -768,23 +788,23 @@ function NoVedi () {
 
 
 function aprifb () {
-	var ref = window.open('https://www.facebook.com/domenico.putignano.52', '_system', 'location=no');
+	var ref = window.open('https://www.facebook.com/', '_system', 'location=no');
 }
 
 function apritw () {
-	var ref = window.open('https://www.facebook.com/domenico.putignano.52', '_system', 'location=no');
+	var ref = window.open('https://twitter.com/TeSAvIT', '_system', 'location=no');
 }
 
 function aprili () {
-	var ref = window.open('https://www.facebook.com/domenico.putignano.52', '_system', 'location=no');
+	var ref = window.open('https://www.linkedin.com/company/tesav-s-r-l-?trk=biz-companies-cym', '_system', 'location=no');
 }
 
 function aprimail () {
 
 window.plugin.email.open({
-	to:      'max@mustermann.de',
-	subject: 'Greetings',
-	body:    '<h1>Nice greetings from Leipzig</h1>',
+	to:      'info@tesav.it',
+	subject: 'Contatto',
+	body:    '<h1>Il tuo messaggio.</h1>',
 	isHtml:  true
 });
 
@@ -795,12 +815,12 @@ function mandasms () {
 	
 	chiudi5()
 	
-	window.plugins.socialsharing.shareViaSMS("My cool message", "0612345678", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
+	window.plugins.socialsharing.shareViaSMS("Messaggio", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
 function aprimappa () {
 	
-	var addressLongLat = '41.929622, 12.608878';
+	var addressLongLat = '41.913721, 12.459551';
 	
 	var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_system');
 	
