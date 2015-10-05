@@ -212,27 +212,27 @@ var app = {
 			
 			$(".spinner").hide();
 			
-			 checkpush()
+			 //checkpush()
 			//provino()
 			
-			/*setTimeout (function(){
+			setTimeout (function(){
 						
 						PushbotsPlugin.getToken(function(token){
 							
 							localStorage.setItem("Token", token);
 							
-							navigator.notification.alert(
+							/*navigator.notification.alert(
 																			 localStorage.getItem("Token"),  // message
 																			 alertDismissed,         // callback
 																			 'Token',            // title
 																			 'Done'                  // buttonName
-																			 );
+																			 );*/
 												
 							regToken()
 												
 						});
 						
-			}, 2000);*/
+			}, 2000);
 			
 			
 		}
@@ -440,7 +440,7 @@ function provino() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -562,7 +562,7 @@ function provino2(id) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
@@ -633,7 +633,7 @@ function checkpush() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://interactivebusinessapp.it/event_list/tokendiprova",
+		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
 		   //data: {token:localStorage.getItem("Token")},
 		   contentType: "application/json; charset=utf-8",
 		   json: 'callback',
