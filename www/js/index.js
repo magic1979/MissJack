@@ -133,7 +133,7 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#terzo", function(e){
-            e.preventDefault();
+            //e.preventDefault();
 			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false });
 			carica3()
 		});
@@ -650,6 +650,10 @@ function checkpush() {
 					  $("#pushbutton").removeClass("pulsante3").addClass("pulsante3new");
 					  return false;
 					}
+					else
+					{
+					  $("#pushbutton").removeClass("pulsante3new").addClass("pulsante3");
+					}
 				  }
 			});
 
@@ -798,6 +802,10 @@ function apritw () {
 
 function aprili () {
 	var ref = window.open('https://www.linkedin.com/company/tesav-s-r-l-?trk=biz-companies-cym', '_system', 'location=no');
+}
+
+function apriweb () {
+	var ref = window.open('http://www.tesav.it/', '_system', 'location=no');
 }
 
 function aprimail () {
