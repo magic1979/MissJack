@@ -811,9 +811,9 @@ function apriweb () {
 function aprimail () {
 
 window.plugin.email.open({
-	to:      'info@tesav.it',
-	subject: 'Contatto',
-	body:    '<h1>Il tuo messaggio.</h1>',
+	to:      "info@tesav.it",
+	subject: "Contatto",
+	body:    "La Digital Bisiness Card IBA di 'TeSAv' è disponibile al link http://www.interactivebusinessapp.it/download/tesav",
 	isHtml:  true
 });
 
@@ -824,7 +824,7 @@ function mandasms () {
 	
 	chiudi5()
 	
-	window.plugins.socialsharing.shareViaSMS("Messaggio", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
+	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'TeSAv' è disponibile al link http://www.interactivebusinessapp.it/download/tesav", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
 function aprimappa () {
