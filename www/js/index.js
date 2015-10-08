@@ -79,9 +79,9 @@ var app = {
 		{
 			//alert("Tablet:" + isMobileScreenWidth);
 			
-			$("#testoTitolo").attr("class", "visione2IPAD");
+			$("#testoTitolo").attr("class", "visione2aIPAD");
 			$("#testo").attr("class", "visioneIPAD");
-			$("#testoCentrale").attr("class", "visione3IPAD");
+			$("#testoCentrale").attr("class", "visione3aIPAD");
 			$("#Nome").attr("class", "visione3IPAD");
 			$("#titolo").attr("class", "visione4IPAD");
 			$("#titolov1").attr("class", "visione4IPAD");
