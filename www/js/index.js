@@ -50,13 +50,13 @@ var app = {
 				$("#testoCentrale").attr("class", "visione3DROID");
 				$("#Nome").attr("class", "visione3aDROID");
 				$("#titolo").attr("class", "visione4DROID");
-				$("#spazioipad").show();
-                $("#spazioipad3").show();
-			    $("#spazioipad4").show();
-			    $("#spazioipad5").show();
-			    $("#spazioipad6").show();
-			    $("#spazioipad7").show();
-			    $("#spazioipad8").show();
+				$("#spaziodroid").show();
+                $("#spaziodroid3").show();
+			    $("#spaziodroid4").show();
+			    $("#spaziodroid5").show();
+			    $("#spaziodroid6").show();
+			    $("#spaziodroid7").show();
+			    $("#spaziodroid8").show();
 
                 $("#sendapp").attr("class", "visione3DROID");
 			    $("#scegli").attr("class", "visioneDROID0");
