@@ -220,14 +220,7 @@ var app = {
 						PushbotsPlugin.getToken(function(token){
 							
 							localStorage.setItem("Token", token);
-							
-							/*navigator.notification.alert(
-																			 localStorage.getItem("Token"),  // message
-																			 alertDismissed,         // callback
-																			 'Token',            // title
-																			 'Done'                  // buttonName
-																			 );*/
-												
+															
 							regToken()
 												
 						});
@@ -437,9 +430,9 @@ function provino() {
 	var contenuto = ""
 	//alert("1");
 	
-	setTimeout (function(){
-		$(".spinner").show();
-	}, 500);
+
+	$(".spinner").show();
+
 	
 	$.ajax({
 		   type:"GET",
@@ -562,9 +555,9 @@ function provino2(id) {
 	
 	var contenuto2 = ""
 	
-	setTimeout (function(){
-		$(".spinner").show();
-	}, 500);
+
+	$(".spinner").show();
+
 	
 	$.ajax({
 		   type:"GET",
@@ -639,11 +632,16 @@ function provino2(id) {
 
 function checkpush() {
 	
-	setTimeout (function(){
+	if (localStorage.getItem("Token") === null || typeof(localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token")=="") {
+		
+		return;
+	}
 	
 	setTimeout (function(){
-		$(".spinner").show();
-	}, 500);
+	
+
+	$(".spinner").show();
+
 	
 	$.ajax({
 		   type:"GET",
@@ -662,7 +660,7 @@ function checkpush() {
 				  
 					if(item.is_read==false){
 					  $("#pushbutton").removeClass("pulsante3").addClass("pulsante3new");
-					  return false;
+					  return;
 					}
 					else
 					{
@@ -677,13 +675,13 @@ function checkpush() {
 		   
 		   },
 		   error: function(jqxhr,textStatus,errorThrown){
-		
+			   
 		   //alert(ts.responseText)
 		   
 		   $(".spinner").hide();
 		
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet, Riprova Dopo ',  // message
 										alertDismissed,         // callback
 										'Connessione Internet',            // title
 										'OK'                  // buttonName
@@ -713,13 +711,15 @@ function regToken() {
 		   timeout: 7000,
 		   crossDomain: true,
 		   success:function(result){
-		   
+			 checkpush()
+			 $(".spinner").hide();
 		   },
 		   error: function(){
-		   $(".spinner").hide();
+			checkpush()
+			$(".spinner").hide();
 		   
 		   navigator.notification.alert(
-				'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+				'Nessuna Connessione Internet, Riprova In Pochi Minuti',  // message
 				alertDismissed,         // callback
 				'Connessione Internet',            // title
 				'OK'                  // buttonName
@@ -728,9 +728,6 @@ function regToken() {
 		   },
 		   dataType:"json"});
 	   
-	   setTimeout (function(){
-		checkpush()
-	   }, 1000);
 }
 
 function apri(){
@@ -914,5 +911,22 @@ function aprivideo2 () {
 
 }
 
+function scatta(){
+navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+destinationType: Camera.DestinationType.DATA_URL
+});
+}
+
+function onSuccess(imageData) {
+//alert(imageData);
+var image00 = document.getElementById('myImage');
+image00.src = "data:image/jpeg;base64," + imageData;
+//document.getElementById("demo").innerHTML = imageData;
+}
+
+function onFail(message) {
+alert('Failed because: ' + message);
+}
+}
 
 
