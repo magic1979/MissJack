@@ -58,9 +58,9 @@ var app = {
 			    $("#spaziodroid7").show();
 			    $("#spaziodroid8").show();
 
-                $("#sendapp").attr("class", "visione3DROID");
+                $("#sendapp").attr("class", "visione3aDROID");
 			    $("#scegli").attr("class", "visioneDROID0");
-			    $("#digital").attr("class", "visione3DROID");
+			    $("#digital").attr("class", "visione3aDROID");
 			
 			    $("#indirizzotext").attr("class", "visione2DROID");
 			    $("#indirizzoV").attr("class", "visione2DROID");
@@ -325,12 +325,12 @@ myScroll.scrollTo(0,0);
 
 function carica() {
 	
-	$(".spinner").show();
-	
 	$("#galleriaimg").html("<tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
 	
 	setTimeout (function(){
 				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig1.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig2.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig3.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+				
+			$(".spinner").show();
 				
 		
 		setTimeout (function(){
@@ -436,8 +436,11 @@ function provino() {
 	
 	var contenuto = ""
 	//alert("1");
-
-	$(".spinner").show();
+	
+	setTimeout (function(){
+		$(".spinner").show();
+	}, 500);
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
@@ -559,7 +562,10 @@ function provino2(id) {
 	
 	var contenuto2 = ""
 	
-	$(".spinner").show();
+	setTimeout (function(){
+		$(".spinner").show();
+	}, 500);
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/"+ localStorage.getItem("Token") +"",
@@ -571,6 +577,11 @@ function provino2(id) {
 		   success:function(result){
 
 				  if (result.company_id!=0){
+					  
+					 localStorage.setItem("contact", result.contact);
+					 localStorage.setItem("emailcontact", result.email);
+					 localStorage.setItem("phone", result.phone);
+					  
 			        if(isMobileScreenWidth3 < 768){
 					contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'><font size='3' color='#042e72'><b>"+ result.activated_at +" - "+ result.expire_on +"</b></font></td></tr><tr><td width='100%' colspan='2' align='center'><font size='3' color='#000'><b>"+ result.title +"</b></font></td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'>"+ result.description +"</td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ result.image_tag +"' width='90%'></td></tr><tr><td></td></tr><tr><td></td></tr></table>"
 		            }
@@ -630,7 +641,10 @@ function checkpush() {
 	
 	setTimeout (function(){
 	
-	$(".spinner").show();
+	setTimeout (function(){
+		$(".spinner").show();
+	}, 500);
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
@@ -817,14 +831,41 @@ window.plugin.email.open({
 	isHtml:  true
 });
 
+}
+
+function aprimail5 () {
+
+window.plugin.email.open({
+	to:      ""+ localStorage.getItem("contactemail") +"",
+	subject: "",
+	body:    "A,"+ localStorage.getItem("contact") +"",
+	isHtml:  true
+});
+
+}
+
+function aprimail0 () {
+
+window.plugin.email.open({
+	to:      "info@tesav.it",
+	subject: "info",
+	body:    "",
+	isHtml:  true
+});
+
 
 }
 
 function mandasms () {
 	
+	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'TeSAv' è disponibile al link http://www.interactivebusinessapp.it/download/tesav", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
+}
+
+function mandasms5 () {
+	
 	chiudi5()
 	
-	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'TeSAv' è disponibile al link http://www.interactivebusinessapp.it/download/tesav", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
+	window.plugins.socialsharing.shareViaSMS("A,"+ localStorage.getItem("contact") +"", ""+ localStorage.getItem("phone") +"", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
 function aprimappa () {
