@@ -824,7 +824,7 @@ function aprimail () {
 window.plugin.email.open({
 	to:      "info@tesav.it",
 	subject: "Contatto",
-	body:    "La Digital Bisiness Card IBA di 'TeSAv' è disponibile al link http://www.interactivebusinessapp.it/download/tesav",
+	body:    "La Digital Bisiness Card IBA di 'TeSAv' e' disponibile al link http://www.interactivebusinessapp.it/download/tesav",
 	isHtml:  true
 });
 
@@ -855,7 +855,7 @@ window.plugin.email.open({
 
 function mandasms () {
 	
-	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'TeSAv' è disponibile al link http://www.interactivebusinessapp.it/download/tesav", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
+	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'TeSAv' e' disponibile al link http://www.interactivebusinessapp.it/download/tesav", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
 function mandasms5 () {
@@ -922,6 +922,35 @@ function onSuccess(imageData) {
 var image00 = document.getElementById('myImage');
 image00.src = "data:image/jpeg;base64," + imageData;
 //document.getElementById("demo").innerHTML = imageData;
+
+$.ajax({
+		   type:"GET",
+		   url:"http://www.gtechplay.com/coiros/www/Check_TakePhoto.asp",
+		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
+		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
+		   data: {nome:imageData},
+		   //j7qIDp2jpS1AmQRCHcvZ8fqOTRAFImtFMC2nQWLU6cCQhJ3iBn
+		   contentType: "application/json; charset=utf-8",
+		   json: 'callback',
+		   timeout: 7000,
+		   crossDomain: true,
+		   success:function(result){
+			    $.each(result, function(i,item){
+				  alert(item.Token)
+				});
+			},
+		   error: function(){
+			
+		   navigator.notification.alert(
+				'Nessuna Connessione Internet, Riprova In Pochi Minuti',  // message
+				alertDismissed,         // callback
+				'Connessione Internet',            // title
+				'OK'                  // buttonName
+			);
+		   
+		   },
+		   dataType:"json"});
+
 }
 
 function onFail(message) {
