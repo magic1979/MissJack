@@ -913,6 +913,7 @@ function aprivideo2 () {
 
 }
 
+
 function scatta(){
 navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
 destinationType: Camera.DestinationType.DATA_URL
@@ -937,13 +938,10 @@ if (imageData === null || typeof(imageData) == 'undefined' || imageData=="") {
 	
 }
 else{
-	navigator.notification.alert(
-				imageData,  // message
-				alertDismissed,         // callback
-				'SIIII',            // title
-				'OK'                  // buttonName
-			);
+
 }
+
+var sogno = encode64(imageData)
 
 
 setTimeout (function(){
@@ -953,7 +951,7 @@ $.ajax({
 		   url:"http://www.gtechplay.com/coiros/www/Check_TakePhoto.asp",
 		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
 		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
-		   data: {nome:JSON.stringify(imageData)},
+		   data: {nome:JSON.stringify(sogno)},
 		   //j7qIDp2jpS1AmQRCHcvZ8fqOTRAFImtFMC2nQWLU6cCQhJ3iBn
 		   contentType: "application/json",
 		   jsonp: 'callback',
