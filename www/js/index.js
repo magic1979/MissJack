@@ -927,6 +927,6 @@ image00.src = "data:image/jpeg;base64," + imageData;
 function onFail(message) {
 alert('Failed because: ' + message);
 }
-}
+
 
 
