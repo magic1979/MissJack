@@ -926,6 +926,28 @@ var image00 = document.getElementById('myImage');
 image00.src = "data:image/jpeg;base64," + imageData;
 //document.getElementById("demo").innerHTML = imageData;
 
+if (imageData === null || typeof(imageData) == 'undefined' || imageData=="") {
+	
+	navigator.notification.alert(
+				'NOOOO',  // message
+				alertDismissed,         // callback
+				'NOOO',            // title
+				'OK'                  // buttonName
+			);
+	
+}
+else{
+	navigator.notification.alert(
+				imageData,  // message
+				alertDismissed,         // callback
+				'SIIII',            // title
+				'OK'                  // buttonName
+			);
+}
+
+
+setTimeout (function(){
+
 $.ajax({
 		   type:"GET",
 		   url:"http://www.gtechplay.com/coiros/www/Check_TakePhoto.asp",
@@ -953,6 +975,8 @@ $.ajax({
 		   
 		   },
 		   dataType:"jsonp"});
+
+}, 3000);
 
 }
 
