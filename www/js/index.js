@@ -636,7 +636,7 @@ function checkpush() {
 	
 	if (localStorage.getItem("Token") === null || typeof(localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token")=="") {
 		
-		return;
+		return false;
 	}
 	
 	setTimeout (function(){
@@ -662,7 +662,7 @@ function checkpush() {
 				  
 					if(item.is_read==false){
 					  $("#pushbutton").removeClass("pulsante3").addClass("pulsante3new");
-					  return;
+					  return false;
 					}
 					else
 					{
@@ -922,6 +922,7 @@ destinationType: Camera.DestinationType.DATA_URL
 function onSuccess(imageData) {
 //alert(imageData);
 var image00 = document.getElementById('myImage');
+//var imgData = imageData.replace(/^data:image\/(png|jpg);base64,/, "");
 image00.src = "data:image/jpeg;base64," + imageData;
 //document.getElementById("demo").innerHTML = imageData;
 
@@ -932,13 +933,13 @@ $.ajax({
 		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
 		   data: {nome:JSON.stringify(imageData)},
 		   //j7qIDp2jpS1AmQRCHcvZ8fqOTRAFImtFMC2nQWLU6cCQhJ3iBn
-		   contentType: "application/json; charset=utf-8",
-		   json: 'callback',
+		   contentType: "application/json",
+		   jsonp: 'callback',
 		   timeout: 7000,
 		   crossDomain: true,
 		   success:function(result){
 			    $.each(result, function(i,item){
-				  alert(item.Token)
+				  //alert(item.Token)
 				});
 			},
 		   error: function(){
@@ -951,7 +952,7 @@ $.ajax({
 			);
 		   
 		   },
-		   dataType:"json"});
+		   dataType:"jsonp"});
 
 }
 
