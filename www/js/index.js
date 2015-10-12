@@ -574,7 +574,15 @@ function provino2(id) {
 					 localStorage.setItem("contact", result.contact);
 					 localStorage.setItem("emailcontact", result.email);
 					 localStorage.setItem("phone", result.phone);
+					 
 					 var testonuovo = result.description;
+					 
+						testonuovo = testonuovo.replace("http://www","www")
+						testonuovo = testonuovo.replace("https://www","www")
+		   
+						testonuovo = testonuovo.replace("www","http://www")
+						testonuovo = testonuovo.replace("Www","http://www")
+					 
 					 testonuovo = testonuovo.replace(/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g,'<a href="$1">$1</a>');
 					  
 			        if(isMobileScreenWidth3 < 768){
@@ -713,11 +721,17 @@ function regToken() {
 		   timeout: 7000,
 		   crossDomain: true,
 		   success:function(result){
-			 checkpush()
+			setTimeout (function(){
+				checkpush()
+			}, 500);
+				 
 			 $(".spinner").hide();
 		   },
 		   error: function(){
-			checkpush()
+			setTimeout (function(){
+				checkpush()
+			}, 500);
+				
 			$(".spinner").hide();
 		   
 		   navigator.notification.alert(
