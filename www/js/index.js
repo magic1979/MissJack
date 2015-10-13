@@ -885,7 +885,9 @@ function aprimappa () {
 	
 	var addressLongLat = '41.913721, 12.459551';
 	
-	var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_system');
+	window.open("google.navigation:q=41.913721,12.459551&mode=d" , '_system');
+	
+	//var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_system');
 	
 	refff.addEventListener('exit', function (event) {
 		
