@@ -838,7 +838,7 @@ function apriweb () {
 function aprimail () {
 
 window.plugin.email.open({
-	to:      "info@tesav.it",
+	to:      "",
 	subject: "Contatto",
 	body:    "La Digital Bisiness Card IBA di 'TeSAv' e' disponibile al link http://www.interactivebusinessapp.it/download/tesav",
 	isHtml:  true
@@ -871,7 +871,7 @@ window.plugin.email.open({
 
 function mandasms () {
 	
-	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'TeSAv' e' disponibile al link http://www.interactivebusinessapp.it/download/tesav", "3355754505", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
+	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'TeSAv' e' disponibile al link http://www.interactivebusinessapp.it/download/tesav", "", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
 function mandasms5 () {
