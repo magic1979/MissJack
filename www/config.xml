@@ -2,8 +2,8 @@
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "com.iba.TeSAv"
-		versionCode="1.1"
-		version   = "1.1">
+		versionCode="2.0"
+		version   = "2.0">
 		<name>TeSAv</name>
 		<description>Tesav, Ermes Italia</description>
 		<author href="http://www.tesav.it" email="info@tesav.it">
