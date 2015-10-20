@@ -977,7 +977,7 @@ if(localStorage.getItem("Lingua")==2){
 function aprimail5 () {
 
 window.plugin.email.open({
-	to:      ""+ localStorage.getItem("contactemail") +"",
+	to:      ""+ localStorage.getItem("emailcontact") +"",
 	subject: "",
 	body:    "A,"+ localStorage.getItem("contact") +"",
 	isHtml:  true
@@ -1026,7 +1026,7 @@ function aprimappa () {
 	
 	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
 	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q=41.914724,12.450170&mode=d" , '_system');
+	window.open("google.navigation:q=45.474627,9.149436&mode=d" , '_system');
 	
 	refff.addEventListener('exit', function (event) {
 		

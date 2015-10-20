@@ -4,10 +4,10 @@
 		id        = "com.iba.bni"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>BNI Italia</name>
-		<description>BNI-Italia, Ermes Italia</description>
+		<name>P.Mariola</name>
+		<description>P.Mariola, Ermes Italia</description>
 		<author href="http://www.bni.com" email="info@bni.com">
-BNI - Italia
+P.Mariola
 		</author>
 		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait" />
