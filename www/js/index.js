@@ -353,15 +353,6 @@ function CambiaLingua(){
 			$("#schose").hide();
 			$("#digitalIng").hide();
 			
-			$("#img1").html("Ambulatorio e Laboratorio");
-			$("#img2").html("Met Viaggiatori");
-			$("#img3").html("Met TH Card");
-			$("#img4").html("Met Giubileo");
-			$("#img5").html("Studenti");
-			$("#img6").html("Aziende");
-			$("#img7").html("Met OnLine");
-			$("#img8").html("Cesmet 30 anni");
-			$("#img9").html("Fondazione Cesmet");
 		}
 }
 
