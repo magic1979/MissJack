@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+<!--
+ Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+ 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations@
+ under the License.
+ -->
 <html>
 	<head>
 		<meta property="og:locale" content="en_US" />
@@ -17,7 +37,7 @@
 					<link rel="stylesheet" href="css/app-ios.css" />
 					<link rel="stylesheet" type="text/css" href="css/zocial.css" />
 					<link rel="stylesheet" href="css/jquery-ui.css">
-					<script src="js/base64.js"></script>
+						
 						<script src="jquery-1.11.3.min.js"></script>
 						<script src="js/jquery-ui.min.js"></script>
 						<script src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -44,95 +64,6 @@
 						document.addEventListener('DOMContentLoaded', loaded, false);
 						
 						</script>
-						
-				<script type="text/javascript">
-				<!--
-				
-				var keyStr = "ABCDEFGHIJKLMNOP" +
-				"QRSTUVWXYZabcdef" +
-				"ghijklmnopqrstuv" +
-				"wxyz0123456789+/" +
-				"=";
-				
-				function encode64(input) {
-					input = escape(input);
-					var output = "";
-					var chr1, chr2, chr3 = "";
-					var enc1, enc2, enc3, enc4 = "";
-					var i = 0;
-					
-					do {
-						chr1 = input.charCodeAt(i++);
-						chr2 = input.charCodeAt(i++);
-						chr3 = input.charCodeAt(i++);
-						
-						enc1 = chr1 >> 2;
-						enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-						enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-						enc4 = chr3 & 63;
-						
-						if (isNaN(chr2)) {
-							enc3 = enc4 = 64;
-						} else if (isNaN(chr3)) {
-							enc4 = 64;
-						}
-						
-						output = output +
-						keyStr.charAt(enc1) +
-						keyStr.charAt(enc2) +
-						keyStr.charAt(enc3) +
-						keyStr.charAt(enc4);
-						chr1 = chr2 = chr3 = "";
-						enc1 = enc2 = enc3 = enc4 = "";
-					} while (i < input.length);
-					
-					return output;
-				}
-			
-			function decode64(input) {
-				var output = "";
-				var chr1, chr2, chr3 = "";
-				var enc1, enc2, enc3, enc4 = "";
-				var i = 0;
-				
-				// remove all characters that are not A-Z, a-z, 0-9, +, /, or =
-				var base64test = /[^A-Za-z0-9\+\/\=]/g;
-				if (base64test.exec(input)) {
-					alert("There were invalid base64 characters in the input text.\n" +
-						  "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
-						  "Expect errors in decoding.");
-				}
-				input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-				
-				do {
-					enc1 = keyStr.indexOf(input.charAt(i++));
-					enc2 = keyStr.indexOf(input.charAt(i++));
-					enc3 = keyStr.indexOf(input.charAt(i++));
-					enc4 = keyStr.indexOf(input.charAt(i++));
-					
-					chr1 = (enc1 << 2) | (enc2 >> 4);
-					chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-					chr3 = ((enc3 & 3) << 6) | enc4;
-					
-					output = output + String.fromCharCode(chr1);
-					
-					if (enc3 != 64) {
-						output = output + String.fromCharCode(chr2);
-					}
-					if (enc4 != 64) {
-						output = output + String.fromCharCode(chr3);
-					}
-					
-					chr1 = chr2 = chr3 = "";
-					enc1 = enc2 = enc3 = enc4 = "";
-					
-				} while (i < input.length);
-				
-				return unescape(output);
-			}
-			
-				//--></script>
-			
 						
 						<style type="text/css">
 							* {
@@ -194,7 +125,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -214,7 +145,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -232,7 +163,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -250,7 +181,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -267,7 +198,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -284,7 +215,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -302,7 +233,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -320,7 +251,7 @@
 							bottom: 0px;
 							left: 0;
 							width: 100%;
-							background: #ebe6e0;
+							background: #ffffff;
 							overflow: hidden;
 							
 							background-image:url('img/Logo.png');
@@ -416,13 +347,13 @@
 							vertical-align: middle;
 						}
 						.div2 {
-							background-color: #ebe6e0;
+							background-color: #ffffff;
 						}
 						.div9 {
 							background-color: #000000;
 						}
 						.div3Copy {
-							background-color: #ebe6e0;
+							background-color: #ffffff;
 							position: absolute;
 							z-index: 2;
 							top:5px;
@@ -438,7 +369,7 @@
 						}
 						
 						.div3 {
-							background-color: #ebe6e0;
+							background-color: #ffffff;
 							position: absolute;
 							z-index: 2;
 							top:0px;
@@ -866,7 +797,7 @@
 							position:absolute;
 							background: #2E2E2E;
 							width: 100%;
-							height: 270px;
+							height:100%;
 							
 							border: 1px solid black;
 							padding: 20px;
@@ -920,44 +851,6 @@
 						}
 						
 						#pippo5 {
-							/* Cosmettics only  */
-							
-							background: #2E2E2E;
-							border-radius: 10px;
-							
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							margin-top: -150px;
-							margin-left: -150px;
-							width: 300px;
-							height: 260px;
-							
-							z-index: 111;
-							
-						}
-						
-						#pluto0 {
-							/* Cosmettics only */
-							position:absolute;
-							background: #2E2E2E;
-							width: 100%;
-							height:100%;
-							
-							border: 1px solid black;
-							padding: 20px;
-							text-align: center;
-							/* The real deal */
-							margin: 1px auto;
-							top:0;
-							z-index: 110;
-							
-							
-							opacity: 0.6;
-							filter: alpha(opacity=60);
-						}
-						
-						#pippo0 {
 							/* Cosmettics only  */
 							
 							background: #2E2E2E;
@@ -1029,7 +922,7 @@
 
 						}
 						.pulsante2 {
-							background-image: url(img/button2.png);
+							background-image: url(img/video.png);
 							background-size: contain;
 							background-repeat: no-repeat;
 							background-position:center;
@@ -1050,7 +943,7 @@
 						}
 						
 						.pulsante2:active {
-							background-image: url(img/button2a.png);
+							background-image: url(img/videoa.png);
 							
 							border-radius:999em;
 							-moz-border-radius:999em;
@@ -1118,7 +1011,7 @@
 						}
 						
 						.pulsante3new:active {
-							background-image: url(img/button5a.png);
+							background-image: url(img/button5_new.png);
 							
 							border-radius:999em;
 							-moz-border-radius:999em;
@@ -1431,6 +1324,13 @@
 							color: #042e72;
 						}
 						
+						.visione2aDROID {
+							font-size:14px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #042e72;
+						}
+						
 						.visione3 {
 							font-size:15px;
 							text-decoration: none;
@@ -1459,7 +1359,7 @@
 						}
 						
 						.visione3aDROID {
-							font-size:24px;
+							font-size:18px;
 							text-decoration: none;
 							text-shadow:0 0 0;
 							color: #042e72;
@@ -1484,8 +1384,24 @@
 							text-shadow:0 0 0;
 							color: #DC143C;
 						}
+          
+                        .visioneiper {
+							font-size:16px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #FFF;
+						}
+          
+          			    .visioneiperIPAD {
+							font-size:30px;
+							text-decoration: none;
+							text-shadow:0 0 0;
+							color: #FFF;
+						}
 
 						</style>
+	
+						
 	</head>
 	<body>
 		
@@ -1510,7 +1426,8 @@
 				<table width="98%" border="0" valign="center" align="center" >
 					<tr>
 						<td width="95%" align="center">
-							<div id="testoTitolo" class="visione2"><b>Servizi, Soluzioni e Prodotti per l'ICT</b></div>
+							<div id="testoTitolo" class="visione2"><b>BNI, Business Network International</b></div>
+							<div id="textTitle" class="visione2" style="display: none;"><b>Travel Clinic - Before, during and after the journey/trip</b></div>
 						</td>
 						<td width="5%">
 								<a href="javascript:apri()"><img id="pallina" src="img/info.png" width="26"></a>
@@ -1518,15 +1435,14 @@
 					</tr>
 					<tr>
 						<td width="100%" align="justify" colspan="2">
-							<div id="testo" class="visione">TeSAv opera nei settori avanzati dell'ICT con una vasta gamma di prodotti, soluzioni e servizi.<br>TeSav si avvale di professionisti di alto livello con competenze ed esperienze diversificate, maturate in multinazionali e operatori dei settori di riferimento, nella gestione di progetti complessi e nei rapporti con clienti ed interlocutori di alto profilo.<br>TeSAv e' presente con la sua struttura su tutto il territorio nazionale.&nbsp;<a id="vedi" href="#" ><font color="#042e72">continua&nbsp;[...]</a></div>
+							<div id="testo" class="visione">E' la piu' grande organizzazione di scambio referenze a livello mondiale.<br> La Mission di BNI e' aiutare i Membri ad aumentare il proprio business tramite un programma basato sul passaparola strutturato, positivo e professionale che permetta loro di sviluppare relazioni significative e a lungo termine con imprenditori e professionisti. La filosofia BNI si basa sull'idea di "Givers Gain" (Chi da', riceve).<br> BNI offre ai Membri l'opportunita' di condividere idee, contatti, network, e, cosa piu' importante, referenze di business.&nbsp;</div>
+
+							<div id="text" class="visione" style="display: none;"><b>CESMET -</b> Travel Clinic specialized  in care for travelers from and to Italy, especially from and to Rome.<br><br><b>OUTGOING:</b> vaccinations, tropical medical examinations, parasitological laboratory .<br><br><b>INCOMING:</b> 24h for the tourists in Rome, house and clinic medical examination, laboratory, radiology, ultrasound, hospitalization.&nbsp;</div>
+
+                            <div id="continua" class="visione"><a id="vedi" href="#" ><font color="#042e72">continua&nbsp;[...]</a></div>
+
 						</td>
 					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="center">
-							
-						</td>
-					</tr>
-					
 					<tr>
 						<td width="100%" colspan="2" align="center">
 							
@@ -1535,12 +1451,8 @@
 
 					<tr>
 						<td width="100%" colspan="2" align="center">
-							<div id="testoCentrale" class="visione3"><b>Marketing, Progettazione, Cloud Computing, Project Management, Assistenza Tecnica</b></div>
-						</td>
-					</tr>
-					<tr>
-						<td width="100%" colspan="2" align="center">
-							
+							<div id="testoCentrale" class="visione3"><b>La piu' grande organizzazione di scambio referenze a livello mondiale</b></div>
+							<div id="textCentral" class="visione2" style="display: none;"><b>30 years offering services to the travelers</b></div>
 						</td>
 					</tr>
 					<tr>
@@ -1557,32 +1469,33 @@
 					</table>
 				<table id="phone" align="center" border="0" width="97%" height="90%">
 					<tr>
-						<td align="right" width="45%" valign="middle">
-							<img id="copertina" src="img/Immagine.png" height="60%"></div>
+						<td align="right" width="40%" valign="top">
+							<img id="copertina" src="img/immagine.png" height="56%"></div>
 						</td>
-						<td align="center" width="55%" valign="center">
-						<table align="center">
-							<tr>
-								<td align="center">
-									<div id="Nome" class="visione3"><b>TeSAv</b></div>
-								</td>
-							</tr>
-							<tr>
-								<td align="center">&nbsp;
-									
-								</td>
-							</tr>
-							<tr>
-								<td align="center">
-									
-								</td>
-							</tr>
-							<tr>
-								<td align="center">
-									<div id="titolo" class="visione4"><b>Tecnologie e Servizi Avanzati</b></div>
-								</td>
-							</tr>
-						</table>
+						<td align="center" width="60%" valign="center">
+				<table align="center">
+					<tr>
+						<td align="center">
+							<div id="Nome" class="visione3"><b>Paolo Mariola</b></div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div id="titolo" class="visione4"><b>National Director</b></div>
+							<div id="titolob" class="visione4"><b>BNI Italia</b></div>
+						</td>
+					</tr>
+				</table>
 			</td>
 			</tr>
 			
@@ -1620,7 +1533,7 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" valign="center">
-						<font size="2" color="#fff">Questa App è stata sviluppata dalla piattaforma IBA. ogni App viene personalizzata in funzione delle caratteristiche che il cliente richiede.</font>
+						<font size="2" color="#fff">This App has been developed by the IBA platform. every App is customized according to the characteristics that the customer requires..</font>
 					</td>
 				</tr>
 				<tr>
@@ -1629,45 +1542,17 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" valign="center">
-						<a href="javascript:aprimail0()"><font color="#fff" size="4"><b>info@tesav.it</b></font></a>
+						<a href="javascript:aprimail0()"><font color="#fff" size="4"><b>info@ermesitalia.it</b></font></a>
 					</td>
-				</tr>
-				<tr>
-					<td width="100%" align="center" valign="center">
-						<a href="tel:+390621116843" class="visione"><font color="#fff" size="4"><b>+39 06 21116843</b></font></a>
-					</td>
-				</tr>
-				<tr height="20px">
-					<td width="100%" align="center" valign="center">
-					&nbsp;
-					</td>
+					<tr>
+						<td width="100%" align="center" valign="center">
+							<a href="tel:+393357540725" class="visione"><font color="#fff" size="4"><b>+39 06 41531215</b></font></a>
+						</td>
+					</tr>
 				</tr>
 			</table>
 		</div>
 		
-		<div id="pluto0" align="center" valign="top" style="display: none;" >
-				
-		</div>
-			
-			<div id="pippo0" style="display: none;">
-				<table border="0" align="center" width="100%" height="260px">
-					<tr height="32px">
-						<td width="100%" align="left">
-							<a href="javascript:chiudi0()"><img src="img/exit.png" width="32px"></a>
-						</td>
-					</tr>
-					<tr>
-						<td width="100%" align="center" valign="center">
-							<font color="#fff" size="3">My Social Network</font>
-						</td>
-					</tr>
-					<tr>
-						<td width="100%" align="center" valign="center">
-							<a href="javascript:apritw()"><img src="img/social4.png" width="100px"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:aprili()"><img src="img/social3.png" width="100px"></a>
-						</td>
-					</tr>
-				</table>
-			</div>
 
 		<table id="zoccolo" width="100%" border="0" align="center" valign="center" class="div5" >
 			<tr>
@@ -1717,7 +1602,9 @@
 
 			<div id="wrapper2">
 				<div id="scroller">
-					
+				<table id="spazioipad2" style="display: none;" height="80px"><tr><td></td></tr></table>
+				<table id="spaziodroid2" style="display: none;" height="30px"><tr><td></td></tr></table>
+				
 					<table id="galleriaimmagini" width="98%" border="0" valign="center" align="center" >
 						
 						<div id="galleriaimg">
@@ -1757,17 +1644,8 @@
 					<td algn="center" width="20%">
 						<a id="primos" href="#"><div width='50px' class="pulsanteback"></div></a>
 					</td>
-					<td algn="center" width="20%">
-						
-					</td>
-					<td algn="center" width="20%">
-						
-					</td>
-					<td algn="center" width="20%">
-						
-					</td>
-					<td algn="center" width="20%">
-						
+					<td colspan="4" algn="center" width="80%">
+						<a href="javascript:apriweb()"><div id="iper" class="visioneiper"><font color="#FFFFFF">http://www.cesmet.com</font></div></a>
 					</td>
 				</tr>
 			</table>
@@ -1788,8 +1666,8 @@
 			
 			<div id="wrapper3">
 				<div id="scroller">
-					<table id="spazioipad3" style="display: none;" height="80px"><tr><td></td></tr></table>
-					<table id="spaziodroid3" style="display: none;" height="30px"><tr><td></td></tr></table>
+				<table id="spazioipad3" style="display: none;" height="80px"><tr><td></td></tr></table>
+				<table id="spaziodroid3" style="display: none;" height="30px"><tr><td></td></tr></table>
 					
 					<table width="100%" height="24px" border="0" valign="center" align="center" >
 						<tr>
@@ -1802,34 +1680,18 @@
 					
 					<table width="98%" height="100%" border="0" valign="center" align="center" >
 						<tr>
-							<td width="100%" align="center">
-								<div id="titolov1" class="visione4"><b>Presentazione Aziendale</b></font></div>
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" align="center">
-								<!--<div id="video"><div>-->
-								<a href="javascript:aprivideo1()"><img src="http://www.pokeranswer.it/img/video1.png" width="240px" data-rel="external"></a>
-							</td>
-						</tr>
-						<tr>
 							<td width="100%" align="center">&nbsp;
 								
 							</td>
 						</tr>
+
 						<tr>
-							<td width="100%" align="center">&nbsp;
-								
+							<td width="100%" align="center">
+								<div id="titolov2" class="visione4"><font color="#042e72"><b>BNI - Referall Marketing</b></font></font></div>
 							</td>
 						</tr>
 						<tr>
 							<td width="100%" align="center">
-								<div id="titolov2" class="visione4"><b>BNI - Referall Marketing</b></font></div>
-							</td>
-						</tr>
-						<tr>
-							<td width="100%" align="center">
-								<!--<div id="video2"><div>-->
 								<a href="javascript:aprivideo2()"><img src="http://www.pokeranswer.it/img/video2.png" width="240px" data-rel="external"></a>
 							</td>
 						</tr>
@@ -1843,11 +1705,7 @@
 								
 							</td>
 						</tr>
-						<tr>
-							<td width="100%" align="center">
-								
-							</td>
-						</tr>
+
 						
 					</table>
 					
@@ -1913,8 +1771,8 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper4">
 				<div id="scroller">
-					<table id="spazioipad4" style="display: none;" height="80px"><tr><td></td></tr></table>
-					<table id="spaziodroid4" style="display: none;" height="30px"><tr><td></td></tr></table>
+				<table id="spazioipad4" style="display: none;" height="80px"><tr><td></td></tr></table>
+				<table id="spaziodroid4" style="display: none;" height="30px"><tr><td></td></tr></table>
 					
 					<table width="100%" height="24px" border="0" valign="center" align="center" >
 						<tr>
@@ -2014,7 +1872,7 @@
 					</tr>
 					<tr>
 						<td width="100%" align="center" valign="center">
-							<a href="javascript:mandasms5()"><img src="img/sms.png" width="100px"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:aprimail5()"><img src="img/email.png" width="100px"></a>
+							<a href="javascript:mandasms5()"><img src="img/sms.png" width="100px"></a>&nbsp;&nbsp;<a href="javascript:aprimail5()"><img src="img/email.png" width="100px"></a>
 						</td>
 					</tr>
 				</table>
@@ -2024,8 +1882,8 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper5">
 				<div id="scroller">
-					<table id="spazioipad5" style="display: none;" height="80px"><tr><td></td></tr></table>
-					<table id="spaziodroid5" style="display: none;" height="30px"><tr><td></td></tr></table>
+				<table id="spazioipad5" style="display: none;" height="80px"><tr><td></td></tr></table>
+				<table id="spaziodroid5" style="display: none;" height="30px"><tr><td></td></tr></table>
 					
 					<table width="100%" height="24px" border="0" valign="center" align="center" >
 						<tr>
@@ -2097,8 +1955,8 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper6">
 				<div id="scroller">
-					<table id="spazioipad6" style="display: none;" height="80px"><tr><td></td></tr></table>
-					<table id="spaziodroid6" style="display: none;" height="30px"><tr><td></td></tr></table>
+				<table id="spazioipad6" style="display: none;" height="80px"><tr><td></td></tr></table>
+				<table id="spaziodroid6" style="display: none;" height="30px"><tr><td></td></tr></table>
 					
 					<table width="98%" height="100%" border="0" valign="center" align="center" >
 						<tr>
@@ -2118,12 +1976,14 @@
 						</tr>
 						<tr>
 							<td width="100%" align="center" colspan="2">
-								<div id="scegli" class="visione">scegli come inviare la tua</font>
+								<div id="scegli" class="visione">scegli come inviare la tua</font></div>
+								<div id="scegliIng" class="visione" style="display: none;"><b>choose how to send your</b></div>
 							</td>
 						</tr>
 						<tr>
 							<td width="100%" align="center" colspan="2">
 								<div id="digital" class="visione3"><b>Digital Business Card</b></div>
+								<div id="digitalIng" class="visione3" style="display: none;"><b>Digital Business Card</b></div>
 							</td>
 						</tr>
 						<tr>
@@ -2146,7 +2006,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" width="100%" align="center">&nbsp;
-								<img src="img/d_putignano.png" width="33%">
+								<img src="img/d_putignano.jpg" width="33%">
 							</td>
 						</tr>
 					</table>
@@ -2212,34 +2072,34 @@
 			<div class="spinner" id="spinner"></div>
 			<div id="wrapper7">
 				<div id="scroller">
-					<table id="spazioipad7" style="display: none;" height="80px"><tr><td></td></tr></table>
-					<table id="spaziodroid7" style="display: none;" height="30px"><tr><td></td></tr></table>
+				<table id="spazioipad7" style="display: none;" height="80px"><tr><td></td></tr></table>
+				<table id="spaziodroid7" style="display: none;" height="30px"><tr><td></td></tr></table>
 					
 					<table width="90%" height="100%" border="0" valign="center" align="center" >
 						<tr>
 							<td width="100%">
-								<div id="testoTitolo3" class="visione2DROID"><b>Servizi, Soluzioni e Prodotti per l'ICT</b><br><br></div>
+								<div id="testoTitolo3" class="visione2aDROID"><b>BioPaolo Mariola - National Director BNI Italia</b><br><br></div>
+								<div id="textTitle3" class="visione2aDROID" style="display: none;"><b>TRAVEL CLINIC INTERNATIONAL -  For the travelers</b></div>
 							</td>
 						</tr>
 						<tr>
 							<td width="90%" align="justify" colspan="2">
-								<div id="testo3" class="visione">TeSAv opera sul mercato con lo scopo primario di individuare e sviluppare il business e le relazioni di partnership, promuovendo soluzioni e servizi avanzati e monitorando costantemente la realizzazione operativa degli stessi.<br><br>
-TeSAv è presente su tutto il territorio nazionale con sedi e filiali proprie e attraverso le strutture di Partner qualificati.<br><br>
+								<div id="testo3" class="visione">Dopo oltre 20 anni di carriera nell'ambito manageriale (Accenture, Mediobanca, Cap Gemini Ernst &amp; Young) e imprenditoriale (come socio di una Societa' di sistemi informativi), Paolo Mariola decide di intraprendere una nuova avventura portando in Italia BNI, un'organizzazione di networking nata negli USA nel 1985 che ha come scopo lo sviluppo del business di professionisti e imprenditori.<br><br> Uno sviluppo che avviene grazie ad un fattore chiave per la vita di qualsiasi azienda e professione non solo in Italia ma in tutto il mondo: il passaparola.<br><br>
+									Fin dagli inizi della sua carriera Paolo ha trovato nel passaparola un valido alleato per la crescita professionale.<br><br> Sviluppare in Italia un'organizzazione che ha alla base lo stesso principio chiave e' stata una sfida che Paolo ha colto senza riserve e con una vision ben precisa: fare del passaparola strutturato e qualificato un elemento trainante dell'economia italiana.<br><br></div>
 
-Le principali aree di competenze sono:<br><br>
+<div id="text3" class="visione" style="display: none;">Skilled clinics, Laboratory, Radiology, CAT (computerized axial tomography) Ultrasounds, Complete Diagnostic; <br><b>FOCUS ON:</b> Tropical Medicine, Parasitology, Vaccination’s Center, Clinic with hospitalization and orthopedic assistance 24h - Medicine, Surgery, Orthopedics
+<br><br><b>TRAVEL HEALTH CARD & FIDELITY CARD</b><br>Access to Call Center and all the CESMET’s services <br><br>
+<b>TH-Card Base -</b> 15% Sale on medical examinations agreed upon with CESEMT <br><br>
+<b>TH-Card SILVER -</b> It refunds your services up to 2.500 € in Italy and foreign countries <br><br>
+<b>TH-Card GOLD -</b> It refunds your services up to 2.500 € in Italy and foreign countries <br><br>Assicura i tuoi viaggi con la TH-Card<br><br></div>
 
-- Servizi di Consulenza, Progettazione, Sviluppo del business e Formazione;<br><br>
-- Servizi di Marketing, Business Development e Business Intelligence;<br><br>
-- Servizi di Progettazione e di Implementazione di soluzioni in Cloud Computing;<br><br>
-- Servizi di Management per le aziende;<br><br>
-- Attività di system integration e site preparation;<br><br>
-- Gestione e manutenzione di soluzioni <a href="javascript:scatta()"><font color="#000">ICT</font></a>.&nbsp;<br><br></div>
+ <div><a href="javascript:apriweb()"><div id="webV2" class="visione2"><b>www.bni-italia.com/it/index</b></div></a></div>
 				
 				</td>
 				</tr>
 				<tr>
 					<td width="100%" colspan="2" align="center">
-						<font><font color="blue">&nbsp;<img id="myImage" width="200px"></font></font>
+						<font ><font color="blue">&nbsp;</font></font>
 					</td>
 				</tr>
 			
@@ -2315,8 +2175,8 @@ Le principali aree di competenze sono:<br><br>
 	<div class="spinner" id="spinner"></div>
 	<div id="wrapper8">
 		<div id="scroller">
-			<table id="spazioipad8" style="display: none;" height="80px"><tr><td></td></tr></table>
-			<table id="spaziodroid8" style="display: none;" height="30px"><tr><td></td></tr></table>
+				<table id="spazioipad8" style="display: none;" height="80px"><tr><td></td></tr></table>
+				<table id="spaziodroid8" style="display: none;" height="30px"><tr><td></td></tr></table>
 			
 			<table width="100%" height="24px" border="0" valign="center" align="center" >
 				<tr>
@@ -2334,7 +2194,7 @@ Le principali aree di competenze sono:<br><br>
 			 </tr>
 			 </table>
 			 
-			<!-- <table id="ciccio" height="100%" border="0" valign="center" align="center" class="div56">
+			 <table id="ciccio" height="100%" border="0" valign="center" align="center" class="div56">
 				 <tr>
 					 <td width="100%" colspan="2">&nbsp;
 						 
@@ -2353,7 +2213,7 @@ Le principali aree di competenze sono:<br><br>
 			 
 			 <tr>
 			 <td width="100%" colspan="2" align="center">
-			 <a href="javascript:apritw()"><img src="img/social4.png" width="25%"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:aprili()"><img src="img/social3.png" width="25%"></a>
+			 <a href="javascript:aprifb()"><img src="img/social1.png" width="25%"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:apritw()"><img src="img/social4.png" width="25%"></a><!--&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:aprili()"><img src="img/social3.png" width="25%"></a>-->
 			 </td>
 			 
 			 </tr>
@@ -2364,8 +2224,9 @@ Le principali aree di competenze sono:<br><br>
 			 
 			 </tr>
 			 </table>
-			 <br><br>-->
-
+			 <br><br>
+			 
+			 <br>
 			 <table id="contatto" width="90%" height="100%" border="0" valign="center" align="center">
 				 <tr>
 					 <td width="10%" align="left" align="center">
@@ -2377,7 +2238,8 @@ Le principali aree di competenze sono:<br><br>
 				 </tr>
 				 <tr>
 					 <td width="100%" colspan="2" align="left">
-						 <a href="javascript:aprimappa()" class="visione2"><div id="indirizzoV" class="visione"><b>Via Pilo Albertelli, 5 00195 Roma </b></div></a>
+						 <a href="javascript:aprimappa()" class="visione2"><div id="indirizzoV" class="visione"><b></b>Via Monte Rosa, 51 - 20149 Milano
+</b></div></a>
 					 </td>
 					 
 				 </tr>
@@ -2402,7 +2264,7 @@ Le principali aree di competenze sono:<br><br>
 				 </tr>
 				 <tr>
 					 <td width="100%" colspan="2" align="left">
-						 <a href="tel:+390621116843" class="visione2"><div id="phoneV" class="visione">+39 06 21116843</div></a>
+						 <a href="tel:+390267380119" class="visione2"><div id="phoneV" class="visione">+39 02 67380119</div></a> 
 						 
 					 </td>
 				 </tr>
@@ -2414,7 +2276,7 @@ Le principali aree di competenze sono:<br><br>
 				 </tr>
 				 <tr>
 					 <td width="10%" align="left" align="center">
-						 <img src="img/Dcell.png" height="25%">
+						 <img src="img/Dtel.png" height="25%">
 							 </td>
 					 <td width="90%" align="left" valign="bottom">
 						 <div id="mobiletext" class="visione2"><font color="#7e7e7e"><b>Mobile</b></font></div>
@@ -2422,7 +2284,7 @@ Le principali aree di competenze sono:<br><br>
 				 </tr>
 				 <tr>
 					 <td width="100%" colspan="2" align="left">
-						 <a href="tel:+393355754505" class="visione2"><div id="mobileV" class="visione">+39 335 5754505</div></a>
+						 <a href="tel:+393483026179" class="visione2"><div id="mobileV" class="visione">+39 348 3026179</div></a>
 					 </td>
 				 </tr>
 				 <tr>
@@ -2441,7 +2303,7 @@ Le principali aree di competenze sono:<br><br>
 				 </tr>
 				 <tr>
 					 <td width="100%" colspan="2" align="left">
-						 <a href="javascript:aprimail()"><div id="emailV" class="visione2">info@tesav.it</div></a>
+						 <a href="javascript:aprimail0()"><div id="emailV" class="visione2">mariola@bni-italia.it</div></a>
 					 </td>
 				 </tr>
 				 <tr>
@@ -2460,7 +2322,7 @@ Le principali aree di competenze sono:<br><br>
 				 </tr>
 				 <tr>
 					 <td width="100%" colspan="2" align="left">
-						 <a href="javascript:apriweb()"><div id="webV" class="visione2"><b>www.tesav.it</b></div></a>
+						 <a href="javascript:apriweb()"><div id="webV" class="visione2"><b>http://www.bni-italia.com/it/index</b></div></a>	
 					 </td>
 				 </tr>
 				 <tr>
