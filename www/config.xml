@@ -4,10 +4,10 @@
 		id        = "com.iba.bni"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>bni</name>
+		<name>BNI Italia</name>
 		<description>BNI-Italia, Ermes Italia</description>
 		<author href="http://www.bni.com" email="info@bni.com">
-PokerParade sas
+BNI - Italia
 		</author>
 		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait" />
@@ -105,6 +105,5 @@ PokerParade sas
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
 		<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
 		<gap:plugin name="com.pushbots.push" version="1.2.4" source="plugins.cordova.io" />
-		<gap:plugin name="com.dawsonloudon.videoplayer" version="1.0.0" />
 
 	</widget>
