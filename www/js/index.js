@@ -102,7 +102,7 @@ var app = {
 			$("#titolov2").attr("class", "visione4IPAD");
             $("#continua").attr("class", "visioneIPAD");
 			$("#iper").attr("class", "visioneiperIPAD");
-			$("#copertina").attr("height", "100%");
+			$("#copertina").attr("height", "90%");
 			$("#pallina").attr("width", "46px");
 			$("#ita").attr("width", "46px");
 			$("#ing").attr("width", "46px");
@@ -147,9 +147,6 @@ var app = {
 			$("#img4").attr("class", "visione3IPAD");
 			$("#img5").attr("class", "visione3IPAD");
 			$("#img6").attr("class", "visione3IPAD");
-			$("#img7").attr("class", "visione3IPAD");
-			$("#img8").attr("class", "visione3IPAD");
-			$("#img9").attr("class", "visione3IPAD");
 
             $("#video").attr("width", "460px");
             $("#video2").attr("width", "460px");
