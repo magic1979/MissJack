@@ -1,3 +1,4 @@
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -22,16 +23,20 @@ var app = {
     receivedEvent: function(id) {
 		
 		if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("56257215177959a6258b4569");
+			PushbotsPlugin.initializeiOS("56090d8e17795901288b4567");
 		}
 		if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("56257215177959a6258b4569", "994279687975");
+			PushbotsPlugin.initializeAndroid("56090d8e17795901288b4567", "1068247241830");
 		}
+		
+		//PushbotsPlugin.resetBadge();
 		
 		//var isPhone = screen.height < 800 || screen.width < 800;
 		
 		var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
 			
+		//alert("RATIO:" + window.devicePixelRatio);
+		
 		//$(window).height()
 		
 		//IPAD CHANGE
@@ -40,18 +45,12 @@ var app = {
 				//alert("Phone:" + isMobileScreenWidth);
 
 				$("#copertina").attr("height", "60%");
-				$("#testoTitolo").attr("class", "visione2aDROID");
-				$("#testoTitolo3").attr("class", "visione2aDROID");
+				$("#testoTitolo").attr("class", "visione2DROID");
 				$("#testo").attr("class", "visioneDROID");
-				$("#testo3").attr("class", "visioneDROID");
 				$("#testoCentrale").attr("class", "visione3DROID");
 				$("#Nome").attr("class", "visione3aDROID");
 				$("#titolo").attr("class", "visione4DROID");
-                $("#titolob").attr("class", "visione4DROID");
-                $("#titolov1").attr("class", "visione3DROID");
-			    $("#titolov2").attr("class", "visione3DROID");
-                $("#continua").attr("class", "visioneDROID");
-                $("#iper").attr("class", "visioneiper");
+				$("#titolo2").attr("class", "visione4DROID");
 				$("#spaziodroid").show();
                 $("#spaziodroid3").show();
 			    $("#spaziodroid4").show();
@@ -59,16 +58,6 @@ var app = {
 			    $("#spaziodroid6").show();
 			    $("#spaziodroid7").show();
 			    $("#spaziodroid8").show();
-
-                $("#textTitle").attr("class", "visione2aDROID");
-				$("#textTitle3").attr("class", "visione2aDROID");
-			    $("#text").attr("class", "visioneDROID");
-				$("#text3").attr("class", "visioneDROID");
-			    $("#title").attr("class", "visione4DROID");
-			    $("#textCentral").attr("class", "visione3DROID");
-			    $("#titlev1").attr("class", "visione3DROID");
-			    $("#scegliIng").show();
-			    $("#digitalIng").show();
 
                 $("#sendapp").attr("class", "visione3aDROID");
 			    $("#scegli").attr("class", "visioneDROID0");
@@ -84,7 +73,6 @@ var app = {
 			    $("#emailV").attr("class", "visione2DROID");
 			    $("#webtext").attr("class", "visione2DROID");
 			    $("#webV").attr("class", "visione2DROID");
-				$("#webV2").attr("class", "visione2DROID");
 				
 				initscroll()
 		}
@@ -97,15 +85,11 @@ var app = {
 			$("#testoCentrale").attr("class", "visione3aIPAD");
 			$("#Nome").attr("class", "visione3IPAD");
 			$("#titolo").attr("class", "visione4IPAD");
-            $("#titolob").attr("class", "visione4IPAD");
+			$("#titolo2").attr("class", "visione4IPAD");
 			$("#titolov1").attr("class", "visione4IPAD");
 			$("#titolov2").attr("class", "visione4IPAD");
-            $("#continua").attr("class", "visioneIPAD");
-			$("#iper").attr("class", "visioneiperIPAD");
-			$("#copertina").attr("height", "90%");
+			$("#copertina").attr("height", "100%");
 			$("#pallina").attr("width", "46px");
-			$("#ita").attr("width", "46px");
-			$("#ing").attr("width", "46px");
 			$("#spazioipad").show();
 			$("#spazioipad3").show();
 			$("#spazioipad4").show();
@@ -117,7 +101,6 @@ var app = {
 			$("#sendapp").attr("class", "visione3IPAD");
 			$("#scegli").attr("class", "visioneIPAD0");
 			$("#digital").attr("class", "visione3IPAD");
-			$("#digitalIng").attr("class", "visione3IPAD");
 			
 			$("#indirizzotext").attr("class", "visioneIPAD");
 			$("#indirizzoV").attr("class", "visione2IPAD");
@@ -129,24 +112,6 @@ var app = {
 			$("#emailV").attr("class", "visione2IPAD");
 			$("#webtext").attr("class", "visioneIPAD");
 			$("#webV").attr("class", "visione2IPAD");
-			$("#webV2").attr("class", "visione2IPAD");
-			
-			$("#textTitle").attr("class", "visione2aIPAD");
-			$("#textTitle3").attr("class", "visione2aIPAD");
-			$("#text").attr("class", "visioneIPAD");
-			$("#text3").attr("class", "visioneIPAD");
-			$("#title").attr("class", "visione4IPAD");
-			$("#textCentral").attr("class", "visione3aIPAD");
-			$("#titlev1").attr("class", "visione2aIPAD");
-			$("#schose").show();
-			$("#digitalIng").show();
-
-            $("#img1").attr("class", "visione3IPAD");
-			$("#img2").attr("class", "visione3IPAD");
-			$("#img3").attr("class", "visione3IPAD");
-			$("#img4").attr("class", "visione3IPAD");
-			$("#img5").attr("class", "visione3IPAD");
-			$("#img6").attr("class", "visione3IPAD");
 
             $("#video").attr("width", "460px");
             $("#video2").attr("width", "460px");
@@ -154,8 +119,6 @@ var app = {
             initscroll()
 
 		}
-		
-		CambiaLingua()
 		
 		var ciccio;
 		var token;
@@ -166,12 +129,13 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#secondo", function(e){
-			$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
-			carica2()
+			aprisms0()
+			//$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
+			//carica2()
 		});
 		
 		$(document).on("touchend", "#terzo", function(e){
-            e.preventDefault();
+            //e.preventDefault();
 			$.mobile.changePage( "#page4", { transition: "slide", changeHash: false });
 			carica3()
 		});
@@ -258,7 +222,7 @@ var app = {
 						PushbotsPlugin.getToken(function(token){
 							
 							localStorage.setItem("Token", token);
-				
+															
 							regToken()
 												
 						});
@@ -275,85 +239,23 @@ var app = {
 			tabella = tabella + "</table>";
 			
 			$('#noconn').html(tabella);
+
 			$(".spinner").hide();
 			
 			$("#footer").show();*/
+				
+			$(".spinner").hide();
+			
+					   navigator.notification.alert(
+							'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
+							alertDismissed,         // callback
+							'Connessione Internet',            // title
+							'OK'                  // buttonName
+						);
+				
 		}
     }
 	
-}
-
-
-function Lingua(id){
-	if(id==1){
-		localStorage.setItem("Lingua", 1);
-	}
-	else{
-		localStorage.setItem("Lingua", 2);
-	}
-	
-	//chiamo la funzione
-	CambiaLingua()
-}
-
-function CambiaLingua(){
-	
-		if(localStorage.getItem("Lingua")==2){
-			$("#testoTitolo").hide();
-			$("#testoTitolo3").hide();
-			$("#testo").hide();
-			$("#testo3").hide();
-			$("#titolo").hide();
-			$("#titolov1").hide();
-			$("#testoCentrale").hide();
-			$("#scegli").hide();
-			$("#digital").hide();
-			
-			
-			$("#textTitle").show();
-			$("#textTitle3").show();
-			$("#text").show();
-			$("#text3").show();
-			$("#title").show();
-			$("#textCentral").show();
-			$("#titlev1").show();
-			$("#schose").show();
-			$("#digitalIng").show();
-			
-			$("#img1").html("Ambulatory and Laboratory");
-			$("#img2").html("Met Travelers");
-			$("#img3").html("Met TH Card");
-			$("#img4").html("Met Giubileo");
-			$("#img5").html("Travel health card Â– Students in Italy and aboard");
-			$("#img6").html("MET provides health care assistance to companies D.lgs n.81/ 2008 ");
-			$("#img7").html("met online and health care assistance by email");
-			$("#img8").html("30 years of health care support for travellers");
-			$("#img9").html("Help us to help");
-			
-		}
-		else{
-			$("#testoTitolo").show();
-			$("#testoTitolo3").show();
-			$("#testo").show();
-			$("#testo3").show();
-			$("#titolo").show();
-			$("#titolov1").show();
-			$("#testoCentrale").show();
-			$("#scegli").show();
-			$("#digital").show();
-			
-			
-			$("#textTitle").hide();
-			$("#textTitle3").hide();
-			$("#text").hide();
-			$("#text3").hide();
-			$("#title").hide();
-			$("#textCentral").hide();
-			$("#titlev1").hide();
-			$("#schose").hide();
-			$("#digitalIng").hide();
-			
-		}
 }
 
 
@@ -401,23 +303,7 @@ function alertDismissed() {
 
 
 function initscroll() {
-
-    if (localStorage.getItem("Token") === null || typeof(localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token")=="null") {
-		
-		setTimeout (function(){
-					
-			PushbotsPlugin.getToken(function(token){
-											
-					localStorage.setItem("Token", token);
-											
-					regToken()
-											
-			});
-					
-		}, 500);
-		
-	}
-
+	
 myScroll = new iScroll('wrapper', {
 				zoom: true,
 				click: true,
@@ -434,17 +320,16 @@ myScroll.scrollTo(0,0);
 
 function carica() {
 	
-	
 	$("#galleriaimg").html("<tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
 	
 	setTimeout (function(){
-				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig1.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><div id='img1' class='visione3DROID' align='center'>Il Referal Marketing come strategia</div></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig2.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><div id='img2' class='visione3DROID' align='center'>European Experience Exchange Londra</div></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig3.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><div id='img3' class='visione3DROID' align='center'>Le professioni che hanno sucesso in BNI</div></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig1.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig2.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig3.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
 				
+			$(".spinner").show();
 				
-				$(".spinner").show();
 		
 		setTimeout (function(){
-				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig4.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><div id='img4' class='visione3DROID' align='center'>Conferenza nazionale 2015</div></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig5.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><div id='img5' class='visione3DROID' align='center'>Conferenza Nazionale 2015</div></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig6.jpg' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><div id='img6' class='visione3DROID' align='center'>Conferenza Nazionale 2015</div></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
+				$("#galleriaimg").append("<tr><td width='100%' align='center' ><img src='img/fig4.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig5.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig6.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig7.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig8.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig9.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig10.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig11.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig12.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' align='center' ><img src='img/fig13.png' width='90%'></td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr><tr><td width='100%' colspan='2'>&nbsp;</td></tr>");
 					
 					$(".spinner").hide();
 					
@@ -462,8 +347,6 @@ function carica() {
 					setTimeout (function(){
 						
 						myScroll2.refresh();
-						
-						CambiaLingua()
 								
 					}, 1000);
 					
@@ -548,10 +431,11 @@ function provino() {
 	
 	var contenuto = ""
 	//alert("1");
-
+	
 
 	$(".spinner").show();
 
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
@@ -652,7 +536,7 @@ function provino() {
 		   navigator.notification.alert(
 										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
-										'Error',            // title
+										'Connessione Internet',            // title
 										'OK'                  // buttonName
 										);
 		   
@@ -676,6 +560,7 @@ function provino2(id) {
 
 	$(".spinner").show();
 
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://interactivebusinessapp.it/event_details/by_id/"+ id +"/"+ localStorage.getItem("Token") +"",
@@ -692,15 +577,15 @@ function provino2(id) {
 					 localStorage.setItem("emailcontact", result.email);
 					 localStorage.setItem("phone", result.phone);
 					 
-					 	var testonuovo = result.description;
+					 var testonuovo = result.description;
 					 
 						testonuovo = testonuovo.replace("http://www","www")
 						testonuovo = testonuovo.replace("https://www","www")
 		   
 						testonuovo = testonuovo.replace("www","http://www")
 						testonuovo = testonuovo.replace("Www","http://www")
-						
-						 testonuovo = testonuovo.replace(/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g,'<a id="my-link" href="$1" target="_system">$1</a>');
+					 
+					 testonuovo = testonuovo.replace(/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g,'<a href="$1">$1</a>');
 					  
 			        if(isMobileScreenWidth3 < 768){
 					contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'><font size='3' color='#042e72'><b>"+ result.activated_at +" - "+ result.expire_on +"</b></font></td></tr><tr><td width='100%' colspan='2' align='center'><font size='3' color='#000'><b>"+ result.title +"</b></font></td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'>"+ testonuovo +"</td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ result.image_tag +"' width='90%'></td></tr><tr><td></td></tr><tr><td></td></tr></table>"
@@ -714,7 +599,7 @@ function provino2(id) {
 				  }
 				  else{
 				  
-				  contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'>Nessuna Notifica</td></tr><tr><td width='100%' colspan='2'>Titolo della notifica</td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'></td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'></td></tr></table>"
+				  contenuto2 = contenuto2 + "<table width='98%' height='100%' border='0' valign='center' align='center' class='div8'><tr><td width='100%' align='center' colspan='2'>Nessuna Notifica Presente.</td></tr><tr><td width='100%' colspan='2'>Titolo della notifica</td></tr><tr><td><hr></td></tr><tr> <td width='100%' align='left'></td></tr><tr> <td width='100%'>&nbsp;</td></tr><tr><td width='100%' align='center' colspan='2'></td></tr></table>"
 				  }
 		   
 		   $("#contenuto2").html(contenuto2);
@@ -738,11 +623,6 @@ function provino2(id) {
 		   
 		   document.addEventListener('DOMContentLoaded', loaded, false);
 		   
-		   document.getElementById("my-link").onclick = function(e) {
-			  var ref = window.open(this.href, '_system', 'location=no');
-		     // Return false to prevent the default action if you did redirect with script
-		     return false;
-		   }
 
 		   
 		   },
@@ -752,7 +632,7 @@ function provino2(id) {
 		   navigator.notification.alert(
 										'Nessuna Connessione Internet, Riprova Tra Qualche Minuto',  // message
 										alertDismissed,         // callback
-										'Error',            // title
+										'Connessione Internet',            // title
 										'OK'                  // buttonName
 										);
 		   
@@ -763,9 +643,17 @@ function provino2(id) {
 
 function checkpush() {
 	
+	if (localStorage.getItem("Token") === null || typeof(localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token")=="") {
+		
+		return false;
+	}
+	
 	setTimeout (function(){
 	
+
 	$(".spinner").show();
+
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
@@ -789,7 +677,6 @@ function checkpush() {
 					{
 					  $("#pushbutton").removeClass("pulsante3new").addClass("pulsante3");
 					}
-					
 				  }
 			});
 
@@ -799,15 +686,15 @@ function checkpush() {
 		   
 		   },
 		   error: function(jqxhr,textStatus,errorThrown){
-		
+			   
 		   //alert(ts.responseText)
 		   
 		   $(".spinner").hide();
 		
 		   navigator.notification.alert(
-										'Nessuna Connessione Internet nelle check push, Riprova Tra Qualche Minuto',  // message
+										'Nessuna Connessione Internet, Riprova Dopo ',  // message
 										alertDismissed,         // callback
-										'Error',            // title
+										'Connessione Internet',            // title
 										'OK'                  // buttonName
 										);
 		   
@@ -821,51 +708,42 @@ function checkpush() {
 function regToken() {
 	var ciccio;
 	var conta = 1;
-
-	if (localStorage.getItem("Token") === null || typeof (localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token") == "null") {
-	    return;
-	}
-	else {
-
-
-	    $(".spinner").show();
-	    $.ajax({
-	        type: "GET",
-	        url: "http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/4gHHsBB1jb09J9XyQELLmorHSXE5LvsPMaxeL8f4kfe4pbCgQn/" + localStorage.getItem("Token") + "",
-	        //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
-	        //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
-	        //data: {token:localStorage.getItem("Token")}, 4gHHsBB1jb09J9XyQELLmorHSXE5LvsPMaxeL8f4kfe4pbCgQn
-	        contentType: "application/json; charset=utf-8",
-	        json: 'callback',
-	        timeout: 7000,
-	        crossDomain: true,
-	        success: function (result) {
-
-	            setTimeout(function () {
-	                checkpush()
-	            }, 500);
-
-	        },
-	        error: function () {
-	            $(".spinner").hide();
-
-	            setTimeout(function () {
-	                checkpush()
-	            }, 500);
-
-	            navigator.notification.alert(
-										'Nessuna Connessione Internet nel reg token, Riprova Tra Qualche Minuto',  // message
-										alertDismissed,         // callback
-										'Error',            // title
-										'OK'                  // buttonName
-										);
-
-	        },
-	        dataType: "json"
-	    });
-
-	}
-
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://interactivebusinessapp.it/device/set_token/PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA/nD44CFruHMUPGbj213sd1kMiHygU41biNIThN36jWE2JPN8RZF/"+ localStorage.getItem("Token") +"",
+		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
+		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
+		   //data: {token:localStorage.getItem("Token")},
+		   //nD44CFruHMUPGbj213sd1kMiHygU41biNIThN36jWE2JPN8RZF
+		   contentType: "application/json; charset=utf-8",
+		   json: 'callback',
+		   timeout: 7000,
+		   crossDomain: true,
+		   success:function(result){
+			setTimeout (function(){
+				checkpush()
+			}, 500);
+				 
+			 $(".spinner").hide();
+		   },
+		   error: function(){
+			setTimeout (function(){
+				checkpush()
+			}, 500);
+				
+			$(".spinner").hide();
+		   
+		   navigator.notification.alert(
+				'Nessuna Connessione Internet, Riprova In Pochi Minuti',  // message
+				alertDismissed,         // callback
+				'Connessione Internet',            // title
+				'OK'                  // buttonName
+			);
+		   
+		   },
+		   dataType:"json"});
 	   
 }
 
@@ -879,6 +757,11 @@ function aprisms(){
 	$("#pippo5").show("slow");
 }
 
+function aprisms0(){
+	
+	$("#pippo0").show("slow");
+}
+
 function chiudi(){
 	
 	$("#pippo").hide( "slow" );
@@ -887,6 +770,11 @@ function chiudi(){
 function chiudi5(){
 	
 	$("#pippo5").hide("slow");
+}
+
+function chiudi0(){
+	
+	$("#pippo0").hide("slow");
 }
 
 function vedi () {
@@ -901,10 +789,7 @@ function vedi () {
 		//alert(screen.width);
 		
 		$("#testoTitolo3").attr("class", "visione2IPAD");
-		$("#textTitle3").attr("class", "visione2IPAD");
 		$("#testo3").attr("class", "visioneIPAD");
-		$("#text3").attr("class", "visioneIPAD");
-		$("#webV").attr("class", "visioneIPAD");
 	}
 	
 	var myScroll7;
@@ -936,41 +821,29 @@ function NoVedi () {
 
 
 function aprifb () {
-	var ref = window.open('https://m.facebook.com/BNIItalia', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/onlywinefestival?fref=ts', '_system', 'location=no');
 }
 
 function apritw () {
-	var ref = window.open('http://www.twitter.com/bniitalia?lang=it', '_system', 'location=no');
+	var ref = window.open('https://twitter.com/VinitalyTasting', '_system', 'location=no');
 }
 
 function aprili () {
-	var ref = window.open('https://www.linkedin.com/pub/paolo-mariola/0/603/34/it', '_system', 'location=no');
+	var ref = window.open('https://www.linkedin.com/company/vino-è-musica?trk=company_name', '_system', 'location=no');
 }
 
 function apriweb () {
-	var ref = window.open('http://www.bni-italia.com/it/index', '_system', 'location=no');
+	var ref = window.open('http://www.vinitaly.com/', '_system', 'location=no');
 }
 
 function aprimail () {
 
-if(localStorage.getItem("Lingua")==2){
-		window.plugin.email.open({
-								 to:      "",
-								 subject: "",
-								 body:    "The Digital Business Card IBA 'Paolo Mariola' is available at the link http://www.interactivebusinessapp.it/download/p_mariola",
-								 isHtml:  true
-								 });
-	}
-	else{
-		window.plugin.email.open({
-								 to:      "",
-								 subject: "",
-								 body:    "La Digital Business Card IBA di 'Paolo Mariola' e' disponibile al link http://www.interactivebusinessapp.it/download/p_mariola",
-								 isHtml:  true
-								 });
-		
-	}
-
+window.plugin.email.open({
+	to:      "",
+	subject: "Contatto",
+	body:    "La Digital Bisiness Card IBA di 'VinIBA' e' disponibile al link http://www.interactivebusinessapp.it/download/viniba",
+	isHtml:  true
+});
 
 }
 
@@ -988,13 +861,18 @@ window.plugin.email.open({
 function aprimail0 () {
 
 window.plugin.email.open({
-	to:      "info@cesmet.com",
+	to:      "info@ermesitalia.it",
 	subject: "info",
 	body:    "",
 	isHtml:  true
 });
 
 
+}
+
+function mandasms () {
+	
+	window.plugins.socialsharing.shareViaSMS("La Digital Bisiness Card IBA di 'VinIBA' e' disponibile al link http://www.interactivebusinessapp.it/download/viniba", "", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
 function mandasms5 () {
@@ -1004,29 +882,13 @@ function mandasms5 () {
 	window.plugins.socialsharing.shareViaSMS("A,"+ localStorage.getItem("contact") +"", ""+ localStorage.getItem("phone") +"", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
 }
 
-function mandasms () {
-	
-
-if(localStorage.getItem("Lingua")==2){
-			window.plugins.socialsharing.shareViaSMS("The Digital Business Card IBA 'Travel Clinic' is available at the link http://www.interactivebusinessapp.it/download/travel_clinic", "", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
-	}
-	else
-	{
-			window.plugins.socialsharing.shareViaSMS("La Digital Business Card IBA di 'Travel Clinic' e' disponibile al link http://www.interactivebusinessapp.it/download/travel_clinic", "", function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})
-	
-	}
-
-}
-
-
-
 function aprimappa () {
 	
-	var addressLongLat = '41.914732,12.449977';
+	var addressLongLat = '41.913721, 12.459551';
 	
-	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
-	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q=45.474627,9.149436&mode=d" , '_system');
+	window.open("google.navigation:q=41.913721,12.459551&mode=d" , '_system');
+	
+	//var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_system');
 	
 	refff.addEventListener('exit', function (event) {
 		
@@ -1041,7 +903,7 @@ function aprimappa () {
 function aprivideo1 () {
 	
 	var id = "cf5PVgbrlCM";
-	var ref = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_system');
+	var ref = window.open('http://www.youtube.com/embed/dmDuBQTm8so', '_system');
 	
 	ref.addEventListener('exit', function (event) {
 		
@@ -1056,7 +918,7 @@ function aprivideo1 () {
 function aprivideo2 () {
 	
 	var id = "Hl10lNEVBrU";
-	var reff = window.open('http://www.youtube.com/embed/Hl10lNEVBrU?html5=1', '_system');
+	var reff = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_system');
 	
 	reff.addEventListener('exit', function (event) {
 		
@@ -1067,4 +929,75 @@ function aprivideo2 () {
 	});
 
 }
+
+
+function scatta(){
+navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+destinationType: Camera.DestinationType.DATA_URL
+});
+}
+
+function onSuccess(imageData) {
+//alert(imageData);
+var image00 = document.getElementById('myImage');
+//var imgData = imageData.replace(/^data:image\/(png|jpg);base64,/, "");
+image00.src = "data:image/jpeg;base64," + imageData;
+//document.getElementById("demo").innerHTML = imageData;
+
+if (imageData === null || typeof(imageData) == 'undefined' || imageData=="") {
+	
+	navigator.notification.alert(
+				'NOOOO',  // message
+				alertDismissed,         // callback
+				'NOOO',            // title
+				'OK'                  // buttonName
+			);
+	
+}
+else{
+
+}
+
+var sogno = encode64(imageData)
+
+
+setTimeout (function(){
+
+$.ajax({
+		   type:"GET",
+		   url:"http://www.gtechplay.com/coiros/www/Check_TakePhoto.asp",
+		   //url:"http://interactivebusinessapp.it/device/set_token/{platform_code}/{company_code}/{device_token}",
+		   //Android PxgLiaL7dBgTYUzUyHZRNGIUlT5NIabyHrkZC57PHoJGiiAQZA
+		   data: {nome:JSON.stringify(sogno)},
+		   //j7qIDp2jpS1AmQRCHcvZ8fqOTRAFImtFMC2nQWLU6cCQhJ3iBn
+		   contentType: "application/json",
+		   jsonp: 'callback',
+		   timeout: 7000,
+		   crossDomain: true,
+		   success:function(result){
+			    $.each(result, function(i,item){
+				  //alert(item.Token)
+				});
+			},
+		   error: function(){
+			
+		   navigator.notification.alert(
+				'Nessuna Connessione Internet, Riprova In Pochi Minuti',  // message
+				alertDismissed,         // callback
+				'Connessione Internet',            // title
+				'OK'                  // buttonName
+			);
+		   
+		   },
+		   dataType:"jsonp"});
+
+}, 3000);
+
+}
+
+function onFail(message) {
+alert('Failed because: ' + message);
+}
+
+
 

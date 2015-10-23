@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "com.iba.bni"
+		id        = "com.iba.viniba"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>P.Mariola</name>
-		<description>P.Mariola, Ermes Italia</description>
-		<author href="http://www.bni.com" email="info@bni.com">
-P.Mariola
+		<name>VinIBA</name>
+		<description>VinIBA, Ermes Italia</description>
+		<author href="http://www.ermesitalia.it" email="info@ermesitalia.it">
+VinIBA
 		</author>
-		<preference name="phonegap-version" value="3.7.0" />
+		<preference name="phonegap-version" value="5.2.0" />
 		<preference name="orientation" value="portrait" />
 		<preference name="fullscreen" value="true" />
 		<preference name="target-device" value="universal" />
