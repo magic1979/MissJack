@@ -129,9 +129,8 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#secondo", function(e){
-			aprisms0()
-			//$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
-			//carica2()
+			$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
+			carica2()
 		});
 		
 		$(document).on("touchend", "#terzo", function(e){
@@ -886,7 +885,7 @@ function aprimappa () {
 	
 	var addressLongLat = '41.913721, 12.459551';
 	
-	window.open("google.navigation:q=41.913721,12.459551&mode=d" , '_system');
+	window.open("google.navigation:q=41.929646,12.608889&mode=d" , '_system');
 	
 	//var refff = window.open("https://www.google.com/maps?q="+addressLongLat, '_system');
 	
