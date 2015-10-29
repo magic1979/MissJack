@@ -901,21 +901,8 @@ function aprimappa () {
 
 function aprivideo1 () {
 	
-	var videoUrl = "http://www.youtube.com/embed/cf5PVgbrlCM?html5=1";
-	
-	 // Play a video with callbacks
-	  var options = {
-		successCallback: function() {
-		  alert("Video was closed without error.");
-		},
-		errorCallback: function(errMsg) {
-		  alert("Error! " + errMsg);
-		}
-	  };
-  
-     window.plugins.streamingMedia.playVideo(videoUrl, options);
+	 VideoPlayer.play("http://www.youtube.com/embed/cf5PVgbrlCM?html5=1");
 	 
-	
 	/*var id = "cf5PVgbrlCM";
 	var ref = window.open('http://www.youtube.com/embed/dmDuBQTm8so', '_system');
 	
@@ -931,11 +918,7 @@ function aprivideo1 () {
 
 function aprivideo2 () {
 	
-	var videoUrl = "https://www.youtube.com/embed/300Q4QYiKXw";
-
-	// Just play a video
-	window.plugins.streamingMedia.playVideo(videoUrl);
-	
+	 VideoPlayer.play("https://www.youtube.com/embed/300Q4QYiKXw");
 	
 	/*var id = "Hl10lNEVBrU";
 	var reff = window.open('http://www.youtube.com/embed/cf5PVgbrlCM?html5=1', '_system');
