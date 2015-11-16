@@ -22,6 +22,17 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 		
+		// TESTI DA CAMBIARE
+		$("#testoTitolo").html("<b>E' nella tradizione il segreto del nostro Vino</b>");
+		$("#testo").html("VinIBA e' l'esempio di App personalizzata per il settore dei Vini. Nasce a seguito della visita a Vinitaly 2015, raccogliendo suggerimenti e idee per divulgare in Italia e nel Mondo la tradizione del Vino Italiano, in vista della manifestazione EXPO2015.<br>La tua App VinIBA parlera' del tuo Vino, della tua Terra, del tuo Vitigno della tua Cantina, o Enoteca o Cooperativa, potrai fornirla gratuitamente a tutti Clienti e Distributori, troveranno tutti i tuoi riferimenti per essere trovato e contattato:&nbsp;<a id='vedi' href='#' ><font color='#042e72'>continua&nbsp;[...]</a>");
+		$("#testoCentrale").html("<b>VinIBA e' il Profumo, il Gusto e il Prestigio del Vino Italiano</b>");
+		$("#Nome").html("<b>Cantina del Sole</b>");
+		$("#titolo").html("L'arte del Vino");
+		$("#titolo2").html("Una passione che nasce da lontano");
+		$("#testoTitolo3").html("<b>VinIBA \"e' il Profumo, il Gusto e il Prestigio del Vino Italiano\"</b>")
+		$("#testo3").html("VinIBA e' un App che dimostra tutte le potenzialità della piattaforma di sviluppo e configurazione capace di recepire ogni tipo di esigenza di Visibilita', di Prestigio e di Interazione col tuo Cliente/Contatto.<br><br> IBA e' un Progetto Innovativo di App, pensato per il settore Business To Business come strumento di Marketing per promuovere la propria offerta la propria immagine e le proprie attività per tutti, sia professionisti che piccole, medie o grandi aziende. <br><br>Il sistema è stato progettato per essere semplice, facile e intuitivo nel suo uso quotidiano. E' virale perche' e' sempre a portata di mano, utilizzabile in ogni momento, divulgabile a chicchessia per creare una rete di contatti.<br><br>IBA e' Interattiva, perche' comunica tramite messaggi e immagini in tempo reale direttamente con chi ha la vostra IBA.<br><br>Un modo nuovo di comunicare con tutti, per creare una rete di business, per anticipare gli altri e dare prestigio al vostro Brand..&nbsp;<br><br>");
+		
+		
 		if(PushbotsPlugin.isiOS()){
 			PushbotsPlugin.initializeiOS("56090d8e17795901288b4567");
 		}
@@ -197,6 +208,10 @@ var app = {
 		});
 		
 		$(document).on("touchend", "#pulrefresh", function(e){
+			carica3()
+		});
+	
+		$(document).on("touchend", "#pulsante111", function(e){
 			carica3()
 		});
 		
@@ -861,6 +876,18 @@ function aprimail0 () {
 
 window.plugin.email.open({
 	to:      "info@ermesitalia.it",
+	subject: "info",
+	body:    "",
+	isHtml:  true
+});
+
+
+}
+
+function aprimail00 () {
+
+window.plugin.email.open({
+	to:      "d.putignano@ermesitalia.it",
 	subject: "info",
 	body:    "",
 	isHtml:  true

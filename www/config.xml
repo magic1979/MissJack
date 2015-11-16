@@ -85,11 +85,12 @@ VinIBA
 		<gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136" />
 		<gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024 " />
 		<gap:splash src="res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768" />
-		<gap:splash src="240x400.png" gap:platform="android" gap:density="ldpi" />
-		<gap:splash src="320x480.png" gap:platform="android" gap:density="mdpi" />
-		<gap:splash src="480x800.png" gap:platform="android" gap:density="hdpi" />
-		<gap:splash src="840x1280.png" gap:platform="android" gap:density="xhdpi" />
-		<gap:splash src="1280x1920.png" gap:platform="android" gap:density="xxhdpi" />
+		<gap:splash src="LDPI.png" gap:platform="android" gap:density="ldpi" />
+		<gap:splash src="MDPI.png" gap:platform="android" gap:density="mdpi" />
+		<gap:splash src="HDPI.png" gap:platform="android" gap:density="hdpi" />
+		<gap:splash src="XHDPI.png" gap:platform="android" gap:density="xhdpi" />
+		<gap:splash src="XXHDPI.png" gap:platform="android" gap:density="xxhdpi" />
+		<gap:splash src="XXXHDPI.png" gap:platform="android" gap:density="xxxhdpi" />
 		<gap:splash src="res/screen/blackberry/screen-225.png" gap:platform="blackberry" />
 		<gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
 		<gap:splash src="splash.png" />
