@@ -2,8 +2,8 @@
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "com.iba.viniba"
-		versionCode="1.0"
-		version   = "1.0">
+		versionCode="2.0"
+		version   = "2.0">
 		<name>VinIBA</name>
 		<description>VinIBA, Ermes Italia</description>
 		<author href="http://www.ermesitalia.it" email="info@ermesitalia.it">

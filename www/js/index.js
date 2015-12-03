@@ -94,6 +94,7 @@ var app = {
 			$("#testoTitolo").attr("class", "visione2aIPAD");
 			$("#testo").attr("class", "visioneIPAD");
 			$("#testoCentrale").attr("class", "visione3aIPAD");
+			$("#contenutotext").attr("class", "visione3cIPAD");
 			$("#Nome").attr("class", "visione3IPAD");
 			$("#titolo").attr("class", "visione4IPAD");
 			$("#titolo2").attr("class", "visione4IPAD");
@@ -436,6 +437,127 @@ function carica5(id) {
 
 }
 
+function provino22() {
+	var ciccio;
+	var conta = 1;
+	localStorage.setItem("controllo", "1");
+	$("#contenutotext").show();
+	var contenuto22 = ""
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://interactivebusinessapp.it/event_list/"+ localStorage.getItem("Token") +"",
+		   //data: {token:localStorage.getItem("Token")}, 009feb7c84a4a4896ec320a4ebdd0b8d81a3254d61ccd9b906373684affe1c1e "+ localStorage.getItem("Token") +"
+		   contentType: "application/json; charset=utf-8",
+		   json: 'callback',
+		   timeout: 7000,
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if (item.company_id!=0){
+				  //OK "+ result.activated_at +" - "+ result.expire_on +"
+				  
+				  if(item.is_read==false){
+				  
+				  if(screen.width < 768){
+				  
+				  //contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center' ><table border='0' width='100%' align='center' valign='center' class='nuova'><tr><td width='100%' align='center' valign='center'><div id='datepush' class='visione3'>"+ item.title +"</div></td></tr><tr><td width='100%' align='center' valign='center'><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td width='100%' valign='center' align='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' width='180px'></td></tr></table></td></tr><tr><td ><table class='div9' height='20px' width='100%'><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"
+				  
+				  contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center' colspan='2'><table width='100%' align='center' valign='center'><tr><td width='50%' align='center' valign='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' class='circolare'></td><td width='50%' align='center' valign='center'><div id='datepush' class='visione2'><b>"+ item.title +"</b></div><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  
+				  
+				  }
+				  else{
+				  
+				  if(conta<3){
+					// contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center'><table width='100%' align='center' valign='center' border='0' class='nuova'><tr><td width='100%' align='center' valign='center'><div id='datepush' class='visione3IPAD'>"+ item.title +"</div></td></tr><tr><td width='100%' align='center' valign='center'><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td width='100%' valign='center' align='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' width='100px'></td></tr></table></td></tr><tr><td><table class='div9' height='20px' width='90%'><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"
+				  
+					contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center' colspan='2'><table width='100%' align='center' valign='center'><tr><td width='50%' align='center' valign='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' class='circolare'></td><td width='50%' align='center' valign='center'><div id='datepush' class='visione2'><b>"+ item.title +"</b></div><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
+				  
+				  }
+				  
+				  
+				  }
+				  else{
+				  if(screen.width < 768){
+				  
+					contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center' colspan='2'><table width='100%' align='center' valign='center'><tr><td width='50%' align='center' valign='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' class='circolare'></td><td width='50%' align='center' valign='center'><div id='datepush' class='visione2'><b>"+ item.title +"</b></div><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  
+				  }
+				  else{
+				  if(conta<3){
+				  
+					contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center' colspan='2'><table width='100%' align='center' valign='center'><tr><td width='50%' align='center' valign='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' class='circolare'></td><td width='50%' align='center' valign='center'><div id='datepush' class='visione2'><b>"+ item.title +"</b></div><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td colspan='2'><hr></td></tr>"
+				  }
+				  }
+				  
+				  }
+				  
+				  conta = conta + 1;
+				  
+				  }
+				  else{
+				  
+				  
+				  if(screen.width < 768){
+				  contenuto22 = contenuto22 + "<tr><td width='90%' align='center'>Nessuna Notifica</td></tr>"
+				  }
+				  else{
+					 contenuto22 = contenuto22 + "<tr><td width='90%' align='center'>Nessuna Notifica</td></tr>"
+				  }
+				  
+				  }
+				  
+				  });
+		   
+		   $("#contenuto22").html(contenuto22);
+		   
+		   $(".spinner").hide();
+		   
+		   setTimeout (function(){
+				initscroll()
+			}, 1000);
+			
+		   
+		   $("tr").click(function(event) {
+						 
+						 if(event.target.nodeName != "A"){
+						 if ($(this).attr("title") === null || typeof($(this).attr("title")) == 'undefined' || $(this).attr("title")==0){
+						 }
+						 else{
+						 
+						 if(localStorage.getItem("controllo") == "1"){
+						 
+						 $("#pulnormal").hide();
+						 $("#pulfoto").show();
+						 
+						 $.mobile.changePage( "#page5", { transition: "slide", changeHash: false });
+						 
+						 carica5($(this).attr("title"))
+						 
+						 }
+						 
+						 }
+						 }
+						 });
+		   
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   $("#contenuto22").html("<tr><td width='90%' align='center'>Nessuna Connessione Internet, Riprova Tra Qualche Minuto</td></tr>");
+		   
+		   
+		   },
+		   dataType:"json"});
+}
+
+
 function provino() {
 	var ciccio;
 	var conta = 1;
@@ -697,6 +819,8 @@ function checkpush() {
 		   
 		   $(".spinner").hide();
 		   
+		   provino22()
+		   
 		   
 		   },
 		   error: function(jqxhr,textStatus,errorThrown){
@@ -722,6 +846,12 @@ function checkpush() {
 function regToken() {
 	var ciccio;
 	var conta = 1;
+	
+	if (localStorage.getItem("Token") === null || typeof(localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token")=="null") {
+		
+		return;
+	}
+
 	
 	$(".spinner").show();
 	$.ajax({
