@@ -472,11 +472,9 @@ function provino22() {
 				  }
 				  else{
 				  
-				  if(conta<3){
 					// contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center'><table width='100%' align='center' valign='center' border='0' class='nuova'><tr><td width='100%' align='center' valign='center'><div id='datepush' class='visione3IPAD'>"+ item.title +"</div></td></tr><tr><td width='100%' align='center' valign='center'><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td width='100%' valign='center' align='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' width='100px'></td></tr></table></td></tr><tr><td><table class='div9' height='20px' width='90%'><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"
 				  
 					contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center' colspan='2'><table width='100%' align='center' valign='center'><tr><td width='50%' align='center' valign='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' class='circolare'></td><td width='50%' align='center' valign='center'><div id='datepush' class='visione2'><b>"+ item.title +"</b></div><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td colspan='2'><hr></td></tr>"
-				  }
 				  
 				  }
 				  
@@ -489,10 +487,10 @@ function provino22() {
 				  
 				  }
 				  else{
-				  if(conta<3){
+
 				  
 					contenuto22 = contenuto22 + "<tr title='"+ item.event_id +"'><td width='100%' align='center' valign='center' colspan='2'><table width='100%' align='center' valign='center'><tr><td width='50%' align='center' valign='center'><img src='http://interactivebusinessapp.it/event_image/full_size/by_tag/"+ item.image_tag +"' class='circolare'></td><td width='50%' align='center' valign='center'><div id='datepush' class='visione2'><b>"+ item.title +"</b></div><div id='datepush2' class='visione'>"+ item.activated_at +" - "+ item.expire_on +"</div></td></tr><tr><td colspan='2'><hr></td></tr>"
-				  }
+
 				  }
 				  
 				  }
@@ -504,7 +502,7 @@ function provino22() {
 				  
 				  
 				  if(screen.width < 768){
-				  contenuto22 = contenuto22 + "<tr><td width='90%' align='center'>Nessuna Notifica</td></tr>"
+					contenuto22 = contenuto22 + "<tr><td width='90%' align='center'>Nessuna Notifica</td></tr>"
 				  }
 				  else{
 					 contenuto22 = contenuto22 + "<tr><td width='90%' align='center'>Nessuna Notifica</td></tr>"
