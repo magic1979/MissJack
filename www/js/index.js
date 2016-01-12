@@ -40,8 +40,19 @@ var app = {
 			PushbotsPlugin.initializeAndroid("56090d8e17795901288b4567", "1068247241830");
 		}*/
 			
-		var push = PushNotification.init({ "android": {"senderID": "1068247241830","message":"Nuova Notifica"},
-         "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+		//var push = PushNotification.init({ "android": {"senderID": "1068247241830"},"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+ 
+		var push = PushNotification.init({
+		    android: {
+			senderID: "1068247241830"
+		    },
+		    ios: {
+			alert: "true",
+			badge: true,
+			sound: 'false'
+		    },
+		    windows: {}
+		});
 		
  
 		push.on('notification', function(data) {
