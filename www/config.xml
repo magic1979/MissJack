@@ -7,7 +7,7 @@
 		<name>VinIBA</name>
 		<description>VinIBA, Ermes Italia</description>
 		<author href="http://www.ermesitalia.it" email="info@ermesitalia.it">
-			VinIBA
+VinIBA
 		</author>
 		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait" />
@@ -63,7 +63,7 @@
 		<gap:plugin name="org.apache.cordova.media"  />
 		<gap:plugin name="org.apache.cordova.media-capture"  />
 		<gap:plugin name="org.apache.cordova.network-information"  />
-		<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4"/>
+		<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
 		<gap:plugin name="org.apache.cordova.vibration"  />
 		<icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
 		<icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
@@ -105,6 +105,7 @@
 		<access origin="http://googleapis.com" subdomains="true"  />
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
 		<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-		<plugin name="phonegap-plugin-push" source="npm" version="1.2.3"/>
+		<gap:plugin name="pushbots-cordova-plugin" source="npm" version="1.2.8" />
+		<gap:plugin name="com.dawsonloudon.videoplayer" version="1.0.0" />
 
 	</widget>
