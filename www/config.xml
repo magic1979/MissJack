@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
-		xmlns:gap = "http://phonegap.com/ns/5.2.0"
+		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "com.iba.viniba"
 		versionCode="3.0"
 		version   = "3.0">
@@ -9,7 +9,7 @@
 		<author href="http://www.ermesitalia.it" email="info@ermesitalia.it">
 			VinIBA
 		</author>
-		<preference name="phonegap-version" value="cli-5.2.0" />
+		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait" />
 		<preference name="fullscreen" value="true" />
 		<preference name="target-device" value="universal" />
@@ -95,16 +95,6 @@
 		<gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
 		<gap:splash src="splash.png" />
 		<access origin="*" />
-		<gap:plugin name="cordova-plugin-whitelist" source="npm"/>
-		<allow-intent href="http://*/*"/>
-		<allow-intent href="https://*/*"/>
-		<allow-intent href="tel:*"/>
-		<allow-intent href="sms:*"/>
-		<allow-intent href="mailto:*"/>
-		<allow-intent href="geo:*"/>
-		<platform name="android">
-		<allow-intent href="market:*"/>
-		</platform>
 		<access origin="*.pushbots.com" />
 		<access origin="*.interactivebusinessapp.it" />
 		<access origin="http://google.com" subdomains="true"  />
@@ -115,6 +105,6 @@
 		<access origin="http://googleapis.com" subdomains="true"  />
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
 		<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-		<gap:plugin name="phonegap-plugin-push" source="npm" />
+		<gap:plugin name="phonegap-plugin-push" source="npm" version="1.2.3"/>
 
 	</widget>
