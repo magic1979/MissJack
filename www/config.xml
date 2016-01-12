@@ -105,6 +105,7 @@
 		<access origin="http://googleapis.com" subdomains="true"  />
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
 		<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-		<gap:plugin name="phonegap-plugin-push" source="npm" version="1.2.3"/>
+		<preference name="android-build-tool" value="gradle" />
+		<plugin name="phonegap-plugin-push" source="npm" />
 
 	</widget>
