@@ -42,17 +42,8 @@ var app = {
 			
 		//var push = PushNotification.init({ "android": {"senderID": "1068247241830"},"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
  
-		var push = PushNotification.init({
-		    android: {
-			senderID: "1068247241830"
-		    },
-		    ios: {
-			alert: "true",
-			badge: true,
-			sound: 'false'
-		    },
-		    windows: {}
-		});
+		var push = PushNotification.init({ "android": {"senderID": "1068247241830"},
+		"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 		
  
 		push.on('notification', function(data) {
