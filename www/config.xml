@@ -2,8 +2,8 @@
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "com.iba.viniba"
-		versionCode="2.0"
-		version   = "2.0">
+		versionCode="3.0"
+		version   = "3.0">
 		<name>VinIBA</name>
 		<description>VinIBA, Ermes Italia</description>
 		<author href="http://www.ermesitalia.it" email="info@ermesitalia.it">
@@ -105,7 +105,6 @@ VinIBA
 		<access origin="http://googleapis.com" subdomains="true"  />
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
 		<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-		<gap:plugin name="pushbots-cordova-plugin" source="npm" />
-		<gap:plugin name="com.dawsonloudon.videoplayer" version="1.0.0" />
+		<gap:plugin name="phonegap-plugin-push" source="npm" version="1.2.3" />
 
 	</widget>

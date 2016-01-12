@@ -33,14 +33,25 @@ var app = {
 		$("#testo3").html("VinIBA e' un App che dimostra tutte le potenzialità della piattaforma di sviluppo e configurazione capace di recepire ogni tipo di esigenza di Visibilita', di Prestigio e di Interazione col tuo Cliente/Contatto.<br><br> IBA e' un Progetto Innovativo di App, pensato per il settore Business To Business come strumento di Marketing per promuovere la propria offerta la propria immagine e le proprie attività per tutti, sia professionisti che piccole, medie o grandi aziende. <br><br>Il sistema è stato progettato per essere semplice, facile e intuitivo nel suo uso quotidiano. E' virale perche' e' sempre a portata di mano, utilizzabile in ogni momento, divulgabile a chicchessia per creare una rete di contatti.<br><br>IBA e' Interattiva, perche' comunica tramite messaggi e immagini in tempo reale direttamente con chi ha la vostra IBA.<br><br>Un modo nuovo di comunicare con tutti, per creare una rete di business, per anticipare gli altri e dare prestigio al vostro Brand..&nbsp;<br><br>");
 		
 		
-		if(PushbotsPlugin.isiOS()){
+		/*if(PushbotsPlugin.isiOS()){
 			PushbotsPlugin.initializeiOS("56090d8e17795901288b4567");
 		}
 		if(PushbotsPlugin.isAndroid()){
 			PushbotsPlugin.initializeAndroid("56090d8e17795901288b4567", "1068247241830");
-		}
+		}*/
+			
+		var push = PushNotification.init({ "android": {"senderID": "1068247241830"},
+         "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 		
-		//PushbotsPlugin.resetBadge();
+ 
+		push.on('notification', function(data) {
+		// data.message, 
+		// data.title, 
+		// data.count, 
+		// data.sound, 
+		// data.image, 
+		// data.additionalData 
+		});
 		
 		//var isPhone = screen.height < 800 || screen.width < 800;
 		
@@ -63,7 +74,7 @@ var app = {
 				$("#titolo").attr("class", "visione4DROID");
 				$("#titolo2").attr("class", "visione4DROID");
 				$("#spaziodroid").show();
-                $("#spaziodroid3").show();
+				$("#spaziodroid3").show();
 			    $("#spaziodroid4").show();
 			    $("#spaziodroid5").show();
 			    $("#spaziodroid6").show();
@@ -233,17 +244,21 @@ var app = {
 			//provino()
 			
 			setTimeout (function(){
+				
+				push.on('registration', function(data) {
+					localStorage.setItem("Token", data.registrationId);
+					regToken()
+					//  
+				});
 						
-						PushbotsPlugin.getToken(function(token){
+						/*PushbotsPlugin.getToken(function(token){
 							
 							localStorage.setItem("Token", token);
 															
 							regToken()
 												
-						});
-						
+						});*/
 			}, 2000);
-			
 			
 		}
 		else{
@@ -267,7 +282,6 @@ var app = {
 							'Connessione Internet',            // title
 							'OK'                  // buttonName
 						);
-				
 		}
     }
 	
